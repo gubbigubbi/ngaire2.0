@@ -1,0 +1,18 @@
+// Set fonts here
+$font__main: 'Open Sans', sans-serif;
+$font__headings: 'Montserrat', san-serif;
+$font__menus: $font__headings;
+$font__buttons: $font__headings;
+$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", Courier, monospace;
+
+$font__line-height-pre: 1.6;
+$font__weight-headings: 500;
+
+//Line heights & margins
+$font__line-height-body: 1.5;
+$font__margin-bottom: 21px;
+
+// Case
+$font__headings-case: normal;
+$font__menus-case: uppercase;

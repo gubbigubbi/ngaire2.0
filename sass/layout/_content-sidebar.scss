@@ -1,0 +1,15 @@
+.layout-content-sidebar {
+	.content-area {
+		@extend .col-md-8
+	}
+	
+	.site-content .widget-area {
+		@extend .col-md-4;
+		float: left;
+	}
+	
+	.site-footer {
+		clear: both;
+		width: $size__site-main;
+	}
+}

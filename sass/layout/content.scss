@@ -1,0 +1,20 @@
+.site-content, .navbar-inner {
+    @extend .container;
+}
+
+.content-area, .widget-area {
+    @extend .section-row;
+}
+
+body.content-only .content-area {
+    @extend .section__content-only;
+}
+
+.content-area {
+    float: left;
+    width: 100%;
+}
+
+@import "preview";
+@import "content-sidebar";
+@import "footer";

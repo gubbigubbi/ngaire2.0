@@ -1,0 +1,9 @@
+.preview {
+    background-color: $color__white;
+    color: inherit;
+}
+
+.preview .logo {
+    @extend .center-block;
+    @extend .text-center;
+}

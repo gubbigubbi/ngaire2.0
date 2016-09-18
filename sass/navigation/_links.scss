@@ -1,0 +1,47 @@
+// Base anchor styles
+a {
+	color: $color__link;
+	text-decoration: none;
+	&:visited {
+		color: $color__link-visited;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__link-hover;
+	}
+	&:focus {
+		outline: thin dotted;
+	}
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+	@extend .transition-color;
+}
+
+.nav-link, .nav-item > a {
+  padding-top:    10px;
+  padding-bottom: 10px;
+  line-height: 1;
+  display: block;
+  color: $color_nav-link;
+  text-transform: $font__menus-case;
+  &:hover, &:focus,
+  &:active {
+	  color: $color_nav-link__active;
+  }
+}
+
+.nav-item.active > a {
+	color: $color_nav-link__active;	
+}
+
+// Dropdowns
+.nav-item.menu-item-has-children > a {
+	&:after {
+		font-family: 'Ionicons';
+		content: '\f217';
+	}
+}
+

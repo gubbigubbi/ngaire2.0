@@ -1,0 +1,20 @@
+.line__sm, .line__md {
+    &:after {
+        background: $color__dark;
+        content: '';
+        margin-top: 6px;
+        height: 3px;
+        display: block;
+        margin-bottom: 30px;
+    }
+}
+.line__sm {
+    &:after {
+        width: 40px;
+    }
+}
+.line__md {
+    &:after {
+        width: 140px;
+    }
+}

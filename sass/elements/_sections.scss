@@ -1,0 +1,33 @@
+// Section base class
+.section {
+    float: left;
+    width: 100%;
+}
+// Sections are rows 
+.section-header {
+    padding: $section__header-padding;
+}
+.section-row, .panel-grid {
+    padding: $section__row-padding;
+}
+
+// For when the section exists in isolation
+.section__content-only {
+    padding: $section__content-only-padding;
+}
+
+.section__sidebar {
+    padding: 30px 0;
+}
+
+.panel-grid {
+    margin-bottom: 0 !important;
+    &:first-of-type {
+        padding-top: 0;
+    }
+}
+
+// Blocks
+.block__content {
+    padding: 12px;
+}

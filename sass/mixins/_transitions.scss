@@ -1,0 +1,16 @@
+// Base transition classes to avoid constantly writing transition color 0.5s ease
+.transition-color {
+    transition: color 0.5s ease;
+}
+
+.transition-top {
+    transition: top 0.5s ease;
+}
+
+.transition-padding {
+    transition: padding 0.5s ease;
+}
+
+.transition-transform {
+    transition: transform 0.5s ease;
+}

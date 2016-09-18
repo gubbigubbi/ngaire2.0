@@ -1,0 +1,7 @@
+$class-slug: stagger !default
+
+@for $i from 1 through 9 {
+  .#{$class-slug}-#{$i} {
+    animation-delay: #{$i*0.5}s
+  }
+}

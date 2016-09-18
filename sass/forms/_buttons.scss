@@ -1,0 +1,70 @@
+//
+// Buttons
+// --------------------------------------------------
+@mixin button-variant($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+}
+
+// Base styles
+// --------------------------------------------------
+
+.button, button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  text-align: center;
+  text-transform: $button__text-transform;
+  font-family: $font__buttons;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 2px solid transparent;
+  white-space: normal;
+  transition: background-color 0.5s ease;
+  @include button-size($button-padding-vertical, $button-padding-horizontal, $button-border-radius);
+
+  &,
+  &:active,
+  &.active,
+  &:hover,
+  &:focus,
+  &.focus {
+    text-decoration: none;
+  }
+
+
+  // [converter] extracted a& to a.btn
+}
+
+// Create Variants
+.button__primary {
+  @include button-variant( $button__add-to-primary-color, $button__add-to_bg, $button__add-to-border )
+  &:focus,
+  &.focus, &:hover {
+    color: $button__add-to-primary-color;
+    background-color: darken($button__add-to_bg, 12%);
+        border-color: darken($button__add-to_bg, 12%);
+  }
+}
+
+// Create Variants
+.button__border {
+    @include button-variant( $button__border-primary-color, $button__border-bg, $button__border-border )
+  &:focus,
+  &.focus, &:hover {
+    color: $color__light;
+    background-color: $color__white;
+        border-color: $color__white;
+  }
+}
+
+// Block
+.button__block {
+  display: block;
+  width: 100%;  
+}

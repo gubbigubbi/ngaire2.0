@@ -1,0 +1,12 @@
+// Content Post
+article.has-post-thumbnail {
+    .post-thumb-wrapper {
+        @extend .col-md-6;
+    }
+}
+
+// Post type blocks
+.team-block {
+    @extend .text-center;
+    background-color: $color__neutral;
+}

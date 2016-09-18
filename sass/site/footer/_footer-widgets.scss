@@ -1,0 +1,12 @@
+.footer-widget-area {
+    font-size: 14px;
+}
+.footer-widget-area .widget-title {
+    padding-bottom: 3px;
+    margin-bottom: 12px;
+}
+
+.footer-widget-area ul.menu {
+    @extend .list-unstyled;
+    @extend .no-margin-left;
+}

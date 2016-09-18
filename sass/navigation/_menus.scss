@@ -1,0 +1,100 @@
+// Unstyle nav
+.nav {
+	@extend .list-unstyled;
+}
+
+// Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
+.navbar {
+	position: relative;
+	margin-bottom: $navbar-margin-bottom;
+	border-bottom: 0px solid $color__border-nav;
+	background-color: $color_background-navbar;
+	padding: $navbar-padding-vertical $navbar-padding-horizontal;
+	transition: padding 0.6s ease;
+}
+
+.navbar-nav {
+  .nav-item {
+	float: left;
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
+	letter-spacing: 1px;
+  }
+
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5em;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+}
+
+// Primary Nav Specific
+.navbar-primary {
+	font-size: 14px;
+}
+
+.navbar-preheader {
+	font-size: 12px;
+	padding: $navbar-preheader__padding-vertical 0;
+	background-color: $color__background-preheader;
+}
+
+.navbar-preheader, .navbar-primary {
+	font-family: $font__menus;	
+}
+
+// Fix the top/bottom navbars when screen real estate supports it
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex__navbar-fixed;
+}
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 0px;
+  padding: #{$navbar-padding-vertical/2} $navbar-padding-horizontal;
+}
+.navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0; // override .navbar defaults
+  border-width: 1px 0 0;
+}
+
+// Alignment
+.navbar-nav__left {
+	> li {
+		&:first-child {
+			padding-left: 0 !important; //sigh
+		}
+	}
+}
+
+.navbar-nav__right {
+	> li {
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+}

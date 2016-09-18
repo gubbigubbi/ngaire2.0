@@ -1,0 +1,18 @@
+.widget {
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+	
+	ul {
+		@extend .no-padding-left;
+	}
+}
+
+.sidebar .widget {
+	background-color: $color__background-widget;
+	@extend .block__content;
+	border: 1px solid darken($color__background-widget, 10%);
+	margin: 0 0 1.5em;
+}
+

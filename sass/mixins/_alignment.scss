@@ -1,0 +1,66 @@
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.center-block {
+	@include center-block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.pull-right {
+	float: right;
+}
+
+.no-margin-left {
+	margin-left: 0 !important;
+}
+
+.no-margin-bottom {
+	margin-bottom: 0 !important;
+}
+
+.no-margin-top {
+	margin-top: 0 !important;
+}
+
+.no-padding-left {
+	padding-left: 0 !important;
+}
+
+.no-padding-bottom {
+	padding-bottom: 0 !important;
+}
+
+.no-padding-top {
+	padding-top: 0 !important;
+}
+
+
+// Module text margins fix
+.last-of-type-no-margin-bottom {
+	* {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+//Wordpress admin bar fix
+.admin-bar .admin-bar__fix {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar .admin-bar__fix {
+    top: 46px;
+  }
+}
+
+.navbar-fixed-top {
+	@extend .admin-bar__fix;
+}

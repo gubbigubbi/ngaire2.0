@@ -1,0 +1,21 @@
+.footer-widget-area {
+    background-color: $color__background-footer-widget-area;
+    color: $color__text-footer-widget-area;
+    padding: $footer__widget-area-padding;
+}
+
+.site-info {
+    background-color: $color__background-site-info;
+    color: $color__text-site-info;
+    padding: $footer__copyright-padding;
+}
+
+.footer-widget-area, .site-info {
+    a {
+        color: inherit;
+        @extend .transition-color;
+        &:hover {
+            color: $color__light;
+        }
+    }
+}

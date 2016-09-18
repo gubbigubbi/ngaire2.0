@@ -1,0 +1,60 @@
+.post-thumb {
+    overflow: hidden;
+}
+.post-thumb-wrapper { 
+    position: relative;
+    width: 100%;
+    .post-thumb-wrapper-overlay {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+         > span {
+            top: 50%;
+            transform: translate(0,-50%);
+            width: 100%;
+            position: absolute;
+            left: 0;
+            padding: 0 40px;
+        }
+    }
+}
+
+.overlay__shaded {
+    background-color: rgba($color__dark,0.5); 
+}
+
+.post-thumb-wrapper-overlay > span {
+    @extend .text__white;
+}
+
+// Show span on hover
+
+.post-thumb-wrapper.show-on-hover {
+    .post-thumb-wrapper-overlay {
+        span {
+            top: 70%;
+            @extend .transition-top;
+        }
+        &:hover {
+            span {
+                top: 50%;
+            }
+        }
+    }
+}
+
+// Animated background on hover
+.post-thumb.animated-on-hover {
+    .post-thumb-wrapper {
+        img {
+            @extend .transition-transform;
+        }
+        &:hover {
+            img {
+                transform: scale(1.1,1.1);
+            }
+        }
+    }
+}

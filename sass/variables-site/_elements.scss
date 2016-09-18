@@ -1,0 +1,25 @@
+// Buttons and Forms
+
+// Variables & Mixins
+// --------------------------------------------------
+$button-padding-vertical: 10px;
+$button-padding-horizontal: 25px;
+$button-border-radius: 0px;
+$button__text-transform: uppercase;
+
+@mixin button-size($button-padding-vertical, $button-padding-horizontal, $button-border-radius) {
+  padding: $button-padding-vertical $button-padding-horizontal;
+  border-radius: $button-border-radius;
+}
+
+$button__add-to-primary-color: #fff;
+$button__add-to_bg: $color__light;
+$button__add-to-border: $color__light;
+
+$button__border-primary-color: #fff;
+$button__border-bg: transparent;
+$button__border-border: #fff;
+
+// Forms
+$form__padding: 7px 12px;
+$form__margin-bottom: 12px;
