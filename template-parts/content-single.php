@@ -13,12 +13,6 @@
 	<div class="row">
         
         <header class="entry-header col-md-12">
-            <?php
-            if ( is_single() ) :
-                the_title( '<h1 class="h3 entry-title no-margin">', '</h1>' );
-            else :
-                the_title( '<h2 class="h3 entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-            endif; ?>
 
 			<?php the_post_thumbnail('post-thumb'); ?>
             

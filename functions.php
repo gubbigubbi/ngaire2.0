@@ -138,3 +138,13 @@ require get_template_directory() . '/inc/thumbnails.php';
  * Woocommerce
  */
 require get_template_directory() . '/inc/woocommerce.php';
+
+/**
+ * Widgets
+ */
+require get_template_directory() . '/inc/widgets.php';
+
+/**
+ * AJAX Queries
+ */
+require get_template_directory() . '/inc/ajax-loop.php';

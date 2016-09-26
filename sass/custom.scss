@@ -1,14 +1,20 @@
 // Hacks etc
 .logo-link {
-    height: 62px;
+    //height: 62px;
 }
 
-.panel-grid-cell .widget-title {
+.panel-grid-cell .widget-title, .entry-title {
     @extend .line__md;
 }
 
-.footer-widget-area .widget-title {
-    //border-bottom: 2px solid #fff;
+.entry-title {
+
+    &:after { background: $color__light; margin-bottom: 16px; }
+    @extend .no-margin-bottom;
+}
+
+.site-info {
+    display: none;
 }
 
 .testimonial-block img {
@@ -17,7 +23,32 @@
     padding: 8px;
 }
 
-footer .navbar-nav__socials {
+.header__text-only {
+    background-color: $color__dark;
+    color: $color__light;
+}
+
+body.full-width .panel-grid-cell .so-panel {
+    background: rgba($color__text-main,0.8);
+    padding: 40px;
+    color: $color__white;
+    .line__md {
+        &:after { background: #fff; }
+    }
+    .team-block, .class-block, .special-block, .membership-block, .challenge-block, .trainer-block {
+        color: $color__text-main;
+    }
+}
+
+.so-panel .widget-title {
+    text-align: center;
+    &:after {
+        margin-left: auto;
+        margin-right: auto;       
+    }
+}
+
+footer .navbar-nav__socials, .content-area .navbar-nav__socials {
     > .nav-item {
         padding: 0 6px;
         a {
@@ -36,14 +67,47 @@ footer .navbar-nav__socials {
     }
 }
 
-.footer-widget-area {
-    background-image: url('assets/img/footer-bg.png');
-    background-repeat: no-repeat;
-    background-position: 100% 0%;
-} 
+.footer-widget-area .widget-title {
+    @extend .line__sm;
+    &:after { background: #2d2d2c; margin-bottom: 15px; }
+}
 
-.site-info {
-    display: none;
+.footer-widget-area li {
+    border-bottom: 1px solid #2c2d2c;
+}
+
+.latest-tweets ul, .sd_opening_hours_widget ul {
+    @extend .list-unstyled;
+    @extend .no-margin-left;
+}
+
+.latest-tweets {
+    position: relative;
+}
+
+.latest-tweets li {
+    margin-bottom: 20px;
+    padding: 0 0 20px 0;
+}
+
+.latest-tweets-icon {
+    right: 0;
+    position: absolute;
+    top: -76px;
+    color: $color__light;
+    font-size: 2em;
+}
+
+.opening-hours li {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    .opening-hour {
+        float: right;
+    }
+    .icon {
+        color: $color__light;
+        margin-right: 6px;
+    }
 }
 
 .section-header__title {
@@ -52,4 +116,23 @@ footer .navbar-nav__socials {
     display: inline;
     display: table;
     margin: auto;
+}
+
+// Snapchat
+.snapchat__cta {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+// Contact Form 7
+
+/* hide original loader */
+div.wpcf7 img.ajax-loader {
+    display: none;
+}
+/* style for custom loader
+   '1s' for speeding up animation */
+.ajax-loader-custom {
+    display: none;
 }

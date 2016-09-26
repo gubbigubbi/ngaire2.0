@@ -14,7 +14,8 @@
 	border-bottom: 0px solid $color__border-nav;
 	background-color: $color_background-navbar;
 	padding: $navbar-padding-vertical $navbar-padding-horizontal;
-	transition: padding 0.6s ease;
+	transition: all 500ms ease;
+	transition-property: opacity, padding;
 }
 
 .navbar-nav {
@@ -96,5 +97,15 @@
 		&:last-child {
 			padding-right: 0;
 		}
+	}
+}
+
+.navbar-nav__center {
+	text-align: center;
+	width: 100%;
+	float: left;
+	.nav-item {
+		display: inline-block;
+		float:none;
 	}
 }

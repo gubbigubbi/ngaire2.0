@@ -15,7 +15,7 @@
 	</div><!-- #content -->
 	
 	<?php if ( is_active_sidebar( 'after-section' ) ) : ?>
-		<section class="section section__sidebar block__light text__white">
+		<section class="section section__sidebar block__white">
 			<div class="container">
 				<?php dynamic_sidebar( 'after-section' ); ?>
 			</div>
@@ -39,9 +39,11 @@
 			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
+	
 </div><!-- #page -->
 </div><!-- o-wrapper -->
 
+<?php get_template_part('template-parts/footer/modal-footer'); ?>
 <?php wp_footer();
 get_template_part('template-parts/header/navigation__off-page'); 
 ?>

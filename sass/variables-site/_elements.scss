@@ -21,5 +21,7 @@ $button__border-bg: transparent;
 $button__border-border: #fff;
 
 // Forms
-$form__padding: 7px 12px;
+$form__border-radius: 0px;
+$form__background: $color__text-main;
+$form__padding: 11px 12px;
 $form__margin-bottom: 12px;

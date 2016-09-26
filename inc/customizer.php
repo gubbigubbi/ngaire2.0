@@ -56,6 +56,7 @@ add_action( 'customize_preview_init', 'ngaire_customize_preview_js' );
 // Customizer
 
 
+
 class page_options_meta {
 
 	public function __construct() {
@@ -78,7 +79,7 @@ class page_options_meta {
 
 		add_meta_box(
 			'page_options',
-			__( 'Page Options', 'ngaire' ),
+			__( 'Page Options', 'ngaire2.0' ),
 			array( $this, 'render_metabox' ),
 			'page',
 			'side',
@@ -93,18 +94,25 @@ class page_options_meta {
 		wp_nonce_field( 'page_options_nonce_action', 'page_options_nonce' );
 
 		// Retrieve an existing value from the database.
+		$page_options_full_width = get_post_meta( $post->ID, 'page_options_full_width', true );
 		$page_options_show_sidebar = get_post_meta( $post->ID, 'page_options_show_sidebar', true );
 
 		// Set default values.
-		if( empty( $page_options_show_sidebar ) ) $page_options_show_sidebar = '';
 
 		// Form fields.
 		echo '<table class="form-table">';
 
 		echo '	<tr>';
-		echo '		<th><label for="page_options_show_sidebar" class="page_options_show_sidebar_label">' . __( 'Show sidebar?', 'ngaire' ) . '</label></th>';
+		echo '		<th><label for="page_options_full_width" class="page_options_full_width_label">' . __( 'Full Width page?', 'ngaire2.0' ) . '</label></th>';
 		echo '		<td>';
-		echo '			<label><input type="checkbox" id="page_options_show_sidebar" name="page_options_show_sidebar" class="page_options_show_sidebar_field" value="' . $page_options_show_sidebar . '" ' . checked( $page_options_show_sidebar, 'checked', false ) . '> ' . __( '', 'ngaire' ) . '</label>';
+		echo '			<label><input type="checkbox" name="page_options_full_width" class="page_options_full_width_field" value="' . $page_options_full_width . '" ' . checked( $page_options_full_width, 'checked', false ) . '> ' . __( '', 'ngaire2.0' ) . '</label><br>';
+		echo '		</td>';
+		echo '	</tr>';
+
+		echo '	<tr>';
+		echo '		<th><label for="page_options_show_sidebar" class="page_options_show_sidebar_label">' . __( 'Show sidebar?', 'ngaire2.0' ) . '</label></th>';
+		echo '		<td>';
+		echo '			<label><input type="checkbox" name="page_options_show_sidebar" class="page_options_show_sidebar_field" value="' . $page_options_show_sidebar . '" ' . checked( $page_options_show_sidebar, 'checked', false ) . '> ' . __( '', 'ngaire2.0' ) . '</label><br>';
 		echo '		</td>';
 		echo '	</tr>';
 
@@ -126,20 +134,34 @@ class page_options_meta {
 		if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) )
 			return;
 
+		// Check if it's not an autosave.
+		if ( wp_is_post_autosave( $post_id ) )
+			return;
+
 		// Sanitize user input.
-		$page_options_new_show_sidebar = isset( $_POST[ 'page_options_show_sidebar' ] ) ? 'checked'  : '';
+		$page_options_new_full_width = isset( $_POST[ 'page_options_full_width' ] ) ? 'checked' : '';
+		$page_options_new_show_sidebar = isset( $_POST[ 'page_options_show_sidebar' ] ) ? 'checked' : '';
 
 		// Update the meta field in the database.
+		update_post_meta( $post_id, 'page_options_full_width', $page_options_new_full_width );
 		update_post_meta( $post_id, 'page_options_show_sidebar', $page_options_new_show_sidebar );
-
 	}
 
 }
 
 new page_options_meta;
 
-if(get_post_meta( $post->ID, 'page_options_show_sidebar', true )) {
-	add_filter( 'body_class', function( $classes ) {
-		return array_merge( $classes, array( 'layout-content-sidebar' ) );
-	} );
+add_filter('body_class','custom_field_body_class');
+function custom_field_body_class( $classes ) {
+	if ( get_post_meta( get_the_ID(), 'page_options_show_sidebar', true ) ) {		
+		$classes[] = 'layout-content-sidebar';		
+	}
+	
+	if ( get_post_meta( get_the_ID(), 'page_options_full_width', true ) ) {		
+		$classes[] = 'full-width';		
+	}
+	
+	// return the $classes array
+	return $classes;
 }
+

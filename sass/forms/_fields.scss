@@ -42,11 +42,12 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
+	background-color: $form__background;
 	width: 100%;
 	display: block;
 	color: $color__text-input;
 	border: 1px solid $color__border-input;
-	border-radius: 3px;
+	border-radius: $form__border-radius;
 	padding: $form__padding;
 	transition: all 0.2s ease-in;
 	

@@ -42,8 +42,6 @@ jQuery(function($) {
       var scroll = $(window).scrollTop();
       target = this.target;
       targetOffset = this.targetOffset;
-      console.log(targetOffset);
-      console.log(scroll);
       if (scroll >= targetOffset) {
          target.addClass("navbar-fixed-top");      
      } else {
@@ -114,6 +112,11 @@ jQuery(function($) {
 			subMenu.toggleClass('show');
 		});
 	})();
+    
+
+   $('.modal-footer-trigger').click(function(){
+      $('#modal-footer').modal('show');
+   });
     
 
 });

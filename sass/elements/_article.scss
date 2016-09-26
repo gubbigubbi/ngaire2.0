@@ -6,7 +6,7 @@ article.has-post-thumbnail {
 }
 
 // Post type blocks
-.team-block {
+.team-block, .class-block, .special-block, .membership-block, .challenge-block, .trainer-block {
     @extend .text-center;
     background-color: $color__neutral;
 }

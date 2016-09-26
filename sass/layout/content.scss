@@ -1,12 +1,12 @@
-.site-content, .navbar-inner {
+body:not(.full-width) .site-content, .navbar-inner, body.full-width .panel-grid-cell {
     @extend .container;
 }
 
-.content-area, .widget-area {
+body:not(.full-width) .content-area, .widget-area {
     @extend .section-row;
 }
 
-body.content-only .content-area {
+body.content-only .content-area, body.full-width .panel-grid-cell {
     @extend .section__content-only;
 }
 

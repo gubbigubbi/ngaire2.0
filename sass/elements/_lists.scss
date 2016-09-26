@@ -11,6 +11,20 @@
 		padding-left: 0;
 	}
 }
+ul.icons {
+    li:before {
+        margin:0 5px 0 -15px;
+    }
+}
+
+.checkmark-circle li:before {
+	font-family: 'Ionicons';
+	content: '\f375'
+}
+.plus-outline li:before {
+	font-family: 'Ionicons';
+	content: '\f48a'
+}
 ul, ol {
 	margin: 0 0 1.5em 1.5em;
 }
