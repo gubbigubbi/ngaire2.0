@@ -23,7 +23,7 @@
 	float: left;
 	padding-left: 0.8rem;
 	padding-right: 0.8rem;
-	letter-spacing: 1px;
+	letter-spacing: $font__navbar-spacing;
   }
 
 }
@@ -51,13 +51,27 @@
 
 // Primary Nav Specific
 .navbar-primary {
-	font-size: 14px;
+	font-size: $font__navbar-size;
 }
 
 .navbar-preheader {
-	font-size: 12px;
+	font-size: $font__preheader-size;
 	padding: $navbar-preheader__padding-vertical 0;
 	background-color: $color__background-preheader;
+	color: $color__text-preheader;
+	.nav-item {
+		padding: $navbar-preheader__nav-item-padding-vertical 12px;
+		> a {
+			padding: 0;
+			color: $color__text-preheader;
+			&:hover {
+				color: $color__light;
+			}
+		}
+	}
+	.navbar-nav__socials {
+		
+	}
 }
 
 .navbar-preheader, .navbar-primary {
@@ -93,6 +107,7 @@
 }
 
 .navbar-nav__right {
+	@extend .pull-right;
 	> li {
 		&:last-child {
 			padding-right: 0;

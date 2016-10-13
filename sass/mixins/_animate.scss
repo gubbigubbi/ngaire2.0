@@ -2,20 +2,23 @@ $class-slug: stagger !default
 
 @for $i from 1 through 9 {
   .#{$class-slug}-#{$i} {
-    animation-delay: #{$i*0.5}s
+    animation-delay: #{$i*0.5}s;
+    @include sm {
+      animation-delay: 0s;
+    }
   }
 }
 
 // Spin
 // Spinning Icons
 // --------------------------
-
+.icon-animated { display: inline-block; }
 .icon-spin {
-          animation: fa-spin 2s infinite linear;
+  animation: fa-spin 1s infinite linear;
 }
 
 .icon-pulse {
-          animation: fa-spin 1s infinite steps(8);
+  animation: pulse 1s infinite steps(8);
 }
 
 .icon-bounce {
@@ -42,6 +45,16 @@ $class-slug: stagger !default
     -webkit-transform: rotate(359deg);
             transform: rotate(359deg);
   }
+}
+@-webkit-keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes pulse {
+	0% { opacity: 1; }
+	50% { opacity: 0; }
+	100% { opacity: 1; }
 }
 
 @-webkit-keyframes bounce {

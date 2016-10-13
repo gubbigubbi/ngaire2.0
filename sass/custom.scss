@@ -3,48 +3,112 @@
     //height: 62px;
 }
 
-.panel-grid-cell .widget-title, .entry-title {
-    @extend .line__md;
-}
-
-.entry-title {
-
-    &:after { background: $color__light; margin-bottom: 16px; }
-    @extend .no-margin-bottom;
-}
-
-.site-info {
-    display: none;
-}
-
-.testimonial-block img {
-    background-color: #fff;
-    border: 1px solid #dae8e7;
-    padding: 8px;
-}
-
-.header__text-only {
-    background-color: $color__dark;
-    color: $color__light;
-}
-
-body.full-width .panel-grid-cell .so-panel {
-    background: rgba($color__text-main,0.8);
-    padding: 40px;
+// Header
+.logo {
     color: $color__white;
-    .line__md {
-        &:after { background: #fff; }
+    .site-title {
+        line-height: 1.4
     }
-    .team-block, .class-block, .special-block, .membership-block, .challenge-block, .trainer-block {
-        color: $color__text-main;
+    .site-description {
+        //font-family: $font__main;
+        font-weight: 300;
+    }
+    a {
+        color: $color__white;   
     }
 }
 
-.so-panel .widget-title {
+// Preheader
+.navbar-preheader .navbar-contact .nav-item {
+    .icon {
+        //font-size: 16px
+    }
+    @extend .nav-item__border-left;  
+
+}
+
+.navbar-preheader .navbar-contact.navbar-first .nav-item {
+    &:first-child {
+        border-left: 0;
+    }
+}
+
+// Nav
+
+.navbar-primary {
+    .navbar-nav > .nav-item {
+        
+        > a {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid transparent;
+            transition: border 0.5s ease;
+            i {
+                margin-right: 6px;
+            }
+        }
+        &.current-menu-item, &:hover {
+            > a {
+                border-bottom: 1px dotted #fff;
+            }
+        }
+    }
+}
+
+// Section header
+.section-header__title {
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+}
+.panel-grid-cell .widget-title {
     text-align: center;
-    &:after {
-        margin-left: auto;
-        margin-right: auto;       
+}
+
+.home .section__video {
+    height: 70vh;
+    @include sm {
+        height: auto;
+    }
+    
+}
+// Widgets
+
+h3.widget-title {
+    color: $color__light;
+    border-bottom: 2px dotted;
+    display: inline-block;
+}
+
+aside.sidebar li, .footer-sidebar-widget li {
+    border-bottom: 1px solid #dfdfdf;
+    list-style: none;
+    margin-bottom: 8px;
+    padding: 0 0 8px;
+    
+}
+.footer-sidebar-widget li {
+    border-bottom: 1px solid #{lighten($color__dark, 5%)};
+}
+
+aside.sidebar {
+    .widget_recent_comments, .widget_categories, .widget_recent_entries, .widget_nav_menu {
+        ul { @extend .no-margin-left;}
+        li {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 0 0 20px 0;
+            &:before {
+                border: 2px solid $color__light;
+                border-radius: 100%;
+                content: "";
+                height: 10px;
+                left: 0;
+                position: absolute;
+                top: 6px;
+                width: 10px;
+            }
+        }
     }
 }
 
@@ -53,15 +117,15 @@ footer .navbar-nav__socials, .content-area .navbar-nav__socials {
         padding: 0 6px;
         a {
             @extend .button__primary;
-            padding: 9px 9px;
+            padding: 6px 6px;
             background-color: #fff;
-            color: $color__light;
+            color: $color__dark;
             border-radius: 4px;
             -webkit-transition: all 0.5s ease;
             transition: all 0.5s ease;
-            font-size: 18px;
-            width: 36px;
-            height: 36px;
+            font-size: 16px;
+            width: 28px;
+            height: 28px;
             text-align: center;
         }
     }
@@ -69,25 +133,23 @@ footer .navbar-nav__socials, .content-area .navbar-nav__socials {
 
 .footer-widget-area .widget-title {
     @extend .line__sm;
-    &:after { background: #2d2d2c; margin-bottom: 15px; }
+    &:after { background: #{lighten($color__light, 0%)}; margin-bottom: 15px; }
 }
 
-.footer-widget-area li {
-    border-bottom: 1px solid #2c2d2c;
-}
-
-.latest-tweets ul, .sd_opening_hours_widget ul {
-    @extend .list-unstyled;
-    @extend .no-margin-left;
+.latest-tweets, .sd_opening_hours_widget, .widget_recent_entries, .widget_nav_menu {
+    ul {
+        @extend .list-unstyled;
+        @extend .no-margin-left;
+    }
+    li {
+        margin-bottom: 8px;
+        padding: 0 0 8px 0;
+        border-bottom: 1px solid #{rgba($color__light,0.3)};
+    }    
 }
 
 .latest-tweets {
     position: relative;
-}
-
-.latest-tweets li {
-    margin-bottom: 20px;
-    padding: 0 0 20px 0;
 }
 
 .latest-tweets-icon {
@@ -98,9 +160,21 @@ footer .navbar-nav__socials, .content-area .navbar-nav__socials {
     font-size: 2em;
 }
 
+.latest-tweets .time-ago, .widget_recent_entries .post-date {
+    display: inline-block;
+    font-size: 12px;
+    width: 100%;
+}
+
+.widget_recent_entries .post-date {
+    @extend .icon;
+    &:before {
+        content: '\f3f3';
+        margin-right: 6px;
+    }
+}
+
 .opening-hours li {
-    margin-bottom: 12px;
-    padding-bottom: 12px;
     .opening-hour {
         float: right;
     }
@@ -110,20 +184,11 @@ footer .navbar-nav__socials, .content-area .navbar-nav__socials {
     }
 }
 
-.section-header__title {
-    padding: 12px 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: inline;
-    display: table;
-    margin: auto;
+.home .section-header {
+    background-position: 50%;
+    background-size: cover;
 }
 
-// Snapchat
-.snapchat__cta {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
 
 // Contact Form 7
 
@@ -135,4 +200,65 @@ div.wpcf7 img.ajax-loader {
    '1s' for speeding up animation */
 .ajax-loader-custom {
     display: none;
+}
+
+// Service
+.service-block {
+    .block__content {
+        float: left;
+        width: 100%;
+        padding: 25px 20px;
+        border-radius: 3px;
+        @extend .block__dark;
+        @extend .text__white;
+        @extend .text-center;
+        @extend .transition-background-color;
+    }
+    p {
+        font-size: 15px;
+        @extend .no-margin-bottom;
+        @extend .no-margin-top;
+    }
+    &:hover {
+        .block__content {
+            background-color: $color__light;
+        }
+    }
+}
+
+.calculator-icon {
+    font-size: 2.4em;
+    padding: 0 0 6px 0;
+    @extend .center-block
+}
+
+// Skew
+.skew {
+  background: $color__light;
+  position: relative;
+  z-index: 1;    
+ &:before,
+  &:after {
+    background: inherit;
+    content: '';
+    display: block !important;
+    height: 50%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    -webkit-backface-visibility: hidden; // for Chrome Windows
+  }
+
+  &:before {
+    top: 0;
+    transform: skewY(1deg);
+    transform-origin: 100% 0;
+  }
+  
+  &:after {
+    bottom: 0;
+    transform: skewY(-1deg);
+    transform-origin: 100%;
+  }
 }

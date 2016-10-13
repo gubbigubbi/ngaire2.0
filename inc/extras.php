@@ -41,11 +41,16 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Social Settings',
-		'menu_title'	=> 'Social',
+		'page_title' 	=> 'Social & Contact Settings',
+		'menu_title'	=> 'Social & Contact',
 		'parent_slug'	=> 'theme-general-settings',
 	));
 	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Header Settings Settings',
+		'menu_title'	=> 'Header Settings',
+		'parent_slug'	=> 'theme-general-settings',
+	));
 	
 }
 
@@ -98,13 +103,18 @@ add_action( 'template_redirect', function() {
 add_filter( 'body_class','halfhalf_body_class' );
 function halfhalf_body_class( $classes ) {
  
-    if ( is_home() || is_singular() || is_search() || is_archive() && !is_post_type_archive() ) {
+    if ( is_home() || is_singular('post') || is_singular('trainer') || is_singular('class') || is_singular('team') || is_search() || is_archive() && !is_post_type_archive() ) {
         $classes[] = 'layout-content-sidebar';
     }
 	
 	if ( is_404() || is_home() || is_search() || is_archive() && !is_post_type_archive() ) {
 		$classes[] = 'content-only';
 	}
+	
+	if ( is_singular('service') ) {
+		$classes[] = 'layout-full-width';
+	}
+	
     return $classes;
      
 }
@@ -116,7 +126,7 @@ function header_router($header_type) {
 		return; // I'm out bitches
 	}
 	
-	if(is_singular()) {
+	if(is_singular() && !is_page()) {
 		get_template_part('template-parts/header/header-text-only');	
 	} else {
 		get_template_part('template-parts/header/header',$header_type);
@@ -125,11 +135,12 @@ function header_router($header_type) {
 
 function page_title() {
 	$content = get_field('header_content');
+	global $post;
 	if($content) {
 		echo '<span class="section-header__title">'.$content.'</span>';
 	} else {
 		echo '<header class="entry-header">';
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			echo '<h1 class="h2 entry-title">'.get_the_title( $post->ID ).'</h1>';
 		echo '</header><!-- .entry-header -->';
 	}
 }

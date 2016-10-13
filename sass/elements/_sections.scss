@@ -6,6 +6,7 @@
 // Sections are rows 
 .section-header {
     padding: $section__header-padding;
+    overflow: hidden;
 }
 .section-row, body:not(.full-width) .panel-grid {
     padding: $section__row-padding;
@@ -31,6 +32,26 @@
         padding-top: 0;
     }
 }
+.header__text-only {
+    @extend .block__grey;
+}
+.section__video video { 
+    width: 100%;
+}
+
+// No padding
+.section__no-padding {
+    .panel-grid-cell {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+// Container panel on full width layout
+.panel-row-style-container {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 // Blocks
 .block__content {
@@ -38,5 +59,5 @@
 }
 
 .block__content-widget {
-    padding: 24px;
+    padding: 32px;
 }

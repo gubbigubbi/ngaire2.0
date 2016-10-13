@@ -1,6 +1,8 @@
 jQuery(function($) {
     $('.ajax-query').click(function(e) {
-
+        var $this = $(this);
+        var $offer = $this.data('offer');
+        console.log($offer);
         e.preventDefault();
         
         jQuery.ajax({
@@ -17,12 +19,11 @@ jQuery(function($) {
 
             },
             beforeSend: function() {
-                //$.LoadingOverlay("show", {
-                    //color: "rgba(51,51,51,0.8)",
-                //});    
+                $this.button('loading');
             },
             complete: function() {                
-                //$.LoadingOverlay("hide");
+                $this.button('reset');
+                $("#modal-footer #offer").val($offer);
                 $("#modal-footer").modal();
             }
         }); 

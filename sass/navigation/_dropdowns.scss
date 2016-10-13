@@ -13,7 +13,7 @@
   z-index: 1000;
   float: left;
   min-width: 160px;
-  padding: 5px 0;
+  padding: 12px 0;
   margin: 2px 0 0;
   list-style: none;
   font-size: 14px;
@@ -55,6 +55,9 @@
   color: $color__text-main;
   white-space: nowrap;
   @extend .transition-color;
+  &:visited {
+    color: $color__text-main;
+  }
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {

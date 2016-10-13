@@ -21,7 +21,7 @@ a {
 .nav-link, .nav-item > a {
   padding-top:    10px;
   padding-bottom: 10px;
-  line-height: 1;
+  //line-height: 1;
   display: block;
   color: $color_nav-link;
   text-transform: $font__menus-case;
@@ -38,8 +38,8 @@ a {
 
 // Dropdowns
 .nav-item.menu-item-has-children > a {
+	@extend .icon;
 	&:after {
-		font-family: 'Ionicons';
 		content: '\f217';
 	}
 }

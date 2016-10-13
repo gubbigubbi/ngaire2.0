@@ -8,6 +8,7 @@
     background-color: $color__background-site-info;
     color: $color__text-site-info;
     padding: $footer__copyright-padding;
+    @extend .text-center;
 }
 
 .footer-widget-area, .site-info {

@@ -46,6 +46,9 @@ $modal-backdrop-opacity: 0.8;
   position: relative;
   width: auto;
   margin: 40px;
+  @include sm {
+    margin: 5px;
+  }
 }
 
 // Actual modal

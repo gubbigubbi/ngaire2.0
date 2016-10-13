@@ -46,10 +46,10 @@ gulp.task('sass', function() {
 gulp.task('scripts', function() {
     return gulp.src(['js/**.js', '!js/app.js', '!js/customizer.js'])
         .pipe(concat('all.js'))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('assets'))
         .pipe(rename('all.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('assets/js'));
 });
 
 // Watch Files For Changes

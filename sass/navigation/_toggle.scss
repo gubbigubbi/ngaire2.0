@@ -8,7 +8,7 @@
 	display: none;
 }
 .navbar__toggle {
-	@media all and (max-width: #{$navbar__toggle-breakpoint+1}px) {
+	@media all and (max-width: #{$navbar__toggle-breakpoint}px) {
 		display: inherit;
 		float: right;
 	}	
@@ -55,7 +55,7 @@ $button-transistion-duration: 0.3s;     // The transition duration
   left: $button-pad;
   right: $button-pad;
   height: $bar-thickness;
-  background: $color__light;
+  background: $toggle__icon-color;
   border-radius: $bar-border-radius;
 }
 
@@ -66,7 +66,7 @@ $button-transistion-duration: 0.3s;     // The transition duration
   left: 0;
   width: 100%;
   height: $bar-thickness;
-  background-color: $color__light;
+  background-color: $toggle__icon-color;
   content: "";
   border-radius: $bar-border-radius;
 }

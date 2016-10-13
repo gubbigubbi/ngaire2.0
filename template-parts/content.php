@@ -11,10 +11,13 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
-		<div class="post-thumb-wrapper">
-			<?php the_post_thumbnail('post-thumb'); ?>
-		</div>
-		<div class="col-md">
+
+		<div class="col-xs col-sm col-md col-sm-12">
+			
+			<div class="post-thumb-wrapper">
+				<?php the_post_thumbnail('post-thumb'); ?>
+			</div>
+			
 			<header class="entry-header">
 				<?php
 				if ( is_single() ) :

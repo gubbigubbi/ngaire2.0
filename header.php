@@ -15,17 +15,15 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nagaire-2-0' ); ?></a>
 	<header id="masthead" class="site-header" role="banner">
-			<?php if (class_exists('WooCommerce')) {
-				get_template_part('template-parts/header/preheader');
-			} ?>	
+			<?php get_field('show_preheader','options') AND get_template_part('template-parts/header/preheader'); ?>	
 			<nav class="navbar navbar-primary navbar-static-top" role="navigation">
 				<div class="navbar-inner">
-					<div class="row middle-xs center-xs">
-						<div class="col-xs col-sm-8 col-md-6 col-lg-3 col-xl site-branding">
+					<div class="row middle-xs center-xs start-sm">
+						<div class="col-xs-8 col-sm-8 col-md-6 col-lg-4 col-xl-4 site-branding">
 							<?php get_template_part('template-parts/header/logo'); ?>
 						</div><!-- .site-branding -->
 					
-						<div class="col-xs col-sm-4 col-md-6 col-lg-9 col-xl-8">
+						<div class="col-xs-4 col-sm-4 col-md-6 col-lg-8 col-xl-8">
 							<?php /* Primary navigation */
 							wp_nav_menu( array(
 							  'theme_location' => 'primary',
@@ -46,9 +44,7 @@
 							</div>
 							
 						</div>
-						<div class="col-md hidden-lg">
-							<?php echo do_shortcode('[socials alignment="right"]'); ?>
-						</div>
+
 					</div>
 				</div>
 			</nav>

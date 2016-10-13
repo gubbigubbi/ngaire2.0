@@ -65,8 +65,11 @@
 .hidden-lg, .hidden-md, .hidden-sm, .hidden-xs {
   display: none;
 }
-.text-center-md {
-  text-align: center;
+.text-center-xs, .text-center-sm, .text-center-md {
+  text-align: center !important;
+}
+.text-left-sm, .text-left-md {
+    text-align: left !important;
 }
 .offset-top-xs, .offset-top-sm, .offset-top-md {
   margin-top: 1em;
@@ -506,6 +509,9 @@
     -webkit-box-ordinal-group: 2;
     order: 1;
   }
+  .text-center-xs {
+    text-align: inherit;
+  }
   .hidden-xs {
     display: inherit;
   }
@@ -726,6 +732,10 @@
     -ms-flex-order: 1;
     -webkit-box-ordinal-group: 2;
     order: 1;
+  }
+  
+  .text-left-sm {
+    text-align: inherit;
   }
   
   .hidden-sm {
@@ -953,11 +963,14 @@
   .hidden-md {
     display: inherit;
   }
-  .text-center-md {
+  .text-center-md, .text-left-md {
     text-align: inherit;
   }
   .offset-top-md {
     margin-top: inherit;
+  }
+  .no-padding-right-md {
+    padding-right: 0;
   }
 }
 
@@ -1181,6 +1194,6 @@
 }
 
 // Equal height cols
-.eq-height > div {
+.eq-height, .eq-height > div {
     display: flex;
 }

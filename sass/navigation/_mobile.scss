@@ -12,6 +12,8 @@
     text-align: center;
     background-color: #fff;
     overflow: hidden !important;
+    font-family: $font__menus;
+    font-size: 14px;
 }
 
 .c-menu__items, .c-menu__items > ul {
@@ -25,7 +27,10 @@
 
 .c-menu__button {
     margin: 12px 0;
-    font-size: 75%;
+    font-size: 150%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    
 }
 
 /**
@@ -159,4 +164,39 @@ body.has-active-menu {
   .o-wrapper.has-push-right {
     transform: translateX(-300px);
   }
+}
+
+// Dropdowns
+.c-menu {
+    li.menu-item-has-children {
+        position: relative;
+        > a {
+            @extend .icon;
+            &:after {
+                content: '\f217';
+                margin-left: 12px;
+            }
+        }
+    }
+    
+    .sub-menu {
+        @extend .no-margin-left;
+        @extend .list-unstyled;
+        visibility: hidden; /* hides sub-menu */
+        opacity: 0;
+        max-height: 0;
+        width: 100%;
+        //transform: translateY(-2em);
+        z-index: -1;
+        transition: all 0.5s ease-in-out 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    }
+    
+    .sub-menu.show {
+      max-height: 999px; // some random number
+      visibility: visible; /* shows sub-menu */
+      opacity: 1;
+      z-index: 1;
+      //transform: translateY(0%);
+      transition-delay: 0s, 0s, 0.5s; /* this removes the transition delay so the menu will be visible while the other styles transition */
+    }
 }

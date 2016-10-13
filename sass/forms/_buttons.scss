@@ -17,7 +17,7 @@ input[type="submit"] {
   display: inline-block;
   margin-bottom: 0; // For input.btn
   text-align: center;
-  text-transform: $button__text-transform;
+  text-transform: $font__buttons-case;
   font-family: $font__buttons;
   vertical-align: middle;
   touch-action: manipulation;
@@ -71,8 +71,8 @@ input[type="submit"] {
 
 // Small
 .button__small {
-  font-size: 70%;
-  padding: 5px 12px;
+  font-size: 60%;
+  padding: 5px 5px;
   margin: 3px 3px;
 }
 
@@ -80,4 +80,12 @@ input[type="submit"] {
 .button__center {
   margin-right: auto;
   margin-left: auto;
+}
+
+// Groups
+.button__group {
+  margin-top: $grid__gutter;
+  .button + .button {
+    margin-left: .5rem;
+  }
 }

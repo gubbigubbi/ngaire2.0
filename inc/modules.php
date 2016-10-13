@@ -20,36 +20,58 @@ class single_portfolio {
     }   
 }
 
-class single_service extends single_portfolio {
+class single_post extends single_portfolio {
     function return_html() {
-        $html_output .= '<a class="portfolio-colorbox" href="'.get_the_permalink().'">';
-            $html_output .= '<div class="post-thumb animated-on-hover">';
-                $html_output .= '<div class="post-thumb-wrapper text-center">';
+        
+            $html_output .= '<div class="row">';
+        
+                $html_output .= '<div class="col-md-3">';
                     $html_output .= get_the_post_thumbnail($post->ID, 'post-thumb', array('class' => $this->thumbnail_classes));
-                    $html_output .= '<div class="post-thumb-wrapper-overlay overlay__shaded">';
-                    $html_output .= '<span><span class="button button__border">'.get_the_title().'</span>';
-                    $html_output .= '</div>';
+                $html_output .= '</div>';
+                
+                $html_output .= '<div class="col-md-9 offset-top-sm">';
+                    $html_output .= '<h4 class="h5 no-margin-bottom">'.get_the_title().'</h4>';
+                    $html_output .= '<p class="no-margin-top">'.get_the_excerpt().'</p>';
+                    $html_output .= '<a href="'.get_the_permalink().'">Read more</a>';
                 $html_output .= '</div>';
             $html_output .= '</div>';
-        $html_output .= '</a>';
+
         return $html_output;
     } 
+}
+
+class single_service extends single_portfolio {
+    function return_html() {
+        $html_output .= '<a class="block__content" href="'.get_the_permalink().'">';
+            $html_output .= '<i class="calculator-icon icon '.get_field('service_icon').'"></i>';
+            $html_output .= '<p>'.get_the_title().'</p>';
+        $html_output .= '</a>';
+        
+        return $html_output;        
+    }
 }
 
 class single_team extends single_portfolio {
     function return_html() {
         
-        $classes = get_terms("department") ? get_terms("department") : get_terms("trainer_category");
- 
+        global $post;
+        $post_type = get_post_type($post->ID);
+        
+        if($post_type == 'team') {
+            $classes = get_terms("department");
+        } else {
+            $classes = get_terms("trainer_category");
+        }
+        
         $html_output .= '<a href="'.get_the_permalink().'">';
             $html_output .= get_the_post_thumbnail($post->ID, 'potrait-thumb', array('class' => $this->thumbnail_classes));
             $html_output .= '<div class="block__content">';
                 $html_output .= '<h4>'.get_the_title().'</h4>';
                 $html_output .= '<p><strong>';
-                    foreach($classes as $class) {
+                    //foreach($classes as $class) {
                         //var_dump($class);
-                        $html_output .= '<a href="'.get_term_link($class->term_id).'" class="button button__primary button__small">'.$class->name.'</a>';
-                    }
+                        //$html_output .= '<button class="button button__primary button__small">'.$class->name.'</button>';
+                    //}
                 $html_output .= '</strong></p>';
                 $html_output .= get_the_excerpt();
             $html_output .= '</div>';
@@ -65,24 +87,11 @@ class single_class extends single_portfolio {
         
         $html_output .= get_the_post_thumbnail($post->ID, 'post-thumb', array('class' => $this->thumbnail_classes));
         $html_output .= '<div class="block__content">';
-            $html_output .= '<h4>'.get_the_title().'</h4>';
+            $html_output .= '<a href="'.get_the_permalink().'"><h4>'.get_the_title().'</h4></a>';
             $html_output .= '<p><strong>';
             $html_output .= $class_time;
             $html_output .= '</strong></p>';
             $html_output .= get_the_excerpt();
-        $html_output .= '</div>';
-        return $html_output;        
-    }
-}
-
-class single_challenge extends single_portfolio {
-    function return_html() {
-
-        $html_output .= get_the_post_thumbnail($post->ID, 'post-thumb', array('class' => $this->thumbnail_classes));
-        $html_output .= '<div class="block__content">';
-            $html_output .= '<h4>'.get_the_title().'</h4>';
-            $html_output .= '<p>'.get_the_excerpt().'</p>';
-            $html_output .= '<a class="button button__primary" href="#" data-offer="'.get_the_title().'">Sign Up</a>';   
         $html_output .= '</div>';
         return $html_output;        
     }
@@ -95,7 +104,7 @@ class single_special extends single_portfolio {
             $html_output .= '<h3 class="h2 text__light">'.get_the_title().'</h3>';
             $html_output .= '<p>'.get_the_content().'</p>';
             $html_output .= '<p>*terms and conditions apply</p>';
-            $html_output .= '<button class="button button__primary ajax-query" data-type="'.get_post_type().'" data-id="'.get_the_ID().'">Apply Now</button>';
+            $html_output .= '<button class="button button__primary ajax-query" data-loading-text="<i class=\'icon icon-spin ion-aperture icon-animated\'></i> Loading" data-type="'.get_post_type().'" data-id="'.get_the_ID().'" data-offer="'.get_the_title().'">Apply Now</button>';
         $html_output .= '</div>';
         
         return $html_output;        
@@ -109,7 +118,7 @@ class single_membership extends single_portfolio {
         $html_output .= '<div class="block__content">';
             $html_output .= '<h3 class="h2 text__light">'.get_the_title().'</h3>';
             $html_output .= '<p class="h4">'.get_the_content().'</p>';
-            $html_output .= '<a class="button button__primary" href="#" data-offer="'.get_the_title().'">Join NOW</a>';
+            $html_output .= '<button class="button button__primary ajax-query" data-loading-text="<i class=\'icon icon-spin ion-aperture icon-animated\'></i> Loading" data-type="'.get_post_type().'" data-id="'.get_the_ID().'" data-offer="'.get_the_title().'">Join Now</button>'; 
             $html_output .= '<p>'.get_post_meta($post->ID, 'custom_meta_membership_payment_conditions', true).'</p>';
         $html_output .= '</div>';
         
@@ -122,15 +131,17 @@ class single_testimonial extends single_portfolio {
         
         $html_output .= '<div class="row middle-md">';
  
-            $html_output .= '<div class="col-md-5">';
+            $html_output .= '<div class="col-md col-xs-12">';
                 $html_output .= '<h4>'.get_the_title().'</h4>';
                 $html_output .= '<p><i>'.get_the_excerpt().'</i></p>';
-                $html_output .= '<a class="button button__primary" href="'.get_the_permalink().'">Read more</a>';
+                //$html_output .= '<a class="button button__primary" href="'.get_the_permalink().'">Read more</a>';
             $html_output .= '</div>';
             
-            $html_output .= '<div class="col-md-7">';
-                $html_output .= get_the_post_thumbnail($post->ID, 'testimonial-thumb', array('class' => $this->thumbnail_classes));
-            $html_output .= '</div>';
+            if(has_post_thumbnail($post->ID)) {
+                $html_output .= '<div class="col-md-7 col-xs-12">';
+                    $html_output .= get_the_post_thumbnail($post->ID, 'testimonial-thumb', array('class' => $this->thumbnail_classes));
+                $html_output .= '</div>';
+            }
             
         $html_output .= '</div>';
         return $html_output;        
@@ -147,6 +158,7 @@ function ngaire_post_type_loop($atts) {
             'cols'      => '3',
             'class'     => '',
             'animation' => '',
+            'block-class' => '',
 
     ), $atts);
     
@@ -157,30 +169,35 @@ function ngaire_post_type_loop($atts) {
         'post_type'              => array( $post_type ),
         'posts_per_page'         => $shortcode_atts['number'],
     );
-    
+
     // The Query
     $query = new WP_Query( $args );
     
     if($query->have_posts()):
-        $cols = 12 / $shortcode_atts['cols'];
+     $cols = $shortcode_atts['cols'];
+        $grid_cols = 12 / $cols;
         $output .= '<div class="row '.$shortcode_atts['class'].'">';
     
         $animation = $shortcode_atts['animation'];
+        $count = $query->post_count;
 
         while ($query->have_posts()) : $query->the_post();
-
+            if($i == ($cols+1)) { $i = 1; }
             $animation_stagger = animation_stagger($i);
-            $output .= '<div class="col-lg-'.$cols.' col-md-6 col-sm-12 col-xs-12 wow '.$animation.' '.$animation_stagger.' offset-bottom">';
+            $output .= '<div class="col-lg-'.$grid_cols.' col-md-6 col-sm-12 col-xs-12 wow '.$animation.' '.$animation_stagger.' offset-bottom">';
                 $output .= '<div class="'.$post_type.'-block hentry">';
                     $thumb_id = get_post_thumbnail_id();
                     $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
                     $thumb_url = $thumb_url_array[0];
+                    $block_class = $shortcode_atts['block-class'];
                     
                     switch($post_type) {
                         case 'portfolio':
                             $newObj = new single_portfolio($thumb_url, $thumbnail_classes);
                         break;
                         case 'post':
+                            $newObj = new single_post($thumb_url, $thumbnail_classes);
+                        break;                            
                         case 'service':
                         case 'product':
                             $newObj = new single_service($thumb_url, $thumbnail_classes);
@@ -217,12 +234,7 @@ function ngaire_post_type_loop($atts) {
 }
 
 function animation_stagger($i) {
-    if ($i > 6):
-        return;
-    else:
-        return "stagger-{$i}";
-    endif;
-    
+    return "stagger-{$i}";   
 }
 
 function socials_shortcode_function($atts) {
@@ -240,13 +252,15 @@ function socials_shortcode_function($atts) {
     $google_url = get_field('google_URL','options') ? get_field('google_URL','options') : '';
     $linkedin_url = get_field('linkedin_URL','options') ? get_field('linkedin_URL','options') : '';
     $instagram_url = get_field('instagram_URL','options') ? get_field('instagram_URL','options') : '';
+    $youtube_url = get_field('youtube_URL','options') ? get_field('youtube_URL','options') : '';
     
     $output .= '<ul class="nav navbar-nav navbar-nav__socials navbar-nav__'.$shortcode_atts['alignment'].' no-margin-left">';
     if(!empty($twitter_url)): $output .= '<li class="nav-item"><a href='.$twitter_url.' target="_blank"><span class="'.$classes.' ion-social-twitter"></span></a></li>'; endif;
     if(!empty($facebook_url)): $output .=  '<li class="nav-item"><a href='.$facebook_url.' target="_blank"><span class="'.$classes.' ion-social-facebook"></span></a></li>'; endif; 
     if(!empty($google_url)): $output .=  '<li class="nav-item"><a href='.$google_url.' target="_blank"><span class="'.$classes.' ion-social-googleplus"></span></a></li>'; endif;
     if(!empty($linkedin_url)): $output .=  '<li class="nav-item"><a href='.$linkedin_url.' target="_blank"><span class="'.$classes.' ion-social-linkedin"></span></a></li>'; endif; 
-    if(!empty($instagram_url)): $output .=  '<li class="nav-item"><a href='.$instagram_url.' target="_blank"><span class="'.$classes.' ion-social-instagram"></span></a></li>'; endif;	
+    if(!empty($instagram_url)): $output .=  '<li class="nav-item"><a href='.$instagram_url.' target="_blank"><span class="'.$classes.' ion-social-instagram"></span></a></li>'; endif;
+    if(!empty($youtube_url)): $output .=  '<li class="nav-item"><a href='.$youtube_url.' target="_blank"><span class="'.$classes.' ion-social-youtube"></span></a></li>'; endif;
     $output .= '</ul>';
     return $output;
 }

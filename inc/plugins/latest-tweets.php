@@ -77,19 +77,21 @@ class sd_tweets_widget extends WP_Widget {
 		<ul>
         	<?php foreach($twitter as $tweet): ?>
 			<li><span class="tweet-icon"></span>
-			<?php
-				$latestTweet = $tweet->text;
-				$latestTweet = preg_replace('/http:\/\/([a-z0-9_\.\-\+\&\!\#\~\/\,]+)/i', '&nbsp;<a href="http://$1" target="_blank">http://$1</a>&nbsp;', $latestTweet);
-				$latestTweet = preg_replace('/@([a-z0-9_]+)/i', '&nbsp;<a href="http://twitter.com/$1" target="_blank">@$1</a>&nbsp;', $latestTweet);
-				echo $latestTweet;
-			?>
-			<span class="time-ago">
-			<?php
-				$twitterTime = strtotime($tweet->created_at);
-				$timeAgo = $this->ago($twitterTime);
-			?>
-			<a href="http://twitter.com/<?php echo $tweet->user->screen_name; ?>/statuses/<?php echo $tweet->id_str; ?>" ><?php echo $timeAgo; ?></a>
-			</span>
+				<a href="http://twitter.com/<?php echo $tweet->user->screen_name; ?>/statuses/<?php echo $tweet->id_str; ?>" >
+					<?php
+						$latestTweet = $tweet->text;
+						$latestTweet = preg_replace('/http:\/\/([a-z0-9_\.\-\+\&\!\#\~\/\,]+)/i', '&nbsp;<a href="http://$1" target="_blank">http://$1</a>&nbsp;', $latestTweet);
+						$latestTweet = preg_replace('/@([a-z0-9_]+)/i', '&nbsp;<a href="http://twitter.com/$1" target="_blank">@$1</a>&nbsp;', $latestTweet);
+						echo $latestTweet;
+					?>
+				</a>
+				<span class="time-ago">
+				<?php
+					$twitterTime = strtotime($tweet->created_at);
+					$timeAgo = $this->ago($twitterTime);
+				?>
+					<a href="http://twitter.com/<?php echo $tweet->user->screen_name; ?>/statuses/<?php echo $tweet->id_str; ?>" ><?php echo $timeAgo; ?></a>
+				</span>
 			</li>
 			<?php endforeach; ?>
         </ul>

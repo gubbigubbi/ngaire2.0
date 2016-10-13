@@ -24,7 +24,16 @@ jQuery(function($) {
 2.0 WOW.js
 --------------------------------------------------------------*/
    (function(){
-       new WOW().init();
+      
+      var wow = new WOW(
+        {
+          boxClass:     'wow',      // animated element css class (default is wow)
+          animateClass: 'animated', // animation css class (default is animated)
+          offset:       0,          // distance to the element when triggering the animation (default is 0)
+          mobile:       false,       // trigger animations on mobile devices (default is true)
+        }
+      );
+      wow.init();
    })();
 
 /*--------------------------------------------------------------
@@ -68,7 +77,7 @@ jQuery(function($) {
 			infinite: true,
 			autoplay: true,
 			dots: true,
-			arrows: false,
+			arrows: true,
 			autoplaySpeed: 6000,
 			slidesToShow: 1,
 			slidesToScroll: 1
@@ -117,6 +126,36 @@ jQuery(function($) {
    $('.modal-footer-trigger').click(function(){
       $('#modal-footer').modal('show');
    });
+   
+   /*--------------------------------------------------------------
+   6.0 CF7 submission
+   --------------------------------------------------------------*/
+   $('.wpcf7-submit').attr('data-loading-text','Loading');
+   // Show new spinner on Send button click
+   $('.wpcf7-submit').on('click', function () {
+         var txt = $(this).val();
+         $(this).button('loading');         
+   });
+   
+   // Hide new spinner on result
+   $(document).on('wpcf7:invalid wpcf7:spam wpcf7:mailsent wpcf7:mailfailed', function () {
+       $('.wpcf7-submit').val('Submit Again');
+   });
+
+   /*--------------------------------------------------------------
+   7.0 Colorbox
+   --------------------------------------------------------------*/   
+   (function(){
+      $(".gallery-icon a").colorbox({
+         maxWidth:'95%',
+         maxHeight:'95%',
+         rel:"gallery",
+         transition: "fade",
+         title: function(){
+             return $(this).children('img').attr('alt');
+         }
+      });
+   })();
     
 
 });

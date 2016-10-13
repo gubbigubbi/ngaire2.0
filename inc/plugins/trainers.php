@@ -42,8 +42,8 @@ class sd_class_widget extends WP_Widget {
 			<?php if (  (function_exists('has_post_thumbnail')) && (has_post_thumbnail())  ) : /* if post has post thumbnail */ ?>
 			
 				<div class="row middle-sm">
-					<a class="col-md-4" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
-					<div class="col-md-8">
+					<a class="col-md-4 col-sm-12 col-xs-12" href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
+					<div class="col-md-8 col-sm-12 col-xs-12">
 						<p class="h5"><?php the_title(); ?></p>
 					</div>
 				</div>

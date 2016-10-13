@@ -2,13 +2,26 @@ body:not(.full-width) .site-content, .navbar-inner, body.full-width .panel-grid-
     @extend .container;
 }
 
-body:not(.full-width) .content-area, .widget-area {
+body:not(.full-width):not(.siteorigin-panels) .content-area, .widget-area {
     @extend .section-row;
 }
 
 body.content-only .content-area, body.full-width .panel-grid-cell {
     @extend .section__content-only;
 }
+
+@include md {
+    body.content-only .content-area, body.full-width .panel-grid-cell {
+        padding: 50px 0 50px;
+    }
+}
+
+// Match up with existing gutters
+body.full-width .panel-grid div:not(.section__no-padding) .panel-grid-cell {
+    padding-left: $grid__gutter !important;
+    padding-right: $grid__gutter !important;
+}
+
 
 .content-area {
     float: left;
@@ -17,4 +30,5 @@ body.content-only .content-area, body.full-width .panel-grid-cell {
 
 @import "preview";
 @import "content-sidebar";
+@import "no-sidebar";
 @import "footer";

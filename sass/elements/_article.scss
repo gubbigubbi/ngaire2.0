@@ -1,12 +1,7 @@
 // Content Post
 article.has-post-thumbnail {
     .post-thumb-wrapper {
-        @extend .col-md-6;
+        margin-bottom: 2em;
+        //@extend .col-md-6;
     }
-}
-
-// Post type blocks
-.team-block, .class-block, .special-block, .membership-block, .challenge-block, .trainer-block {
-    @extend .text-center;
-    background-color: $color__neutral;
 }

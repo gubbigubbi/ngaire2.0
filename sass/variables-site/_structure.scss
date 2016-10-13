@@ -13,14 +13,15 @@ $grid__container-max-width: (
     sm: 576px,
     md: 720px,
     lg: 940px,
-    xl: 1140px
+    xl: 1160px
 );
 
 // Preheader
-$navbar-preheader__padding-vertical: 4px;
+$navbar-preheader__padding-vertical: 0px;
+$navbar-preheader__nav-item-padding-vertical: 12px;
 
 // Navbar
-$navbar__toggle-breakpoint: 1320; // dimensionless - px added
+$navbar__toggle-breakpoint: 1023; // dimensionless - px added
 $navbar-margin-bottom: 0;
 $navbar-padding-vertical: 20px;
 $navbar-padding-horizontal: 0;
@@ -29,10 +30,10 @@ $navbar-padding-horizontal: 0;
 $logo__max-width: 160px;
 
 // Sections
-$section__header-padding: 120px 0 120px 0;
+$section__header-padding: 220px 0 220px 0;
 $section__row-padding: 80px 0 0 0;
-$section__content-only-padding: 120px 0 120px 0;
+$section__content-only-padding: 80px 0 80px 0;
 
 // Footer
-$footer__widget-area-padding: 60px 0;
+$footer__widget-area-padding: 50px 0;
 $footer__copyright-padding: 12px 0;

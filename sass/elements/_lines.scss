@@ -1,4 +1,4 @@
-.line__sm, .line__md {
+.line__xs, .line__sm, .line__md {
     &:after {
         background: $color__dark;
         content: '';
@@ -6,6 +6,12 @@
         height: 3px;
         display: block;
         margin-bottom: 30px;
+    }
+}
+.line__xs {
+    &:after {
+        width: 16px;
+        margin: 0 auto;
     }
 }
 .line__sm {
@@ -17,4 +23,16 @@
     &:after {
         width: 140px;
     }
+}
+
+.nav-item__border-left {
+    border-left: 1px solid #{lighten($color__dark, 5%)};
+}
+
+.nav-item__border-right {
+    border-right: 1px solid #{lighten($color__dark, 5%)};
+}
+
+.block__border-bottom {
+    border-bottom: 2px solid $color__grey;
 }

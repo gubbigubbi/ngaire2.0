@@ -1,12 +1,13 @@
 // Base colors
-$color__light: #0eacf3;
-$color__dark: #231f20;
-$color__text-main: #3a3a3c;
-$color__neutral: #f5f5f5;
+$color__light: #3498DB;
+$color__dark: #2980B9;
+$color__text-main: #444;
+$color__neutral: #ECF0F1;
 $color__white: #fff;
-$color__grey: #474747;
+$color__grey: #F3F3F1;
+$color__borders: #e8e8e8;
 
-$color__background-body: #e8eded;
+$color__background-body: $color__neutral;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
@@ -14,35 +15,32 @@ $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
 
 $color__text-screen: #21759b;
-$color__text-input: darken($color__white,10%);
-$color__text-input-focus: $color__white;
 $color__link: $color__light;
-
-$color__link-hover: lighten($color__light,10%);
+$color__link-hover: darken($color__light,10%);
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
-$color__border-input: $color__text-main;
 $color__border-abbr: #666;
 
 //  Pre Nav
-$color__background-preheader: lighten($color__dark, 10%);
+$color__background-preheader: $color__dark;
+$color__text-preheader: $color__white;
 
 // Nav
-$color_background-navbar: rgba(255,255,255,0.8);
-$color_nav-link: #b4b9b9;
-$color_nav-link__active: $color__light;
+$color_background-navbar: $color__light;
+$color_nav-link: $color__white;
+$color_nav-link__active: $color__white;
 $color__border-nav: $color__neutral;
 
 // Widgets
 $color__background-widget: #f8f8f8;
 
 // Footer
-$color__background-footer-widget-area: #252626;
-$color__text-footer-widget-area: $color__white;
-$color__background-site-info: $color__light;
-$color__text-site-info: $color__white;
+$color__background-footer-widget-area: $color__grey;
+$color__text-footer-widget-area: $color__text-main;
+$color__background-site-info: $color__grey;
+$color__text-site-info: $color__text-main;
 
 // Classes
 .text__white {
@@ -54,7 +52,12 @@ $color__text-site-info: $color__white;
 .block__white {
     background-color: $color__white;
 }
-
+.block__grey {
+    background-color: $color__grey;
+}
 .block__light {
     background-color: $color__light;
+}
+.block__dark {
+    background-color: $color__dark;
 }

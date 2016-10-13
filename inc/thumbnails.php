@@ -6,7 +6,7 @@
 */
 	add_theme_support( 'post-thumbnails' );
 	
-	add_image_size( 'potrait-thumb', 476, 580, array( 'center', 'center' ) ); // Hard crop in the center
+	add_image_size( 'potrait-thumb', 476, 580, array( 'center', 'top' ) ); // Hard crop in the center
 	add_image_size( 'post-thumb', 720, 600, array( 'center', 'center' ) ); // Hard crop in the center
 	add_image_size( 'testimonial-thumb', 720, 360, array( 'center', 'center' ) ); // Hard crop in the center
 

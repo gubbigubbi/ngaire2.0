@@ -116,3 +116,30 @@
     }
     button { display: none; }
 }
+
+// Slick Arrows
+.slick-arrow {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0;
+    line-height: 0;
+    @extend .icon;
+    &.slick-prev, &.slick-next {
+        @extend .button__primary;
+        &:before {
+            font-size: 12px;
+            line-height: 1;
+        }
+    }
+    &.slick-prev {
+        right: 54px;
+        &:before {
+            content: '\f2ca';
+        }
+    }
+    &.slick-next:before {
+        content: '\f30f';
+    }    
+}
+

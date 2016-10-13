@@ -1,12 +1,33 @@
+<?php $contact_phone = get_field('contact_phone','options'); ?>
 <nav class="navbar navbar-preheader">
     <div class="navbar-inner">
         <div class="row middle-xs end-xs">
             <div class="col-xs">
-                <?php global $woocommerce; ?>
-                <ul class="nav navbar-nav pull-right">
-                                    
-                    <?php if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) { ?>
+
+                <ul class="nav navbar-nav navbar-nav__left navbar-contact navbar-first no-margin-left">
                     
+                    <li class="nav-item">
+                        <i class="icon ion-ios-home-outline"></i>
+                        <?php echo get_field('office_address_short','options'); ?>
+                    </li>
+                    
+                    <?php if(get_field('general_hours','options')): ?>
+                        <li class="nav-item">
+                            <i class="icon ion-clock"></i>
+                            <?php echo get_field('general_hours','options'); ?>
+                        </li>
+                    <?php endif; ?>
+                    
+                    <?php if($contact_phone): ?>
+                        <li class="nav-item">
+                            <a href="tel:<?php echo $contact_phone; ?>">
+                                <i class="icon ion-ios-telephone"></i> <?php echo $contact_phone; ?>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                                                   
+                    <?php if (class_exists('WooCommerce')) { ?>
+                        <?php global $woocommerce; ?>
                         <li class="nav-item">
                             <?php wp_loginout(); ?>
                         </li>
@@ -38,8 +59,21 @@
                             </li>
                         <?php endif; ?>
                     <?php } ?>
-            
                 </ul>
+                
+                <?php /* Primary navigation */
+                    wp_nav_menu( array(
+                      'theme_location' => 'pre_header',
+                      'depth' => 2,
+                      'container' => false,
+                      'menu_class' => 'nav navbar-nav navbar-contact',
+                      //Process nav menu using our custom nav walker
+                      'walker' => new wp_bootstrap_navwalker(),
+                      )
+                    );
+				?>
+                
+                <?php echo do_shortcode('[socials alignment="right"]'); ?>  
             </div>
         </div>
     </div>

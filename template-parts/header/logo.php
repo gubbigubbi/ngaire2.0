@@ -50,7 +50,7 @@ $myAppLogo = new appLogo($logo, $logo_mobile);
 		   
 
     <?php } else { ?>
-        <h1 class="h3 site-title no-margin-bottom">
+        <h1 class="h4 site-title no-margin-bottom">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 		</h1>
 		

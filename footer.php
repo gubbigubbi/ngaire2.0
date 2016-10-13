@@ -15,7 +15,7 @@
 	</div><!-- #content -->
 	
 	<?php if ( is_active_sidebar( 'after-section' ) ) : ?>
-		<section class="section section__sidebar block__white">
+		<section class="section section__sidebar block__dark text__white">
 			<div class="container">
 				<?php dynamic_sidebar( 'after-section' ); ?>
 			</div>
@@ -31,9 +31,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs">
-					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nagaire-2-0' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'nagaire-2-0' ), 'WordPress' ); ?></a>
-					<span class="sep"> | </span>
-					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'nagaire-2-0' ), 'nagaire-2-0', '<a href="http://breezydesigns.com.au" rel="designer">Rhys Clay</a>' ); ?>
+						<a href="/" rel="me">&copy; <?php echo date("Y") ?> <?php echo bloginfo() ?></a>
 					</div>
 				</div>
 			</div>

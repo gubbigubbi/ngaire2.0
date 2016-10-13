@@ -12,9 +12,14 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
         
-        <header class="entry-header col-md-12">
+        <header class="entry-header col-xs-12 col-sm-12 col-md-12">
 
-			<?php the_post_thumbnail('post-thumb'); ?>
+			<?php if(get_post_type() == 'team') {
+				the_post_thumbnail('potrait-thumb');
+			} else {
+				the_post_thumbnail('post-thumb');
+			}
+			?>
             
             <?php if ( 'post' === get_post_type() ) : ?>
                 <?php get_template_part('template-parts/post-meta'); ?>
@@ -22,7 +27,7 @@
             endif; ?>
 		</header><!-- .entry-header -->            
 
-		<div class="col-md-12">
+		<div class="col-xs-12">
 		
 			<div class="entry-content">
 				<?php

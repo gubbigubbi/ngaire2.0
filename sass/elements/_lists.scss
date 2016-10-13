@@ -1,6 +1,6 @@
 .list-unstyled {
 	padding-left: 0;
-	margin-bottom: 0;
+	//margin-bottom: 0;
 	list-style: none;
 }
 .list-inline > li {
@@ -11,12 +11,24 @@
 		padding-left: 0;
 	}
 }
+ul.double {
+    float: left;
+	li {
+		width: 50%;
+		margin: 5px 0px 0px;
+		float: left;
+		padding-right: 20px;
+	}
+}
 ul.icons {
     li:before {
         margin:0 5px 0 -15px;
     }
 }
-
+.checkmark li:before {
+	font-family: 'Ionicons';
+	content: '\f383'	
+}
 .checkmark-circle li:before {
 	font-family: 'Ionicons';
 	content: '\f375'
@@ -24,6 +36,11 @@ ul.icons {
 .plus-outline li:before {
 	font-family: 'Ionicons';
 	content: '\f48a'
+}
+.icon-list__light {
+	li:before {
+		color: $color__light;
+	}
 }
 ul, ol {
 	margin: 0 0 1.5em 1.5em;

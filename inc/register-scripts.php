@@ -16,11 +16,15 @@ function ngaire_scripts() {
 	}
 	
 	if(get_field('enable_developer_mode','options')) {
-		wp_enqueue_script( 'all', get_template_directory_uri() . '/dist/js/all.min.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/js/app.js', array( 'jquery', 'all' ), false, false );
+		wp_enqueue_script( 'all', get_template_directory_uri() . '/assets/js/all.min.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery', 'all' ), false, false );
 		
+		wp_localize_script( 'all', 'myAjax', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		));
+
 	} else {
-		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/js/app.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'ajax-query', get_template_directory_uri() . '/js/ajax-query.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'ngaire-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );   
@@ -30,17 +34,21 @@ function ngaire_scripts() {
 		//wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/js/picturefill.js', array( 'jquery' ), false, true );
 		wp_enqueue_script( 'slick', get_template_directory_uri().'/js/slick.js');	
 		wp_enqueue_script( 'blazy', get_template_directory_uri().'/js/blazy.min.js', false, false, true);
-		//wp_enqueue_script( 'colorbox', get_template_directory_uri().'/js/jquery.colorbox.js', false, false, true);
+		wp_enqueue_script( 'colorbox', get_template_directory_uri().'/js/jquery.colorbox.js', false, false, true);
 		wp_enqueue_script('wow', get_template_directory_uri().'/js/wow.js');
 		//wp_register_script( 'ajax-query', get_template_directory_uri() . '/js/ajax-query.js', array( 'jquery' ), false, true );
 		wp_enqueue_script('bootstrap-util', get_template_directory_uri().'/js/bootstrap-util.js', false, false, true);
 		wp_enqueue_script('bootstrap-dropdown', get_template_directory_uri().'/js/bootstrap-dropdown.js', false, false, true);
 		wp_enqueue_script('bootstrap-modal', get_template_directory_uri().'/js/bootstrap-modal.js', false, false, true);
+		wp_enqueue_script('bootstrap-button', get_template_directory_uri().'/js/bootstrap-button.js', false, false, true);
+
+		wp_localize_script( 'ajax-query', 'myAjax', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		));
+
 	}
 	
-	wp_localize_script( 'ajax-query', 'myAjax', array(
-		'ajaxurl' => admin_url( 'admin-ajax.php' ),
-	));
+
 	
 	// Note for future development animate.css adds 80kB - could be reduced to styles likely to use
 	wp_enqueue_style('animate','https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');

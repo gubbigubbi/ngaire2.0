@@ -1,0 +1,19 @@
+.layout-full-width {
+	.content-area {
+		@extend .col-md-12;
+        @extend .section-row;
+        .panel-grid {
+            padding: 0 0 20px 0;
+        }
+		main {
+			background-color: $color__background-widget;
+			@extend .block__content-widget;
+			border: 1px solid darken($color__background-widget, 10%);
+		}
+	}
+	
+	.widget-area {
+        display: none;	
+	}
+
+} 
