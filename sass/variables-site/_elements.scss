@@ -1,12 +1,10 @@
-// Toggle
-$toggle__icon-color: $color__dark;
 // Buttons and Forms
 
 // Variables & Mixins
 // --------------------------------------------------
-$button-padding-vertical: 6px;
-$button-padding-horizontal: 15px;
-$button-border-radius: 3px;
+$button-padding-vertical: 15px;
+$button-padding-horizontal: 25px;
+$button-border-radius: 2px;
 
 @mixin button-size($button-padding-vertical, $button-padding-horizontal, $button-border-radius) {
   padding: $button-padding-vertical $button-padding-horizontal;
@@ -17,15 +15,25 @@ $button__add-to-primary-color: #fff;
 $button__add-to_bg: $color__light;
 $button__add-to-border: $color__light;
 
-$button__border-primary-color: #fff;
+$button__border-primary-color: $color__dark;
 $button__border-bg: transparent;
-$button__border-border: #fff;
+$button__border-border: $color__dark;
+
+$button__white-primary-color: $color__white;
+$button__white-bg: transparent;
+$button__white-border: $color__white;
+
+$button__grey-primary-color: $color__text-main;
+$button__grey-bg: transparent;
+$button__grey-border: $color__grey;
+
 
 // Forms
-$form__border-radius: 2px;
-$form__background: #f5f6f7;
-$form__padding: 12px 12px;
-$form__margin-bottom: 12px;
-$form__border-input: 2px solid #{darken($form__background,10%)};
-$color__text-input: darken($color__text-main,10%);
-$color__text-input-focus: $color__text-main;
+$form__border-radius: 0px;
+$form__background: #eee;
+$form__padding: 16px;
+$form__margin-bottom: $font__margin-bottom;
+$form__border-width: 0px;
+$form__border-input: $form__border-width solid #ddd;
+$color__text-input: lighten(#999,5%);
+$color__text-input-focus: #999;

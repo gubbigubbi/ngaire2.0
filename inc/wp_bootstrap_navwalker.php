@@ -31,6 +31,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 * @param object $args
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$logo = get_theme_mod( 'site_logo' );
+		$navbar_type = get_field('navbar_alignment','options');
+
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 		/**
 		 * Dividers, Headers or Disabled
@@ -40,10 +43,13 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		 * comparison that is not case sensitive. The strcasecmp() function returns
 		 * a 0 if the strings are equal.
 		 */
+		
+		// Custom css classes if required
 		if(get_field('menu_dropdown_hover','options')) {
 			$li_classes = 'dropdown-on-hover';
 		}
-		
+
+	
 		if ( strcasecmp( $item->attr_title, 'divider' ) == 0 && $depth === 1 ) {
 			$output .= $indent . '<li role="presentation" class="divider">';
 		} else if ( strcasecmp( $item->title, 'divider') == 0 && $depth === 1 ) {
@@ -51,7 +57,13 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		} else if ( strcasecmp( $item->attr_title, 'dropdown-header') == 0 && $depth === 1 ) {
 			$output .= $indent . '<li role="presentation" class="dropdown-header">' . esc_attr( $item->title );
 		} else if ( strcasecmp($item->attr_title, 'disabled' ) == 0 ) {
-			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
+			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';				
+		} else if (strcasecmp($item->attr_title, 'logo') == 0 && $navbar_type == 'center') {
+			$output .= $indent . '<li role="presentation" class="nav-item nav-item__logo"><div class="logo"><a class="logo-link" href="#"><img src="'.$logo.'" /></a></div>';		
+		  //$item_html = '<li class="logotyp visible-desktop"><a class="brand" href="'.get_bloginfo('url').'"><img src="'.get_bloginfo('template_url').'/assets/img/logotyp@2x.png" /></a></li>';
+		} else if (strcasecmp($item->title, 'search') == 0) {
+			$output .= $indent . '<li role="presentation" class="nav-item"><a class="logo-link search-trigger" href="#"><span class="icon ion-search"></span></a>';		
+		  //$item_html = '<li class="logotyp visible-desktop"><a class="brand" href="'.get_bloginfo('url').'"><img src="'.get_bloginfo('template_url').'/assets/img/logotyp@2x.png" /></a></li>';
 		} else {
 			$class_names = $value = '';
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;

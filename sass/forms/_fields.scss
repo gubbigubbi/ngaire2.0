@@ -20,7 +20,7 @@ label {
 @mixin form-control-focus() {
   &:focus {
 	color: $color__text-input-focus;
-	border: 1px solid rgba(81, 203, 238, 1);
+	border: $form__border-width solid rgba(81, 203, 238, 1);
     outline: none;
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   }
@@ -41,6 +41,7 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
+
 textarea {
 	background-color: $form__background;
 	width: 100%;
@@ -50,12 +51,15 @@ textarea {
 	border-radius: $form__border-radius;
 	padding: $form__padding;
 	transition: all 0.2s ease-in;
-	
 	@include form-control-focus();
 }
 
 select {
+	background-color: $form__background;
+	color: $color__text-input;
 	border: $form__border-input;
+	padding: $form__padding;
+	width: 100%;
 }
 
 textarea {
@@ -81,4 +85,19 @@ textarea {
 
 input[type="search"] {
   -webkit-appearance: none;
+}
+
+.form-small {
+  
+  .search-form .form-control, .search-form .input-group-btn .button {
+	  height: 36px;
+  }
+  
+  .form-control {
+	padding: 8px 16px;
+  }
+  .button {
+	padding: 8px 12px;
+  }
+
 }

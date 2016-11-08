@@ -53,52 +53,87 @@ if( in_array('testimonials', $selected) ) {
 	add_action( 'init', 'custom_post_type_testimonial', 0 );
 }
 
-// Register Custom Post Type
-function custom_post_type_portfolio() {
-
-	$labels = array(
-		'name'                => _x( 'Portfolios', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Portfolio', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Portfolio', 'text_domain' ),
-		'name_admin_bar'      => __( 'Portfolios', 'text_domain' ),
-		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
-		'all_items'           => __( 'All Portfolio Items', 'text_domain' ),
-		'add_new_item'        => __( 'Add New Portfolio Item', 'text_domain' ),
-		'add_new'             => __( 'Add New', 'text_domain' ),
-		'new_item'            => __( 'New Portfolio Item', 'text_domain' ),
-		'edit_item'           => __( 'Edit Portfolio Item', 'text_domain' ),
-		'update_item'         => __( 'Update Portfolio Item', 'text_domain' ),
-		'view_item'           => __( 'View Portfolio Item', 'text_domain' ),
-		'search_items'        => __( 'Search Portfolio Items', 'text_domain' ),
-		'not_found'           => __( 'Not found', 'text_domain' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
-	);
-	$args = array(
-		'label'               => __( 'portfolio', 'text_domain' ),
-		'description'         => __( 'Post Type Description', 'text_domain' ),
-		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail' ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-images-alt',
-		'show_in_admin_bar'   => true,
-		'show_in_nav_menus'   => false,
-		'can_export'          => true,
-		'has_archive'         => false,
-		'exclude_from_search' => true,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
-	);
-	register_post_type( 'portfolio', $args );
-
-}
-
 if( in_array('portfolio', $selected) ) {
-	// Hook into the 'init' action
+// Register Custom Post Type
+	function custom_post_type_portfolio() {
+	
+		$labels = array(
+			'name'                => _x( 'Portfolios', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Portfolio', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Portfolio', 'text_domain' ),
+			'name_admin_bar'      => __( 'Portfolios', 'text_domain' ),
+			'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+			'all_items'           => __( 'All Portfolio Items', 'text_domain' ),
+			'add_new_item'        => __( 'Add New Portfolio Item', 'text_domain' ),
+			'add_new'             => __( 'Add New', 'text_domain' ),
+			'new_item'            => __( 'New Portfolio Item', 'text_domain' ),
+			'edit_item'           => __( 'Edit Portfolio Item', 'text_domain' ),
+			'update_item'         => __( 'Update Portfolio Item', 'text_domain' ),
+			'view_item'           => __( 'View Portfolio Item', 'text_domain' ),
+			'search_items'        => __( 'Search Portfolio Items', 'text_domain' ),
+			'not_found'           => __( 'Not found', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+		);
+		$args = array(
+			'label'               => __( 'portfolio', 'text_domain' ),
+			'description'         => __( 'Post Type Description', 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title', 'excerpt', 'editor', 'thumbnail' ),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 5,
+			'menu_icon'           => 'dashicons-images-alt',
+			'show_in_admin_bar'   => true,
+			'show_in_nav_menus'   => false,
+			'can_export'          => true,
+			'has_archive'         => false,
+			'exclude_from_search' => true,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+		);
+		register_post_type( 'portfolio', $args );
+	}
+		
 	add_action( 'init', 'custom_post_type_portfolio', 0 );
+		
+	// Register Custom Taxonomy
+	function custom_taxonomy_portfolio_category() {
+		$labels = array(
+			'name'                       => _x( 'Portfolio Category', 'Taxonomy General Name', 'text_domain' ),
+			'singular_name'              => _x( 'Portfolio Category', 'Taxonomy Singular Name', 'text_domain' ),
+			'menu_name'                  => __( 'Portfolio Category', 'text_domain' ),
+			'all_items'                  => __( 'All Portfolio Category', 'text_domain' ),
+			'parent_item'                => __( 'Parent Portfolio Category', 'text_domain' ),
+			'parent_item_colon'          => __( 'Parent Portfolio Category :', 'text_domain' ),
+			'new_item_name'              => __( 'New Portfolio Category  Name', 'text_domain' ),
+			'add_new_item'               => __( 'Add New Portfolio Category ', 'text_domain' ),
+			'edit_item'                  => __( 'Edit Portfolio Category ', 'text_domain' ),
+			'update_item'                => __( 'Update Portfolio Category ', 'text_domain' ),
+			'view_item'                  => __( 'View Portfolio Category ', 'text_domain' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'text_domain' ),
+			'popular_items'              => __( 'Popular Items', 'text_domain' ),
+			'search_items'               => __( 'Search Items', 'text_domain' ),
+			'not_found'                  => __( 'Not Found', 'text_domain' ),
+		);
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => true,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => true,
+			'exclude_from_search' 		 => true,
+		);
+		register_taxonomy( 'portfolio_category', array( 'portfolio' ), $args );
+	}
+	// Hook into the 'init' action
+	add_action( 'init', 'custom_taxonomy_portfolio_category', 0 );
+	
 }
 
 if( in_array('partner', $selected) ) {
@@ -196,53 +231,89 @@ if( in_array('video-gallery', $selected) ) {
 	// Hook into the 'init' action
 	add_action( 'init', 'custom_post_type_video_gallery', 0 );
 }
-
-// Register Custom Post Type
-function custom_post_type_service() {
-
-	$labels = array(
-		'name'                => _x( 'Service', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Service', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Service', 'text_domain' ),
-		'name_admin_bar'      => __( 'Service', 'text_domain' ),
-		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
-		'all_items'           => __( 'All Services', 'text_domain' ),
-		'add_new_item'        => __( 'Add New Service', 'text_domain' ),
-		'add_new'             => __( 'Add New', 'text_domain' ),
-		'new_item'            => __( 'New Service', 'text_domain' ),
-		'edit_item'           => __( 'Edit Service', 'text_domain' ),
-		'update_item'         => __( 'Update Service', 'text_domain' ),
-		'view_item'           => __( 'View Service', 'text_domain' ),
-		'search_items'        => __( 'Search Service', 'text_domain' ),
-		'not_found'           => __( 'Not found', 'text_domain' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
-	);
-	$args = array(
-		'label'               => __( 'service', 'text_domain' ),
-		'description'         => __( 'Post Type Description', 'text_domain' ),
-		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-admin-tools',
-		'show_in_admin_bar'   => true,
-		'show_in_nav_menus'   => true,
-		'can_export'          => true,
-		'has_archive'         => false,
-		'exclude_from_search' => true,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
-	);
-	register_post_type( 'service', $args );
-
-}
-
 if( in_array('service', $selected) ) {
+	// Register Custom Post Type
+	function custom_post_type_service() {
+	
+		$labels = array(
+			'name'                => _x( 'Service', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Service', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Service', 'text_domain' ),
+			'name_admin_bar'      => __( 'Service', 'text_domain' ),
+			'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
+			'all_items'           => __( 'All Services', 'text_domain' ),
+			'add_new_item'        => __( 'Add New Service', 'text_domain' ),
+			'add_new'             => __( 'Add New', 'text_domain' ),
+			'new_item'            => __( 'New Service', 'text_domain' ),
+			'edit_item'           => __( 'Edit Service', 'text_domain' ),
+			'update_item'         => __( 'Update Service', 'text_domain' ),
+			'view_item'           => __( 'View Service', 'text_domain' ),
+			'search_items'        => __( 'Search Service', 'text_domain' ),
+			'not_found'           => __( 'Not found', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+		);
+		$args = array(
+			'label'               => __( 'service', 'text_domain' ),
+			'description'         => __( 'Post Type Description', 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title', 'editor', 'thumbnail' ),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 5,
+			'menu_icon'           => 'dashicons-admin-tools',
+			'show_in_admin_bar'   => true,
+			'show_in_nav_menus'   => true,
+			'can_export'          => true,
+			'has_archive'         => false,
+			'exclude_from_search' => true,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+		);
+		register_post_type( 'service', $args );
+	
+	}
+
 	// Hook into the 'init' action
 	add_action( 'init', 'custom_post_type_service', 0 );
+
+	// Register Custom Taxonomy
+	function custom_taxonomy_service_category() {
+		$labels = array(
+			'name'                       => _x( 'Service Category', 'Taxonomy General Name', 'text_domain' ),
+			'singular_name'              => _x( 'Service Category', 'Taxonomy Singular Name', 'text_domain' ),
+			'menu_name'                  => __( 'Service Category', 'text_domain' ),
+			'all_items'                  => __( 'All Service Category', 'text_domain' ),
+			'parent_item'                => __( 'Parent Service Category', 'text_domain' ),
+			'parent_item_colon'          => __( 'Parent Service Category :', 'text_domain' ),
+			'new_item_name'              => __( 'New Service Category  Name', 'text_domain' ),
+			'add_new_item'               => __( 'Add New Service Category ', 'text_domain' ),
+			'edit_item'                  => __( 'Edit Service Category ', 'text_domain' ),
+			'update_item'                => __( 'Update Service Category ', 'text_domain' ),
+			'view_item'                  => __( 'View Service Category ', 'text_domain' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'text_domain' ),
+			'popular_items'              => __( 'Popular Items', 'text_domain' ),
+			'search_items'               => __( 'Search Items', 'text_domain' ),
+			'not_found'                  => __( 'Not Found', 'text_domain' ),
+		);
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => true,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => true,
+			'exclude_from_search' 		 => true,
+		);
+		register_taxonomy( 'service_category', array( 'service' ), $args );
+	}
+	// Hook into the 'init' action
+	add_action( 'init', 'custom_taxonomy_service_category', 0 );
+
 }
 
 // Register Custom Post Type
@@ -379,6 +450,7 @@ if( in_array('team', $selected) ) {
 // Custom Meta
 
 
+
 class custom_meta_team {
 
 	public function __construct() {
@@ -402,7 +474,7 @@ class custom_meta_team {
 		add_meta_box(
 			'team_options',
 			__( 'Team Member options', 'text_domain' ),
-			array( $this, 'render_metabox' ),
+			array( $this, 'render_callback' ),
 			'team',
 			'side',
 			'default'
@@ -410,16 +482,20 @@ class custom_meta_team {
 
 	}
 
-	public function render_metabox( $post ) {
+	public function render_callback( $post ) {
 
 		// Add nonce for security and authentication.
 		wp_nonce_field( 'custom_meta_team_nonce_action', 'custom_meta_team_nonce' );
 
 		// Retrieve an existing value from the database.
 		$custom_meta_team_position = get_post_meta( $post->ID, 'custom_meta_team_position', true );
+		$custom_meta_team_linkedin = get_post_meta( $post->ID, 'custom_meta_team_linkedin', true );
+		$custom_meta_team_email = get_post_meta( $post->ID, 'custom_meta_team_email', true );
 
 		// Set default values.
 		if( empty( $custom_meta_team_position ) ) $custom_meta_team_position = '';
+		if( empty( $custom_meta_team_linkedin ) ) $custom_meta_team_linkedin = '';
+		if( empty( $custom_meta_team_email ) ) $custom_meta_team_email = '';
 
 		// Form fields.
 		echo '<table class="form-table">';
@@ -428,6 +504,20 @@ class custom_meta_team {
 		echo '		<th><label for="custom_meta_team_position" class="custom_meta_team_position_label">' . __( 'Position', 'text_domain' ) . '</label></th>';
 		echo '		<td>';
 		echo '			<input type="text" id="custom_meta_team_position" name="custom_meta_team_position" class="custom_meta_team_position_field" placeholder="' . esc_attr__( '', 'text_domain' ) . '" value="' . esc_attr__( $custom_meta_team_position ) . '">';
+		echo '		</td>';
+		echo '	</tr>';
+
+		echo '	<tr>';
+		echo '		<th><label for="custom_meta_team_linkedin" class="custom_meta_team_linkedin_label">' . __( 'LinkedIn', 'text_domain' ) . '</label></th>';
+		echo '		<td>';
+		echo '			<input type="url" id="custom_meta_team_linkedin" name="custom_meta_team_linkedin" class="custom_meta_team_linkedin_field" placeholder="' . esc_attr__( '', 'text_domain' ) . '" value="' . esc_attr__( $custom_meta_team_linkedin ) . '">';
+		echo '		</td>';
+		echo '	</tr>';
+
+		echo '	<tr>';
+		echo '		<th><label for="custom_meta_team_email" class="custom_meta_team_email_label">' . __( 'Email', 'text_domain' ) . '</label></th>';
+		echo '		<td>';
+		echo '			<input type="email" id="custom_meta_team_email" name="custom_meta_team_email" class="custom_meta_team_email_field" placeholder="' . esc_attr__( '', 'text_domain' ) . '" value="' . esc_attr__( $custom_meta_team_email ) . '">';
 		echo '		</td>';
 		echo '	</tr>';
 
@@ -449,17 +539,31 @@ class custom_meta_team {
 		if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) )
 			return;
 
+		// Check if it's not an autosave.
+		if ( wp_is_post_autosave( $post_id ) )
+			return;
+
+		// Check if it's not a revision.
+		if ( wp_is_post_revision( $post_id ) )
+			return;
+
 		// Sanitize user input.
 		$custom_meta_team_new_position = isset( $_POST[ 'custom_meta_team_position' ] ) ? sanitize_text_field( $_POST[ 'custom_meta_team_position' ] ) : '';
+		$custom_meta_team_new_linkedin = isset( $_POST[ 'custom_meta_team_linkedin' ] ) ? esc_url( $_POST[ 'custom_meta_team_linkedin' ] ) : '';
+		$custom_meta_team_new_email = isset( $_POST[ 'custom_meta_team_email' ] ) ? sanitize_email( $_POST[ 'custom_meta_team_email' ] ) : '';
 
 		// Update the meta field in the database.
 		update_post_meta( $post_id, 'custom_meta_team_position', $custom_meta_team_new_position );
+		update_post_meta( $post_id, 'custom_meta_team_linkedin', $custom_meta_team_new_linkedin );
+		update_post_meta( $post_id, 'custom_meta_team_email', $custom_meta_team_new_email );
 
 	}
 
 }
 
 new custom_meta_team;
+
+
 
 // Custom meta classes
 

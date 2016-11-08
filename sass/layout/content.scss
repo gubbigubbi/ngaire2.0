@@ -1,19 +1,6 @@
+// Containers
 body:not(.full-width) .site-content, .navbar-inner, body.full-width .panel-grid-cell {
     @extend .container;
-}
-
-body:not(.full-width):not(.siteorigin-panels) .content-area, .widget-area {
-    @extend .section-row;
-}
-
-body.content-only .content-area, body.full-width .panel-grid-cell {
-    @extend .section__content-only;
-}
-
-@include md {
-    body.content-only .content-area, body.full-width .panel-grid-cell {
-        padding: 50px 0 50px;
-    }
 }
 
 // Match up with existing gutters
@@ -22,10 +9,22 @@ body.full-width .panel-grid div:not(.section__no-padding) .panel-grid-cell {
     padding-right: $grid__gutter !important;
 }
 
-
 .content-area {
     float: left;
     width: 100%;
+}
+
+// Content only - no sections
+.content-only .site-content {
+    padding: $section__content-only-padding;
+    @include md {
+        padding: 40px 0;
+    }
+}
+
+.siteorigin-panels.content-only .site-content {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 @import "preview";

@@ -3,7 +3,15 @@
 }
 
 body:not(.full-width) .hentry {
-	margin: 0 0 2.5em;
+	margin: 0 0 2em;
+}
+
+.hentry-offset {
+	margin-bottom: -2em;
+}
+
+.page.siteorigin-panels article.hentry {
+	margin-bottom: 0;
 }
 
 .byline,
@@ -17,7 +25,7 @@ body:not(.full-width) .hentry {
 }
 
 .page-content,
-body:not(.full-width) .entry-content,
+body:not(.full-width):not(.siteorigin-panels).page .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
 }

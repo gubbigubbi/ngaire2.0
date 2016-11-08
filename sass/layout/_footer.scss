@@ -2,6 +2,7 @@
     background-color: $color__background-footer-widget-area;
     color: $color__text-footer-widget-area;
     padding: $footer__widget-area-padding;
+    .widget-title { color: $color__text-headings-footer-widget-area; text-transform: uppercase; }
 }
 
 .site-info {

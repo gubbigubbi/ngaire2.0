@@ -1,28 +1,40 @@
 // Set fonts here
-$font__main: 'Roboto', sans-serif;
-$font__headings: 'Cardo', san-serif;
+$font__main: 'Noto Sans', sans-serif;
+$font__headings: 'Open Sans', san-serif;
 $font__menus: $font__headings;
 $font__buttons: $font__main;
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 
 $font__line-height-pre: 1.6;
-$font__weight-headings: 500;
+
+// Font Weights
+$font__weight-headings: 600;
+$font__weight-menus: 600;
+$font__weight-buttons: 600;
+
+// Letter Spacing
+$font__letter-spacing-menus: 0.5px;
 $font__letter-spacing-headings: 0px;
+$font__letter-spacing-buttons: 2px;
 
 //Line heights & margins
-$font__line-height-body: 1.75;
+$font__line-height-body: 21px;
 $font__margin-bottom: 21px;
+$font__line-height-buttons: 13px;
 
 // Case
 $font__headings-case: normal;
+$font__headings-widget: normal;
 $font__menus-case: normal;
-$font__buttons-case: normal;
+$font__buttons-case: uppercase;
 
 // Font Sizes
-$font__navbar-size: 17px;
+$font__base-size: 15px;
+$font__navbar-size: 14px;
 $font__preheader-size: 13px;
 $font__footer-size: 15px;
+$font__button-size: 13px;
 
 // Spacings
 $font__navbar-spacing: 0px;

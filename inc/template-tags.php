@@ -25,12 +25,12 @@ function nagaire_2_0_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'nagaire-2-0' ),
+		esc_html_x( 'Posted on %s', 'post date', 'ngaire-2-0' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'nagaire-2-0' ),
+		esc_html_x( 'by %s', 'post author', 'ngaire-2-0' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
@@ -44,37 +44,43 @@ if ( ! function_exists( 'nagaire_2_0_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function nagaire_2_0_entry_footer() {
+	echo '<ul class="list-unstyled list-inline no-margin-left no-margin-bottom">';
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
+		
+        echo '<li><i class="icon ion-calendar"></i> '.get_the_date().'</li>';
+        echo '<li><a href="'.get_the_author_url.'"><i class="icon ion-person"></i> '.get_the_author().'</a></li>';
+		
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'nagaire-2-0' ) );
+		$categories_list = get_the_category_list( esc_html__( ', ', 'ngaire-2-0' ) );
 		if ( $categories_list && nagaire_2_0_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'nagaire-2-0' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ngaire-2-0' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'nagaire-2-0' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'ngaire-2-0' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'nagaire-2-0' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ngaire-2-0' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
+		echo '<li><i class="icon ion-android-textsms"></i> <span class="comments-link">';
 		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'nagaire-2-0' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
-		echo '</span>';
+		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'ngaire-2-0' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+		echo '</span></li>';
 	}
 
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'nagaire-2-0' ),
+			esc_html__( 'Edit %s', 'ngaire-2-0' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
-		'<span class="edit-link">',
-		'</span>'
+		'<li><span class="edit-link">',
+		'</span></li>'
 	);
+	echo '</ul>';
 }
 endif;
 

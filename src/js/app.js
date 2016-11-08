@@ -40,21 +40,28 @@ jQuery(function($) {
 3.0 Nav on scroll
 --------------------------------------------------------------*/   
    
-   function HeaderScroll(target, targetOffset) { // scroll object
+   // Constructor
+   function HeaderScroll(target, targetOffset, toggleAddClass, toggleRemoveClass) { // scroll object
       this.target = $(target);
       this.targetOffset = targetOffset;
+      this.toggleAddClass = toggleAddClass;
+      this.toggleRemoveClass = toggleRemoveClass;
    }
    
-   var HeaderScrollPrimary = new HeaderScroll('.navbar-primary', $(".site-header").offset().top + 1); // new instance
-
+   var HeaderScrollPrimarySticky = new HeaderScroll('.navbar-primary.navbar-sticky', $(".site-header").offset().top + 1, 'navbar-fixed-top', 'navbar-is-at-top'); // new instance
+   var HeaderScrollPrimaryFixed = new HeaderScroll('.navbar-primary.navbar-fixed-top', $(".site-header").offset().top + 1, 'navbar-scrolled', 'navbar-is-at-top'); // new instance
+   
+   // Prototype
    HeaderScroll.prototype.scroll = function() { // our method
       var scroll = $(window).scrollTop();
       target = this.target;
       targetOffset = this.targetOffset;
       if (scroll >= targetOffset) {
-         target.addClass("navbar-fixed-top");      
+         target.addClass(this.toggleAddClass);
+         target.removeClass(this.toggleRemoveClass);   
      } else {
-         target.removeClass("navbar-fixed-top");       
+         target.removeClass(this.toggleAddClass);
+         target.addClass(this.toggleRemoveClass);   
      }   
    }
    
@@ -62,8 +69,12 @@ jQuery(function($) {
     
    $(window).scroll(function() { // call the method when scrolling
       if (screenWidth > 767) {
-        HeaderScrollPrimary.scroll();
+        HeaderScrollPrimarySticky.scroll();
       }
+   });
+   
+   $(window).scroll(function() {
+      HeaderScrollPrimaryFixed.scroll();
    });
    
 	/*--------------------------------------------------------------
@@ -90,21 +101,21 @@ jQuery(function($) {
 	/**
 	 * Push left instantiation and action.
 	 */
-	var pushLeft = new Menu({
+	var slideLeft = new Menu({
 		wrapper: '#o-wrapper',
-		type: 'push-left',
+		type: 'slide-left',
 		menuOpenerClass: '.c-button',
 		maskId: '#c-mask'
 	});
 
-	var pushLeftBtn = document.querySelector('#c-button--push-left');
+	var slideLeftBtn = document.querySelector('#c-button--toggle');
 
-	pushLeftBtn.addEventListener('click', function(e) {
+	slideLeftBtn.addEventListener('click', function(e) {
 		e.preventDefault;
 		$('.c-button').toggleClass('is-active');
-		setTimeout(function() {
-			pushLeft.open();
-		}, 300);
+
+		 slideLeft.open();
+
 
 	});
 
@@ -125,6 +136,14 @@ jQuery(function($) {
 
    $('.modal-footer-trigger').click(function(){
       $('#modal-footer').modal('show');
+   });
+   
+   $( ".search-trigger" ).click(function(e) {
+     e.preventDefault();
+     $( ".search-bar" ).slideToggle( 300, function() {
+       // Animation complete.
+     });
+     
    });
    
    /*--------------------------------------------------------------
@@ -156,6 +175,67 @@ jQuery(function($) {
          }
       });
    })();
+   
+   /*--------------------------------------------------------------
+   8.0 Smooth Scroll and Director js
+   --------------------------------------------------------------*/   
+   
+   (function(){
+      $('a[href*="#"]:not([href="#"])').click(function() {
+         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+         var target = $(this.hash);
+         var header = $('.navbar-fixed-top').height();
+         console.log(header);
+         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+         if (target.length) {
+            $('html, body').animate({
+               scrollTop: target.offset().top - header
+               }, 1000);
+               return false;
+            }
+         }
+      });
+   })();
+   
+   (function(){
+
+      var page = function () {console.log("page"); };
+      
+      var routes = {
+        '/':  page,
+      };
+      
+      var router = Router(routes);
+      router.init(['/']);
+   
+   });
+
+   /*--------------------------------------------------------------
+   9.0 Isotope js
+   --------------------------------------------------------------*/    
+   $('.isotope-grid').isotope({
+     // options
+     itemSelector: '.wow',
+     layoutMode: 'fitRows'
+   });
+   
+   $('.isotope-filters .single-filter').click(function(){
+        $('.isotope-filters .single-filter').removeClass('focus');
+        $(this).addClass('focus');
+   
+        var selector = $(this).attr('data-filter');
+
+        $('.isotope-grid').isotope({
+            filter: selector,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+         });
+         return false;
+   });
+        
     
 
 });

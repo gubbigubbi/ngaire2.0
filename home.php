@@ -51,5 +51,7 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+if(get_post_meta( $post->ID, 'page_options_show_sidebar', true )):
+	get_sidebar();
+endif;
 get_footer();

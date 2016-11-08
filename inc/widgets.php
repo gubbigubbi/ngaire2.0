@@ -9,7 +9,3 @@ require get_template_directory() . '/inc/plugins/opening-hours.php';
  */
 require get_template_directory() . '/inc/plugins/latest-tweets.php';
 
-/**
- * Trainers
- */
-require get_template_directory() . '/inc/plugins/trainers.php';

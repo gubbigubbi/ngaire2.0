@@ -1,9 +1,12 @@
 .post-thumb {
     overflow: hidden;
+    background-color: $color__post-thumb;
 }
 .post-thumb-wrapper { 
     position: relative;
     width: 100%;
+    float: left;
+    img { display: block; }
     .post-thumb-wrapper-overlay {
         position: absolute;
         top: 0px;
@@ -22,10 +25,10 @@
 }
 
 .overlay__shaded {
-    background-color: rgba($color__dark,0.5); 
+    background-color: $color__thumb-shaded; 
 }
 
-.post-thumb-wrapper-overlay > span {
+.post-thumb-wrapper-overlay > span, .post-thumb-wrapper-overlay > span a {
     @extend .text__white;
 }
 
@@ -55,6 +58,31 @@
             img {
                 transform: scale(1.1,1.1);
             }
+        }
+    }
+}
+
+// Go to black on hover
+
+.post-thumb-wrapper.hide-img-on-hover {
+    img {
+        @extend .transition-opacity;
+        opacity: 1;
+        -webkit-backface-visibility: hidden;
+    }
+    span {
+        opacity: 0;
+        @extend .transition-opacity;
+        transition-delay: 0.1s;
+        -webkit-backface-visibility: hidden;
+
+    }
+    &:hover {
+        img {
+            opacity: 0;
+        }
+        span {
+            opacity: 1;
         }
     }
 }

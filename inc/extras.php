@@ -41,12 +41,6 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Social & Contact Settings',
-		'menu_title'	=> 'Social & Contact',
-		'parent_slug'	=> 'theme-general-settings',
-	));
-	
-	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Header Settings Settings',
 		'menu_title'	=> 'Header Settings',
 		'parent_slug'	=> 'theme-general-settings',
@@ -102,18 +96,22 @@ add_action( 'template_redirect', function() {
 // Body Classes
 add_filter( 'body_class','halfhalf_body_class' );
 function halfhalf_body_class( $classes ) {
+	
+	global $post;
+	$show_sidebar = get_post_meta( $post->ID, 'page_options_show_sidebar', true );
+
  
-    if ( is_home() || is_singular('post') || is_singular('trainer') || is_singular('class') || is_singular('team') || is_search() || is_archive() && !is_post_type_archive() ) {
+    if ( $show_sidebar || is_singular('post') || is_singular('trainer') || is_singular('class') || is_singular('team') || is_singular('portfolio') || is_singular('service') || is_search() || is_archive() && !is_post_type_archive() ) {
         $classes[] = 'layout-content-sidebar';
     }
 	
-	if ( is_404() || is_home() || is_search() || is_archive() && !is_post_type_archive() ) {
+	if ( !$show_sidebar || is_404() || is_search() || is_archive() && !is_post_type_archive() ) {
 		$classes[] = 'content-only';
 	}
 	
-	if ( is_singular('service') ) {
-		$classes[] = 'layout-full-width';
-	}
+	//if ( is_singular('service') ) {
+		//$classes[] = 'layout-full-width';
+	//}
 	
     return $classes;
      
@@ -121,15 +119,24 @@ function halfhalf_body_class( $classes ) {
 
 // Header Router
 function header_router($header_type) {
-	
-	if(!is_singular() && !$header_type || $header_type == 'none') {
+
+	if($header_type == 'none') {
 		return; // I'm out bitches
 	}
 	
-	if(is_singular() && !is_page()) {
-		get_template_part('template-parts/header/header-text-only');	
+	if(isset($header_type)) {
+		get_template_part('template-parts/header/header',$header_type);	
 	} else {
-		get_template_part('template-parts/header/header',$header_type);
+		get_template_part('template-parts/header/header-text-only');
+	}
+}
+
+// Navbar Router
+function navbar_router($navbar_type) {
+	if ($navbar_type == 'navbar-center') {
+		get_template_part('template-parts/navbar/navbar-center');
+	} else {
+		get_template_part('template-parts/navbar/navbar-left');
 	}
 }
 
@@ -139,10 +146,19 @@ function page_title() {
 	if($content) {
 		echo '<span class="section-header__title">'.$content.'</span>';
 	} else {
+		$title = !is_home() ? get_the_title( $post->ID ) : get_the_title( get_option('page_for_posts', true));
 		echo '<header class="entry-header">';
-			echo '<h1 class="h2 entry-title">'.get_the_title( $post->ID ).'</h1>';
+			echo '<h1 class="h2 entry-title">'.$title.'</h1>';
 		echo '</header><!-- .entry-header -->';
 	}
 }
 
 add_action('header_content','page_title');
+
+/* Add a link  to the end of our excerpt contained in a div for styling purposes and to break to a new line on the page.*/
+ 
+function et_excerpt_more($more) {
+    global $post;
+    return '<div><a class="small" href="'. get_permalink($post->ID) . '">View Full Post &rarr;</a></div>';
+}
+add_filter('excerpt_more', 'et_excerpt_more');

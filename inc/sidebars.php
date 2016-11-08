@@ -23,8 +23,8 @@ function ngaiire_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h5 class="widget-title">',
-		'after_title'   => '</h5>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	
 	register_sidebar( array(
@@ -33,8 +33,8 @@ function ngaiire_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h5 class="widget-title">',
-		'after_title'   => '</h5>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 	
     register_sidebar( array(
@@ -43,8 +43,8 @@ function ngaiire_widgets_init() {
         'description'   => '',
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
-        'before_title'  => '<h5 class="widget-title">',
-        'after_title'   => '</h5>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
     ) );
 	
     register_sidebar( array(
@@ -53,20 +53,19 @@ function ngaiire_widgets_init() {
         'description'   => '',
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
-        'before_title'  => '<h5 class="widget-title">',
-        'after_title'   => '</h5>',
+        'before_title'  => '<h4 class="widget-title">',
+        'after_title'   => '</h4>',
     ) );
 	
-	
 	register_sidebar( array(
-		'id'            => 'after-section',
-		'name'          => __( 'After Section', 'text_domain' ),
-		'description'   => __( 'Widget area shown after sections if enabled', 'text_domain' ),
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>',
-		'before_widget' => '<div id="%1$s" class="widget widget_text">',
-		'after_widget'  => '</div>',
+		'name'          => 'After Footer Widget',
+		'id'            => 'after-footer-widget',
+		'description'   => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
 	) );
+	
+	
 	
 	if ( class_exists( 'WooCommerce' ) ) {
 		register_sidebar( array(
@@ -106,7 +105,7 @@ function custom_sidebars() {
 		'id'            => 'after-section',
 		'name'          => __( 'After Section', 'text_domain' ),
 		'description'   => __( 'Widget area shown after sections if enabled', 'text_domain' ),
-		'before_title'  => '<h4 class="widget-title">',
+		'before_title'  => '<h4 class="h3 widget-title">',
 		'after_title'   => '</h4>',
 		'before_widget' => '<div id="%1$s" class="widget widget_text">',
 		'after_widget'  => '</div>',

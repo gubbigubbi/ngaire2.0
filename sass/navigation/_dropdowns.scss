@@ -16,7 +16,6 @@
   padding: 12px 0;
   margin: 2px 0 0;
   list-style: none;
-  font-size: 14px;
   text-align: left;
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -67,10 +66,9 @@
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: #ffffff;
+  color: $color__dropdown-link__active;
   text-decoration: none;
   outline: 0;
-  background-color: #337ab7;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,

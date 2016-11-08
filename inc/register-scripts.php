@@ -17,41 +17,44 @@ function ngaire_scripts() {
 	
 	if(get_field('enable_developer_mode','options')) {
 		wp_enqueue_script( 'all', get_template_directory_uri() . '/assets/js/all.min.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery', 'all' ), false, false );
+		//wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery', 'all' ), false, false );
 		
 		wp_localize_script( 'all', 'myAjax', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		));
 
 	} else {
-		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/assets/js/app.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'ajax-query', get_template_directory_uri() . '/js/ajax-query.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'ngaire-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );   
-		wp_enqueue_script( 'slide-menu', get_template_directory_uri() . '/js/slideMenu.js', array( 'jquery' ), false, true );
-		//wp_enqueue_script( 'popup', get_template_directory_uri() . '/js/jquery.popupoverlay.js', array( 'jquery' ), false, true );
-		//wp_enqueue_script('loading', get_template_directory_uri() . '/js/loadingoverlay.min.js', array( 'jquery' ), false, true);
-		//wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/js/picturefill.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'slick', get_template_directory_uri().'/js/slick.js');	
-		wp_enqueue_script( 'blazy', get_template_directory_uri().'/js/blazy.min.js', false, false, true);
-		wp_enqueue_script( 'colorbox', get_template_directory_uri().'/js/jquery.colorbox.js', false, false, true);
-		wp_enqueue_script('wow', get_template_directory_uri().'/js/wow.js');
-		//wp_register_script( 'ajax-query', get_template_directory_uri() . '/js/ajax-query.js', array( 'jquery' ), false, true );
-		wp_enqueue_script('bootstrap-util', get_template_directory_uri().'/js/bootstrap-util.js', false, false, true);
-		wp_enqueue_script('bootstrap-dropdown', get_template_directory_uri().'/js/bootstrap-dropdown.js', false, false, true);
-		wp_enqueue_script('bootstrap-modal', get_template_directory_uri().'/js/bootstrap-modal.js', false, false, true);
-		wp_enqueue_script('bootstrap-button', get_template_directory_uri().'/js/bootstrap-button.js', false, false, true);
-
+		wp_enqueue_script( 'app-js', get_template_directory_uri() . '/src/js/app.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/src/js/vendor/custom.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'ajax-query', get_template_directory_uri() . '/src/js/vendor/ajax-query.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'ngaire-skip-link-focus-fix', get_template_directory_uri() . '/src/js/vendor/skip-link-focus-fix.js', array(), '20130115', true );   
+		wp_enqueue_script( 'slide-menu', get_template_directory_uri() . '/src/js/vendor/slideMenu.js', array( 'jquery' ), false, true );
+		//wp_enqueue_script( 'popup', get_template_directory_uri() . '/src/js/vendor/jquery.popupoverlay.js', array( 'jquery' ), false, true );
+		//wp_enqueue_script('loading', get_template_directory_uri() . '/src/js/vendor/loadingoverlay.min.js', array( 'jquery' ), false, true);
+		//wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/src/js/vendor/picturefill.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'slick', get_template_directory_uri().'/src/js/vendor/slick.js');	
+		wp_enqueue_script( 'blazy', get_template_directory_uri().'/src/js/vendor/blazy.min.js', false, false, true);
+		wp_enqueue_script( 'colorbox', get_template_directory_uri().'/src/js/vendor/jquery.colorbox.js', false, false, true);
+		wp_enqueue_script('wow', get_template_directory_uri().'/src/js/vendor/wow.js');
+		//wp_register_script( 'ajax-query', get_template_directory_uri() . '/src/js/vendor/ajax-query.js', array( 'jquery' ), false, true );
+		wp_enqueue_script('bootstrap-util', get_template_directory_uri().'/src/js/vendor/bootstrap-util.js', false, false, true);
+		wp_enqueue_script('bootstrap-dropdown', get_template_directory_uri().'/src/js/vendor/bootstrap-dropdown.js', false, false, true);
+		wp_enqueue_script('bootstrap-modal', get_template_directory_uri().'/src/js/vendor/bootstrap-modal.js', false, false, true);
+		wp_enqueue_script('bootstrap-button', get_template_directory_uri().'/src/js/vendor/bootstrap-button.js', false, false, true);
+		wp_enqueue_script('isotope', get_template_directory_uri().'/src/js/vendor/isotope.pkgd.min.js', false, false, true);
+		//wp_enqueue_script( 'director', get_template_directory_uri() . '/src/js/vendor/director.min.js', false, false, true );
+		
 		wp_localize_script( 'ajax-query', 'myAjax', array(
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		));
+		
+		// Note for future development animate.css adds 80kB - could be reduced to styles likely to use
+		wp_enqueue_style('animate','https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+		
+
 
 	}
 	
-
-	
-	// Note for future development animate.css adds 80kB - could be reduced to styles likely to use
-	wp_enqueue_style('animate','https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
 	wp_enqueue_style('ionicons','http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 
 }
@@ -62,24 +65,11 @@ add_action( 'wp_enqueue_scripts', 'ngaire_scripts' );
  * Remove plugin styles and scripts
  */
 function remove_plugin_scripts() {
-
+	if(get_field('enable_developer_mode','options')) {
+		wp_deregister_style( 'siteorigin-panels-front' );
+		wp_deregister_style( 'contact-form-7' );
+	}
 }
 
 add_action('wp_print_styles', 'remove_plugin_scripts', 100);
 
-/**
- * B Lazy setup
- */
-function modify_post_thumbnail_html($html, $post_id, $post_thumbnail_id, $size, $attr) {
-    $id = get_post_thumbnail_id(); // gets the id of the current post_thumbnail (in the loop)
-    $src = wp_get_attachment_image_src($id, $size); // gets the image url specific to the passed in size (aka. custom image size)
-    $alt = get_the_title($id); // gets the post thumbnail title
-    //$class = $attr['class']; // gets classes passed to the post thumbnail, defined here for easier function access
-
-    // Check to see if a 'retina' class exists in the array when calling "the_post_thumbnail()", if so output different <img/> html
-
-    $html = '<img src="' . $src[0] . '" data-src="' . $src[0] . '" data-alt="' . $alt . '" class="b-lazy ' . $class . '" />';
-
-    return $html;
-}
-//add_filter('post_thumbnail_html', 'modify_post_thumbnail_html', 99, 5);

@@ -7,7 +7,7 @@ Description: Description
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: nagaire-2-0
+Text Domain: ngaire-2-0
 Tags:
 
 This theme, like WordPress, is licensed under the GPL.
@@ -49,6 +49,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Normalize
 --------------------------------------------------------------*/
 @import "normalize";
+
+/*--------------------------------------------------------------
+# Critical CSS
+--------------------------------------------------------------*/
+//@import "critical/critical";
 
 /*--------------------------------------------------------------
 # 3rd Party

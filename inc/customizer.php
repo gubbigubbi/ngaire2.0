@@ -42,7 +42,188 @@ function ngaire_customize_register( $wp_customize ) {
    );
 	
 }
+
+function ngaire_social_customize_register($wp_customize) {
+	// Lets add a section for #social
+	$wp_customize->add_section(
+		// ID
+		'social_section',
+		// Arguments array
+		array(
+			'title' => __( 'Social & Contact Settings', 'ngaire-2-0' ),
+			'description' => __( 'Add / Edit your Social & Contact Links', 'ngaire-2-0' ),
+			'priority' => 30,
+		)
+	);
+	
+	//#twitter / fb / google / linkedin / insta / youtube
+	
+	$wp_customize->add_setting("twitter_url", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("facebook_url", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("google_url", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("linkedin_url", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("instagram_url", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("youtube_url", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+		
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"twitter_url",
+		array(
+			"label" => __("Twitter URL", "customizer_twitter_url_label"),
+			"section" => "social_section",
+			"settings" => "twitter_url",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"facebook_url",
+		array(
+			"label" => __("Facebook URL", "customizer_facebook_url_label"),
+			"section" => "social_section",
+			"settings" => "facebook_url",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"google_url",
+		array(
+			"label" => __("Google URL", "customizer_google_url_label"),
+			"section" => "social_section",
+			"settings" => "google_url",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"linkedin_url",
+		array(
+			"label" => __("Linkedin URL", "customizer_linkedin_url_label"),
+			"section" => "social_section",
+			"settings" => "linkedin_url",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"instagram_url",
+		array(
+			"label" => __("Instagram URL", "customizer_instagram_url_label"),
+			"section" => "social_section",
+			"settings" => "instagram_url",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"youtube_url",
+		array(
+			"label" => __("Youtube URL", "customizer_youtube_url_label"),
+			"section" => "social_section",
+			"settings" => "youtube_url",
+			"type" => "text",
+		)
+	));
+	
+	//#contact email / phone / office address / general hours
+	
+	$wp_customize->add_setting("contact_email_address", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("contact_phone", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("office_address_short", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_setting("general_hours", array(
+		"default" => "",
+		"transport" => "postMessage",
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"contact_email_address",
+		array(
+			"label" => __("Contact Email", "customizer_contact_email_address_label"),
+			"section" => "social_section",
+			"settings" => "contact_email_address",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"contact_phone",
+		array(
+			"label" => __("Contact Phone", "customizer_contact_phone_label"),
+			"section" => "social_section",
+			"settings" => "contact_phone",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"office_address_short",
+		array(
+			"label" => __("Office Address", "customizer_office_address_short_label"),
+			"section" => "social_section",
+			"settings" => "office_address_short",
+			"type" => "text",
+		)
+	));
+	
+	$wp_customize->add_control(new WP_Customize_Control(
+		$wp_customize,
+		"general_hours",
+		array(
+			"label" => __("General Hours", "customizer_general_hours_label"),
+			"section" => "social_section",
+			"settings" => "general_hours",
+			"type" => "text",
+		)
+	));
+	
+}
+
 add_action( 'customize_register', 'ngaire_customize_register' );
+add_action( 'customize_register', 'ngaire_social_customize_register' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.

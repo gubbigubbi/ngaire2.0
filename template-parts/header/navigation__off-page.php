@@ -4,13 +4,13 @@
  *
  * @package Ngaiire
  */
-$contact_email = get_field('contact_email_address','options');
-$contact_number = get_field('contact_phone','options');
+$contact_email = get_theme_mod('contact_email_address');
+$contact_number = get_theme_mod('contact_phone');
 ?>
 
-<nav id="c-menu--push-left" class="c-menu c-menu--push-left admin-bar__fix">
+<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left admin-bar__fix">
   <button class="c-menu__close button__block">&larr; Close Menu</button>
-  <?php if($contact_email): ?>
+  <?php if($contact_email || $contact_number): ?>
     <div class="row internal">
       <div class="col-xs-6">
         <a class="button button__primary c-menu__button button__block" href="mailto:<?php echo $contact_email; ?>">

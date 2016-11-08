@@ -17,7 +17,9 @@ a {
 	}
 	@extend .transition-color;
 }
-
+.nav-item.active > a {
+	color: $color_nav-link__active;	
+}
 .nav-link, .nav-item > a {
   padding-top:    10px;
   padding-bottom: 10px;
@@ -28,19 +30,23 @@ a {
   &:visited { color: $color_nav-link; }
   &:hover, &:focus,
   &:active {
-	  color: $color_nav-link__active;
+	  color: $color_nav-link__hover
   }
 }
 
-.nav-item.active > a {
-	color: $color_nav-link__active;	
+.nav-link, .nav-item.current-menu-item > a {
+	color: $color_nav-link__hover
 }
 
 // Dropdowns
 .nav-item.menu-item-has-children > a {
 	@extend .icon;
 	&:after {
-		content: '\f217';
+		content: '\f125';
 	}
 }
 
+.nav-item.search-trigger > a {
+
+	
+}

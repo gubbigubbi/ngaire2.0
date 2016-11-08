@@ -3,3 +3,12 @@
         height: 48px;
     }
 }
+
+// Search bar
+.search-bar-wrapper {
+	font-weight: 500;
+	padding-top: $navbar-padding-vertical;
+    .form-control {
+        @extend .med;
+    }
+}

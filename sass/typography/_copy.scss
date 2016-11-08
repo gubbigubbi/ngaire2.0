@@ -1,4 +1,14 @@
-p {
+html {
+  font-size: $font__base-size;
+  line-height: 21px;
+}
+body {
+  font-size: 1em;
+  line-height: 1.9em;
+  margin: auto;
+}
+
+p, ul, ol, pre, table, blockquote {
 	margin-bottom: $font__margin-bottom;
 }
 
@@ -40,9 +50,19 @@ mark, ins {
 	text-decoration: none;
 }
 
-big {
+big, .big {
 	font-size: 125%;
 }
+
+
+small, .small {
+	font-size: 80%;
+}
+
+med, .med {
+  font-size: 90%;
+}
+
 
 // Fixed Width
 
@@ -51,3 +71,8 @@ big {
     text-align: center;
 }
 
+// Compressed
+.text-max-width {
+  max-width: 514px;
+  @extend .center-block;
+}

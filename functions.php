@@ -23,9 +23,9 @@ function nagaire_2_0_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on ngaire2.0, use a find and replace
-	 * to change 'nagaire-2-0' to the name of your theme in all the template files.
+	 * to change 'ngaire-2-0' to the name of your theme in all the template files.
 	 */
-	load_theme_textdomain( 'nagaire-2-0', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'ngaire-2-0', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -73,9 +73,9 @@ add_action( 'after_setup_theme', 'nagaire_2_0_content_width', 0 );
  */
 function nagaire_2_0_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'nagaire-2-0' ),
+		'name'          => esc_html__( 'Sidebar', 'ngaire-2-0' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'nagaire-2-0' ),
+		'description'   => esc_html__( 'Add widgets here.', 'ngaire-2-0' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',

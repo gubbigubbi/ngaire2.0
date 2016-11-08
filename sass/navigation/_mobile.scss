@@ -7,6 +7,7 @@
  */
 .c-menu {
     position: fixed;
+    -webkit-backface-visibility: hidden; // fixed position fix for chrome
     z-index: 200;
     transition: transform 0.3s;
     text-align: center;
@@ -14,6 +15,12 @@
     overflow: hidden !important;
     font-family: $font__menus;
     font-size: 14px;
+    // Chrome
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    .hidden-mobile {
+        display: none;   
+    }
 }
 
 .c-menu__items, .c-menu__items > ul {
@@ -26,10 +33,10 @@
 }
 
 .c-menu__button {
-    margin: 12px 0;
+    margin: 20px 0;
     font-size: 150%;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     
 }
 
@@ -86,14 +93,18 @@ body.has-active-menu {
   height: 0;
   background-color: #000;
   opacity: 0;
-  transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
+  transition: width 0s 0.3s, height 0s 0.3s;
+  //transition: opacity 0.3s, width 0s 0.3s, height 0s 0.3s;
 }
 
 .c-mask.is-active {
   width: 100%;
   height: 100%;
   opacity: 0.7;
-  transition: opacity 0.3s;
+
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-delay: 0.3s;
 }
 
 .c-menu--slide-left,

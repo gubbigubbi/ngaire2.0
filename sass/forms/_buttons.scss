@@ -19,6 +19,10 @@ input[type="submit"] {
   text-align: center;
   text-transform: $font__buttons-case;
   font-family: $font__buttons;
+  font-weight: $font__weight-buttons;
+  font-size: $font__button-size;
+  line-height: $font__line-height-buttons;
+  letter-spacing: $font__letter-spacing-buttons;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
@@ -57,11 +61,34 @@ input[type="submit"] {
     @include button-variant( $button__border-primary-color, $button__border-bg, $button__border-border )
   &:focus,
   &.focus, &:hover {
+    color: $color__white;
+    background-color: $color__light;
+        border-color: $color__light;
+  }
+}
+
+// Create Variants
+.button__white {
+    @include button-variant( $button__white-primary-color, $button__white-bg, $button__white-border )
+  &:focus,
+  &.focus, &:hover {
     color: $color__light;
     background-color: $color__white;
         border-color: $color__white;
   }
 }
+
+// Create Variants
+.button__grey {
+    @include button-variant( $button__grey-primary-color, $button__grey-bg, $button__grey-border )
+  &:focus,
+  &.focus, &:hover {
+    color: $color__white;
+    background-color: $color__grey;
+        border-color: $color__grey;
+  }
+}
+
 
 // Block
 .button__block {
@@ -84,8 +111,46 @@ input[type="submit"] {
 
 // Groups
 .button__group {
-  margin-top: $grid__gutter;
+
   .button + .button {
     margin-left: .5rem;
+    
+    @include md {
+      margin-left: auto;
+      margin-top: .5rem;
+    }
+
+  }
+  
+}
+
+// Toolbars
+// Make the div behave like a button
+.button__toolbar,
+.button__toolbar-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+  margin-bottom: 2em;
+  > a {
+    position: relative;
+    float: left;
+    // Bring the "active" button to the front
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 2;
+    }
+  }
+}
+
+// Prevent double borders when buttons are next to each other
+.button__toolbar {
+  .button + .button,
+  .button + .button__toolbar,
+  .button__toolbar + .button,
+  .button__toolbar + .button__toolbar {
+    margin-left: -1px;
   }
 }

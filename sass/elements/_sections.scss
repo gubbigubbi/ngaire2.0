@@ -5,38 +5,76 @@
 }
 // Sections are rows 
 .section-header {
-    padding: $section__header-padding;
+    padding: 0;
     overflow: hidden;
+    .post-thumb-wrapper {
+        height: 100%;
+    }
 }
-.section-row, body:not(.full-width) .panel-grid {
+.section-row, body:not(.full-width) .content-area .panel-grid > div {
     padding: $section__row-padding;
+    @include xs {
+        padding: 40px 0 0 0;
+    }
+}
+
+.panel-grid {
+    float:left;
+    width: 100%;
+    &:first-of-type {
+        padding-top: 0;
+    }
+    @include sm {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        .panel-grid-cell {
+            padding-left: 0 !important;
+            padding-right: 0 !important;            
+        }
+    }
+}
+
+// Stretched section
+.siteorigin-panels-stretch {
+    @include sm {
+        .testimonial-block, .widget-title {
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+    }
 }
 
 // Header sections
 .header__text-only {
-    padding: 30px 0;
-}
-
-// For when the section exists in isolation
-.section__content-only {
-    padding: $section__content-only-padding;
+    padding: $footer__widget-area-padding;
+    background: $color__background-section-header;
+    color: $color__white;
 }
 
 .section__sidebar {
-    padding: 20px 0;
+    padding: 40px 0;
 }
 
-.panel-grid {
-    margin-bottom: 0 !important;
-    &:first-of-type {
-        padding-top: 0;
-    }
+.section-header__image {
+    height: 50vh;
 }
-.header__text-only {
-    @extend .block__grey;
+
+.section__video {
+    position: relative;
 }
 .section__video video { 
     width: 100%;
+    height: auto;
+    vertical-align: middle;
+    background-size:cover; 
+}
+.video-overlay {
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // No padding
@@ -53,11 +91,21 @@
     padding-right: 0;
 }
 
+// After Section
+.section__after-section {
+    @extend .block__light;
+    .widget-title { @extend .text-center; }
+    .button {
+ 
+    }
+    p { @extend big}
+}
+
 // Blocks
 .block__content {
     padding: 36px 12px;
 }
 
 .block__content-widget {
-    padding: 32px;
+    margin-bottom: 48px;
 }

@@ -4,4 +4,9 @@ article.has-post-thumbnail {
         margin-bottom: 2em;
         //@extend .col-md-6;
     }
+    @extend .block__border-bottom;
+    &:last-child {
+        border-bottom: 0;
+    }
 }
+

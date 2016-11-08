@@ -1,3 +1,10 @@
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin: 1.5em 0;
+}
+
 .line__xs, .line__sm, .line__md {
     &:after {
         background: $color__dark;
@@ -26,7 +33,7 @@
 }
 
 .nav-item__border-left {
-    border-left: 1px solid #{lighten($color__dark, 5%)};
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .nav-item__border-right {
@@ -34,5 +41,13 @@
 }
 
 .block__border-bottom {
-    border-bottom: 2px solid $color__grey;
+    border-bottom: 1px solid $color__neutral;
+}
+
+.block__border-right {
+	border-right: 1px solid $color__neutral;
+}
+
+.block__border-left {
+	border-left: 1px solid $color__neutral;
 }

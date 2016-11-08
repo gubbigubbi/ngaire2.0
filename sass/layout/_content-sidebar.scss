@@ -1,19 +1,21 @@
 .layout-content-sidebar {
+
 	.content-area {
 		@extend .col-lg-8;
 		@extend .col-md-12;
+		@extend .no-padding-left-md;
+		@extend .xtra-padding-right-md;
 	}
 	
-	.site-content .widget-area {
-		@extend .col-lg-4;
-
-		@include sm {
-			width: 100%;
-		}
-
+	aside.widget-area {
 		float: left;
 		@extend .no-padding-right-md;
-		
+		@extend .block__border-left;
+		@extend .col-lg-4;
+		@extend .xtra-padding-left-md;
+		@include sm {
+			width: 100%;
+		}	
 	}
 	
 	.site-footer {

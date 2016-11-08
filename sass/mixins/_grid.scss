@@ -23,6 +23,12 @@
 }
 /* Uncomment and set these variables to customize the grid. */
 
+.flex {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;    
+}
+
 .container-fluid, .container {
   margin-right: auto;
   margin-left: auto;
@@ -32,9 +38,7 @@
 
 .row {
   box-sizing: border-box;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
+    @extend .flex;
   -ms-flex: 0 1 auto;
   -webkit-box-flex: 0;
   flex: 0 1 auto;
@@ -85,6 +89,14 @@
 .row.no-gutters > [class*=" col-"] {
   padding-right: 0;
   padding-left: 0;
+}
+
+.row.col-collapsed > [class^="col-"],
+.row.col-collapsed > [class*=" col-"] {
+margin-bottom: 0;
+    > div {
+        margin-bottom: 0;
+    }
 }
 
 .col-xs,
@@ -972,6 +984,15 @@
   .no-padding-right-md {
     padding-right: 0;
   }
+  .no-padding-left-md {
+    padding-left: 0;
+  }
+    .xtra-padding-right-md {
+        padding-right: $grid__gutter;
+    }
+    .xtra-padding-left-md {
+        padding-left: $grid__gutter;
+    }
 }
 
 @media only screen and (min-width: $grid__breakpoint-lg) {

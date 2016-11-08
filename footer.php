@@ -15,7 +15,7 @@
 	</div><!-- #content -->
 	
 	<?php if ( is_active_sidebar( 'after-section' ) ) : ?>
-		<section class="section section__sidebar block__dark text__white">
+		<section class="section section__sidebar section__after-section text__white">
 			<div class="container">
 				<?php dynamic_sidebar( 'after-section' ); ?>
 			</div>
@@ -28,13 +28,7 @@
 		</div>
 		
 		<div class="site-info">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs">
-						<a href="/" rel="me">&copy; <?php echo date("Y") ?> <?php echo bloginfo() ?></a>
-					</div>
-				</div>
-			</div>
+			<?php get_template_part('template-parts/footer/footer','site-info'); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 	

@@ -1,9 +1,24 @@
+.logo a { color: $color__logo-text }
 .logo-link {
     float: left;
     max-width: $logo__max-width;
 }
-
 .logo svg {
     max-width: 100%;
     height: auto;
+}
+.logo {    
+    .site-title {
+        line-height: 1;
+        @extend .h3;
+        @extend .no-margin-top;
+        @extend .no-margin-bottom;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+    }
+    .site-description {
+        //font-family: $font__main;
+        font-weight: 300;
+        @extend .hidden-sm;
+    }
 }
