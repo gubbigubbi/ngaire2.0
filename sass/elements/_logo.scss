@@ -2,23 +2,27 @@
 .logo-link {
     float: left;
     max-width: $logo__max-width;
+	display: inline-block;
+	line-height: 0;
 }
 .logo svg {
     max-width: 100%;
     height: auto;
 }
-.logo {    
+.logo {
+    display: inline-block;
     .site-title {
         line-height: 1;
-        @extend .h3;
-        @extend .no-margin-top;
-        @extend .no-margin-bottom;
-        text-transform: uppercase;
-        letter-spacing: -1px;
+        @extend .h4;
+        @extend .mt0;
+        @extend .mb0;
+        text-transform: $font__logo-case;
+        letter-spacing: $font__logo-spacing;
     }
     .site-description {
-        //font-family: $font__main;
+        //font-family: $font--main;
         font-weight: 300;
         @extend .hidden-sm;
     }
 }
+.site-branding { display: flex; }

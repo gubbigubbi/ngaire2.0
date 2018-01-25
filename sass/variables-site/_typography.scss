@@ -1,41 +1,61 @@
 // Set fonts here
-$font__main: 'Noto Sans', sans-serif;
-$font__headings: 'Open Sans', san-serif;
-$font__menus: $font__headings;
-$font__buttons: $font__main;
+$font--main: sans-serif;
+$font--headings: sans-serif;
+$font--menus: sans-serif; 
+$font--preheader: $font--main;
+$font--buttons: $font--headings;
+
+@include css-vars((
+    --font-main: $font--main,
+    --font-headings: $font--headings,
+    --font-menus: $font--main,
+    --font-preheader: $font--preheader,
+    --font-buttons: $font--buttons
+));
+
 $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 
 $font__line-height-pre: 1.6;
 
 // Font Weights
-$font__weight-headings: 600;
-$font__weight-menus: 600;
-$font__weight-buttons: 600;
+$font__weight-headings: 500;
+$font__weight-menus: 400;
+$font__weight-buttons: 400;
 
 // Letter Spacing
-$font__letter-spacing-menus: 0.5px;
+$font__logo-spacing: 1px;
+$font__letter-spacing-menus: 1px;
 $font__letter-spacing-headings: 0px;
-$font__letter-spacing-buttons: 2px;
+$font__letter-spacing-buttons: 1px;
 
 //Line heights & margins
-$font__line-height-body: 21px;
-$font__margin-bottom: 21px;
-$font__line-height-buttons: 13px;
+$font__line-height-body: 1.6em;
+$font__margin-bottom: 15px;
+$font__line-height-buttons: 1;
 
 // Case
-$font__headings-case: normal;
-$font__headings-widget: normal;
-$font__menus-case: normal;
-$font__buttons-case: uppercase;
+$font__logo-case: initial;
+$font--headings-case: initial;
+$font--headings-widget: initial;
+$font--menus-case: initial;
+$font--buttons-case: uppercase;
+$font--headings-footer-widget: uppercase;
 
 // Font Sizes
-$font__base-size: 15px;
-$font__navbar-size: 14px;
-$font__preheader-size: 13px;
-$font__footer-size: 15px;
-$font__button-size: 13px;
+$font--size-base: 16px;
+$font--size-navbar: 15px;
+$font--size-preheader: 12px;
+$font--size-footer: 14px;
+$font--size-buttons: 14px;
+
+@include css-vars((
+    --font-size-base: $font--size-base,
+    --font-size-navbar: $font--size-navbar,
+    --font-size-preheader: $font--size-preheader,
+    --font-size-footer: $font--size-footer,
+    --font-size-button: $font--size-buttons
+));
 
 // Spacings
-$font__navbar-spacing: 0px;
 $font__heaings-spacing: 0px;

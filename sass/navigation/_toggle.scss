@@ -1,28 +1,19 @@
 // Toggle
 .navbar__collapse {
+  display: flex;
 	@media all and (max-width: #{$navbar__toggle-breakpoint}px) {
 		display: none;
 	}
 }
 .navbar__toggle {
-	display: none;
+  display: none;
+  @extend .end-xs;
 }
 .navbar__toggle {
 	@media all and (max-width: #{$navbar__toggle-breakpoint}px) {
-		display: inherit;
-		float: right;
+		display: flex;
 	}	
 }
-
-// Hamburger Icon
-
-$button-width: 72px;                    // The width of the button area
-$button-height: 64px;                   // The height of the button area
-$bar-thickness: 4px;                    // The thickness of the button bars
-$bar-border-radius: 6px;
-$button-pad: 18px;                      // The left/right padding between button area and bars.
-$button-bar-space: 6px;                // The spacing between button bars
-$button-transistion-duration: 0.3s;     // The transition duration
 
 .c-hamburger {
   display: block;
@@ -34,14 +25,13 @@ $button-transistion-duration: 0.3s;     // The transition duration
   height: $button-height;
   font-size: 0;
   text-indent: -9999px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   box-shadow: none;
   border-radius: none;
   border: none;
   cursor: pointer;
   transition: background $button-transistion-duration;
+  background-color: $toggle__background-color;
 }
 
 .c-hamburger:focus {

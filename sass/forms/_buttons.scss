@@ -17,10 +17,10 @@ input[type="submit"] {
   display: inline-block;
   margin-bottom: 0; // For input.btn
   text-align: center;
-  text-transform: $font__buttons-case;
-  font-family: $font__buttons;
+  text-transform: $font--buttons-case;
+  font-family: 'Gotham', sans-serif;
   font-weight: $font__weight-buttons;
-  font-size: $font__button-size;
+  font-size: var(--font-size-buttons);
   line-height: $font__line-height-buttons;
   letter-spacing: $font__letter-spacing-buttons;
   vertical-align: middle;
@@ -46,71 +46,79 @@ input[type="submit"] {
 }
 
 // Create Variants
-.button__primary {
-  @include button-variant( $button__add-to-primary-color, $button__add-to_bg, $button__add-to-border )
+.button--primary {
+  @include button-variant( $button--add-to-primary-color, $button--add-to_bg, $button--add-to-border )
   &:focus,
   &.focus, &:hover {
-    color: $button__add-to-primary-color;
-    background-color: darken($button__add-to_bg, 12%);
-        border-color: darken($button__add-to_bg, 12%);
+    color: #fff;
+    background-color: var(--color-dark);
+        border-color: var(--color-dark);
   }
 }
 
 // Create Variants
-.button__border {
-    @include button-variant( $button__border-primary-color, $button__border-bg, $button__border-border )
+.button--border {
+    @include button-variant( $button--border-primary-color, $button--border-bg, $button--border-border )
   &:focus,
   &.focus, &:hover {
     color: $color__white;
-    background-color: $color__light;
-        border-color: $color__light;
+    background-color: var(--color-light);
+        border-color: var(--color-light);
   }
 }
 
 // Create Variants
-.button__white {
-    @include button-variant( $button__white-primary-color, $button__white-bg, $button__white-border )
+.button--white {
+    @include button-variant( $button--white-primary-color, $button--white-bg, $button--white-border )
   &:focus,
   &.focus, &:hover {
-    color: $color__light;
+    color: var(--color-light);
     background-color: $color__white;
         border-color: $color__white;
   }
 }
 
 // Create Variants
-.button__grey {
-    @include button-variant( $button__grey-primary-color, $button__grey-bg, $button__grey-border )
+.button--grey {
+    @include button-variant( $button--grey-primary-color, $button--grey-bg, $button--grey-border )
   &:focus,
   &.focus, &:hover {
     color: $color__white;
-    background-color: $color__grey;
-        border-color: $color__grey;
+    background-color: var(--color-grey);
+        border-color: var(--color-grey);
   }
 }
 
-
 // Block
-.button__block {
+.button--block {
   display: block;
   width: 100%;  
 }
 
 // Small
-.button__small {
-  font-size: 60%;
-  padding: 5px 5px;
+.button--small {
+  font-size: 75%;
+  padding: 10px 14px;
   margin: 3px 3px;
 }
 
+.button--lg {
+  font-size: 120%;
+  padding: 18px 20px;
+  @include md {
+    font-size: initial;
+    line-height: 1.2em;
+  }
+}
+
 // Center
-.button__center {
+.button--center {
   margin-right: auto;
   margin-left: auto;
 }
 
 // Groups
-.button__group {
+.button--group {
 
   .button + .button {
     margin-left: .5rem;
@@ -126,16 +134,23 @@ input[type="submit"] {
 
 // Toolbars
 // Make the div behave like a button
-.button__toolbar,
-.button__toolbar-vertical {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle; // match .btn alignment given font-size hack above
-  margin-bottom: 2em;
-  > a {
-    position: relative;
-    float: left;
+.button--toolbar,
+.button--toolbar-vertical {
+  @extend .flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: $grid--gutter;
+  > .btn-filter {
+    flex-grow: 1;
+
     // Bring the "active" button to the front
+
+    @include md {
+      flex-basis: 100%;
+      max-width: 100%;
+      margin-bottom: $grid--gutter / 4;
+    }
+
     &:hover,
     &:focus,
     &:active,
@@ -143,14 +158,11 @@ input[type="submit"] {
       z-index: 2;
     }
   }
-}
-
-// Prevent double borders when buttons are next to each other
-.button__toolbar {
-  .button + .button,
-  .button + .button__toolbar,
-  .button__toolbar + .button,
-  .button__toolbar + .button__toolbar {
-    margin-left: -1px;
+  @include md-up {
+    > .btn-filter ~ .btn-filter {
+      margin-left: $grid--gutter / 2;
+    }
   }
+
+
 }

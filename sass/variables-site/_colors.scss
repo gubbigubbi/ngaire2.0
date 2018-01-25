@@ -1,13 +1,22 @@
-// Base colors
-$color__light: #00a952;
-$color__dark: #844fb0;
-$color__text-main: #999;
-$color__neutral: #ECF0F1;
-$color__white: #fff;
-$color__grey: #777;
-$color__borders: #e8e8e8;
+// Base colors & fallback
+$color--light: #0eacf3;
+$color--dark: #231f20;
+$color--text: #6a6f75;
+$color--neutral: #EBF3FA;
+$color--white: #fff;
+$color--grey: #EFEFEF;
+$color__borders: #EFEFEF;
 
-$color__background-body: $color__white;
+@include css-vars((
+    --color-light: $color--light,
+    --color-dark: $color--dark,
+    --color-text: $color--text,
+    --color-neutral: $color--neutral,
+    --color-grey: $color--grey,
+    --color-white: $color--white
+));
+
+$color__background-body: var(--color-neutral);
 $color__background-screen: #f1f1f1;
 $color__background-hr: rgba(130,130,130,0.14);
 $color__background-button: #e6e6e6;
@@ -15,65 +24,106 @@ $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
 
 $color__text-screen: #21759b;
-$color__link: $color__light;
-$color__link-hover: darken($color__light,10%);
-
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-abbr: #666;
 
+// Typogaphy
+$color--text-headings: darken($color--text,12.5%);
+$color__link: var(--color-light);
+$color__link-hover: darken($color--light,10%);
 //  Pre Nav
-$color__background-preheader: $color__dark;
-$color__text-preheader: $color__white;
-$color__anchor-hover: lighten($color__dark,40%);
+$color__background-preheader: var(--color-light);
+$color__text-preheader: $color--white;
+$color__preheader-nav-link: $color--white;
+$color__preheader-nav-link__hover: lighten($color--light,20%);
 
 // Logo
-$color__logo-text: $color__light;
+$color__logo-text: var(--color-dark);
 
 // Nav
-$color_background-navbar: $color__white;
-$color_nav-link: $color__text-main;
-$color_nav-link__hover: $color__dark;
-$color_nav-link__active: $color__dark;
-$color__border-nav: $color__neutral;
-$color__dropdown-link__active: $color__light;
+$color_background-navbar: var(--color-light);
+$color_nav-link: darken($color--white, 5%);
+$color_nav-link__hover: var(--color-white);
+$color_nav-link__active:  var(--color-white);
+$color_nav-link-background__hover: transparent;
+$color_nav-link-background__active: var(--color-white);
+$color__border-nav: var(--color-neutral);
+$color__dropdown-link__active: var(--color-light);
 
 // Toggle
-$toggle__icon-color: $color__light;
+$toggle__icon-color: var(--color-white);
+$toggle__background-color: transparent;
+
+// Mobile Nav
+$color_mobile-nav-link__active: var(--color-light);
+$color_mobile-nav-link__close: var(--color-neutral);
 
 // Widgets
 $color__background-widget: transparent;
 
 // Footer
-$color__background-footer-widget-area: $color__dark;
-$color__text-footer-widget-area: $color__white;
-$color__text-headings-footer-widget-area: $color__white;
-$color__background-site-info: $color__light;
-$color__text-site-info: #fff;
+$color__background-footer-widget-area: var(--color-light);
+$color__text-footer-widget-area: var(--color-white);
+$color__text-headings-footer-widget-area: var(--color-white);
+$color__background-site-info: transparent;
+$color__text-site-info: var(--color-text);
 
 // Sections
-$color__background-section-header: $color__light;
+$color__background-section-header: #f7f7f7;
+$color__background-section-header--image: var(--color-dark);
+$color__header--text-color: var(--color-white);
+
 //Elements
-$color__post-thumb: #333;
-$color__thumb-shaded: rgba($color__dark,0.5);
+$color__post-thumb: #58585a;
+//color over the header image
+$color__thumb-shaded: rgba(#000,0.3);
+$color__background-section-header-overlay: $color__thumb-shaded;
+
+    // Lines
+    $color__line-lr: var(--color-light);
 
 // Classes
-.text__white {
-    color: $color__white;
+.text--white {
+    color: $color--white;
+    > a {
+        color: $color--white;    
+    }
 }
-.text__light {
-    color: $color__light;
+.text--light {
+    color: var(--color-light);
 }
-.block__white {
-    background-color: $color__white;
+.text__main {
+    color: var(--color-text);
 }
-.block__grey {
-    background-color: $color__grey;
+.text--dark {
+    color: var(--color-dark);
 }
-.block__light {
-    background-color: $color__light;
+.block--white {
+    background-color: $color--white;
 }
-.block__dark {
-    background-color: $color__dark;
+.block--grey {
+    background-color: var(--color-grey);
+}
+.block--light {
+    background-color: var(--color-light);
+}
+.block--dark {
+    background-color: var(--color-dark);
+}
+.block--neutral {
+    background-color: var(--color-neutral);
+}
+.hover__light {
+    &:hover { 
+    @extend .block--light; 
+    @extend .transition-background-color; 
+    @extend .text--white; }
+}
+.hover__dark {
+    &:hover { 
+    @extend .block--dark; 
+    @extend .transition-background-color; 
+    @extend .text--white; }
 }

@@ -1,8 +1,8 @@
 .post-block .no-post-thumb {
-    .block__img-wrapper {
+    .block--img-wrapper {
         display: none;
     }
-    .block__text-wrapper {
+    .block--text-wrapper {
         @extend .col-md-12;
     }
 }

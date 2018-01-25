@@ -6,7 +6,7 @@ $zindex-modal: 999;
 $zindex-modal-bg: 101;
 $modal-backdrop-bg: rgba(0,0,0,0.6);
 $modal-content-border-width: 2px;
-$modal-content-border-color: $color__grey;
+$modal-content-border-color: var(--color-grey);
 $modal-backdrop-opacity: 0.8;
 
 // Kill the scroll on the body
@@ -81,7 +81,7 @@ $modal-backdrop-opacity: 0.8;
 // Top section of the modal w/ title and dismiss
 .modal-header {
   padding: 12px;
-  border-bottom: 2px solid $color__grey;
+  border-bottom: 2px solid var(--color-grey);
   @include clearfix;
 }
 // Close icon
@@ -105,7 +105,7 @@ $modal-backdrop-opacity: 0.8;
 .modal-footer {
   padding: 24px;
   text-align: right; // right align buttons
-  border-top: 2px solid $color__grey;
+  border-top: 2px solid var(--color-grey);
   @include clearfix(); // clear it in case folks use .pull-* classes on buttons
 }
 

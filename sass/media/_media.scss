@@ -25,9 +25,6 @@ object {
 @import "galleries";
 
  .b-lazy {
-        -webkit-transition: opacity 500ms ease-in-out;
-           -moz-transition: opacity 500ms ease-in-out;
-             -o-transition: opacity 500ms ease-in-out;
                 transition: opacity 500ms ease-in-out;
                  max-width: 100%;
                    opacity: 0;
@@ -35,3 +32,17 @@ object {
     .b-lazy.b-loaded {
                    opacity: 1;
     }
+	
+.image--circle {
+	border-radius: 50%;
+}
+
+.image__rounded {
+    border-radius: 2px;
+}
+
+.image__thumbnail {
+	border: 1px solid var(--color-neutral);
+	background-color: rgba(206,208,210,0.1);
+	padding: 3px;
+}

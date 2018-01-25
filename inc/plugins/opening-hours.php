@@ -32,27 +32,27 @@ class sd_opening_hours_widget extends WP_Widget {
 		echo $before_title . $title . $after_title;
 		?>
 		
-		<ul class="opening-hours">
+		<ul class="opening-hours list-unstyled ml0">
 			<?php if (!empty($instance['monday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Monday', 'framework'); ?><span class="opening-hour"><?php echo $instance['monday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Monday', 'framework'); ?><span class="opening-hour ml1-2 "><?php echo $instance['monday']; ?></span></li>
 			<?php endif; ?>
 			<?php if (!empty($instance['tuesday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Tuesday', 'framework'); ?><span class="opening-hour"><?php echo $instance['tuesday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Tuesday', 'framework'); ?><span class="opening-hour ml1-2"><?php echo $instance['tuesday']; ?></span></li>
 			<?php endif; ?>
 			<?php if (!empty($instance['wednesday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Wednesday', 'framework'); ?><span class="opening-hour"><?php echo $instance['wednesday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Wednesday', 'framework'); ?><span class="opening-hour ml1-2"><?php echo $instance['wednesday']; ?></span></li>
 			<?php endif; ?>
 			<?php if (!empty($instance['thursday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Thursday', 'framework'); ?><span class="opening-hour"><?php echo $instance['thursday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Thursday', 'framework'); ?><span class="opening-hour ml1-2"><?php echo $instance['thursday']; ?></span></li>
 			<?php endif; ?>
 			<?php if (!empty($instance['friday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Friday', 'framework'); ?><span class="opening-hour"><?php echo $instance['friday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Friday', 'framework'); ?><span class="opening-hour ml1-2"><?php echo $instance['friday']; ?></span></li>
 			<?php endif; ?>
 			<?php if (!empty($instance['saturday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Saturday', 'framework'); ?><span class="opening-hour"><?php echo $instance['saturday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Saturday', 'framework'); ?><span class="opening-hour ml1-2"><?php echo $instance['saturday']; ?></span></li>
 			<?php endif; ?>
 			<?php if (!empty($instance['sunday'])) : ?>
-			<li><i class="icon ion-android-time"></i><?php _e('Sunday', 'framework'); ?><span class="opening-hour"><?php echo $instance['sunday']; ?></span></li>
+			<li><i class="icon ion-android-time mr1-2"></i><?php _e('Sunday', 'framework'); ?><span class="opening-hour ml1-2"><?php echo $instance['sunday']; ?></span></li>
 			<?php endif; ?>
 		</ul>
 		

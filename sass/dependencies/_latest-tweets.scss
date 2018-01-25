@@ -1,0 +1,36 @@
+
+.latest-tweets {
+    position: relative;
+}
+
+.latest-tweets-icon {
+    right: 0;
+    position: absolute;
+    top: -76px;
+    color: var(--color-light);
+    font-size: 2em;
+}
+
+.latest-tweets .time-ago, .widget_recent_entries .post-date {
+    display: inline-block;
+    font-size: 12px;
+    width: 100%;
+}
+
+.widget_recent_entries .post-date {
+    @extend .icon;
+    &:before {
+        content: '\f3f3';
+        margin-right: 6px;
+    }
+}
+
+.opening-hours li {
+    .opening-hour {
+        float: right;
+    }
+    .icon {
+        color: var(--color-light);
+        @extend .icon-left;
+    }
+}

@@ -1,6 +1,7 @@
 <?php
 
 $selected = get_field('custom_post_types','options');
+
 if (empty($selected)) {
 	$selected = array("none");
 }
@@ -52,6 +53,52 @@ if( in_array('testimonials', $selected) ) {
 	// Hook into the 'init' action
 	add_action( 'init', 'custom_post_type_testimonial', 0 );
 }
+
+// Register Custom Post Type
+function custom_post_type_callout() {
+
+	$labels = array(
+		'name'                => _x( 'Callouts', 'Post Type General Name', 'text_domain' ),
+		'singular_name'       => _x( 'Callout', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'           => __( 'Callouts', 'text_domain' ),
+		'name_admin_bar'      => __( 'Callouts', 'text_domain' ),
+		'parent_item_colon'   => __( 'Parent Callout:', 'text_domain' ),
+		'all_items'           => __( 'All Callouts', 'text_domain' ),
+		'add_new_item'        => __( 'Add New Callout', 'text_domain' ),
+		'add_new'             => __( 'Add Callout', 'text_domain' ),
+		'new_item'            => __( 'New Callout', 'text_domain' ),
+		'edit_item'           => __( 'Edit Callout', 'text_domain' ),
+		'update_item'         => __( 'Update Callout', 'text_domain' ),
+		'view_item'           => __( 'View Callout', 'text_domain' ),
+		'search_items'        => __( 'Search Callout', 'text_domain' ),
+		'not_found'           => __( 'Not found', 'text_domain' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+	);
+	$args = array(
+		'label'               => __( 'callout', 'text_domain' ),
+		'description'         => __( 'Post Type Description', 'text_domain' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-awards',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,		
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'callout', $args );
+
+}
+
+add_action( 'init', 'custom_post_type_callout', 0 );
+	
 
 if( in_array('portfolio', $selected) ) {
 // Register Custom Post Type
@@ -237,9 +284,9 @@ if( in_array('service', $selected) ) {
 	
 		$labels = array(
 			'name'                => _x( 'Service', 'Post Type General Name', 'text_domain' ),
-			'singular_name'       => _x( 'Service', 'Post Type Singular Name', 'text_domain' ),
-			'menu_name'           => __( 'Service', 'text_domain' ),
-			'name_admin_bar'      => __( 'Service', 'text_domain' ),
+			'singular_name'       => _x( 'Services', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Services', 'text_domain' ),
+			'name_admin_bar'      => __( 'Services', 'text_domain' ),
 			'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
 			'all_items'           => __( 'All Services', 'text_domain' ),
 			'add_new_item'        => __( 'Add New Service', 'text_domain' ),
@@ -256,7 +303,7 @@ if( in_array('service', $selected) ) {
 			'label'               => __( 'service', 'text_domain' ),
 			'description'         => __( 'Post Type Description', 'text_domain' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail' ),
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
@@ -315,51 +362,52 @@ if( in_array('service', $selected) ) {
 	add_action( 'init', 'custom_taxonomy_service_category', 0 );
 
 }
-
+if( in_array('class', $selected) ) {
 // Register Custom Post Type
-function custom_post_type_special() {
-
-	$labels = array(
-		'name'                => _x( 'Specials', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Special', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Specials', 'text_domain' ),
-		'name_admin_bar'      => __( 'Specials', 'text_domain' ),
-		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
-		'all_items'           => __( 'All Specials', 'text_domain' ),
-		'add_new_item'        => __( 'Add New Special', 'text_domain' ),
-		'add_new'             => __( 'Add New', 'text_domain' ),
-		'new_item'            => __( 'New Special', 'text_domain' ),
-		'edit_item'           => __( 'Edit Special', 'text_domain' ),
-		'update_item'         => __( 'Update Special', 'text_domain' ),
-		'view_item'           => __( 'View Special', 'text_domain' ),
-		'search_items'        => __( 'Search Special', 'text_domain' ),
-		'not_found'           => __( 'Not found', 'text_domain' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
-	);
-	$args = array(
-		'label'               => __( 'special', 'text_domain' ),
-		'description'         => __( 'Post Type Description', 'text_domain' ),
-		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'thumbnail' ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-star-empty',
-		'show_in_admin_bar'   => true,
-		'show_in_nav_menus'   => true,
-		'can_export'          => true,
-		'has_archive'         => false,
-		'exclude_from_search' => true,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
-	);
-
-	if( in_array('special', $selected) ) {
-		// Hook into the 'init' action
-		add_action( 'init', 'custom_post_type_special', 0 );
+	function custom_post_type_class() {
+	
+		$labels = array(
+			'name'                => _x( 'Classes', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Class', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Classes', 'text_domain' ),
+			'name_admin_bar'      => __( 'Classes', 'text_domain' ),
+			'parent_item_colon'   => __( 'Parent Class:', 'text_domain' ),
+			'all_items'           => __( 'All Classes', 'text_domain' ),
+			'add_new_item'        => __( 'Add New Class', 'text_domain' ),
+			'add_new'             => __( 'Add Class', 'text_domain' ),
+			'new_item'            => __( 'New Class', 'text_domain' ),
+			'edit_item'           => __( 'Edit Class', 'text_domain' ),
+			'update_item'         => __( 'Update Class', 'text_domain' ),
+			'view_item'           => __( 'View Class', 'text_domain' ),
+			'search_items'        => __( 'Search Class', 'text_domain' ),
+			'not_found'           => __( 'Not found', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
+		);
+		$args = array(
+			'label'               => __( 'class', 'text_domain' ),
+			'description'         => __( 'Post Type Description', 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 5,
+			'menu_icon'           => 'dashicons-chart-line',
+			'show_in_admin_bar'   => true,
+			'show_in_nav_menus'   => true,
+			'can_export'          => true,
+			'has_archive'         => true,		
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+		);
+		register_post_type( 'class', $args );
+	
 	}
+	
+	// Hook into the 'init' action
+	add_action( 'init', 'custom_post_type_class', 0 );
 
 }
 
@@ -448,8 +496,6 @@ if( in_array('team', $selected) ) {
 }
 
 // Custom Meta
-
-
 
 class custom_meta_team {
 

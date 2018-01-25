@@ -2,39 +2,54 @@ $size__site-main: 100%;
 $size__site-sidebar: 25%;
 
 // Grid
-$grid__gutter: 2rem;
+$grid__gutter: 40px;
 
+$grid__breakpoint-xl: 1440px;
+$grid__breakpoint-lg-up: 1201px;
 $grid__breakpoint-lg: 1200px;
+$grid__breakpoint-md-up: 993px;
 $grid__breakpoint-md: 992px;
+$grid__breakpoint-sm-up: 769px;
 $grid__breakpoint-sm: 768px;
 $grid__breakpoint-xs: 544px;
 
 $grid__container-max-width: (
     sm: 576px,
-    md: 720px,
+    md: 740px,
     lg: 940px,
-    xl: 1160px
+    xl: 1140px,
+	xl-bd: 1140px,
 );
 
 // Preheader
-$navbar-preheader__padding-vertical: 0px;
+$navbar-preheader__padding-vertical: 8px;
 $navbar-preheader__nav-item-padding-vertical: 8px;
 
 // Navbar
-$navbar__toggle-breakpoint: 1239; // dimensionless - px added
+$navbar__toggle-breakpoint: 1060; // dimensionless - px added
 $navbar-margin-bottom: 0;
-$navbar-padding-vertical: 12px;
-$navbar-padding-vertical__scroll: 4px;
+$navbar-padding-vertical: 1em;
+$navbar-padding-vertical__scroll: 0px;
 $navbar-padding-horizontal: 0;
+$navbar-border-bottom: 0px solid rgba($color--neutral,0);
+
+// links
+$navbar-link-padding-horizontal: 1.5em;
+$navbar-primary-link-padding: 3px;
 
 // Logo
-$logo__max-width: 200px;
+$logo__max-width: 140px;
 
 // Sections
-$section__header-padding: 220px 0 220px 0;
-$section__row-padding: 40px 0 40px 0;
-$section__content-only-padding: 50px 0 50px 0;
+$section__header-padding: 60px 0;
+$section__content-only-padding: $grid--gutter*2 0 $grid--gutter*2 0;
+
+// Gallery
+$gallery__item-padding: 0.4em;
 
 // Footer
-$footer__widget-area-padding: 30px 0;
+$footer__widget-area-padding: $grid--gutter*1 0;
 $footer__copyright-padding: 12px 0;
+
+// Thumbs
+$block--margin-bottom: $grid__gutter / 2;

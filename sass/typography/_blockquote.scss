@@ -1,0 +1,27 @@
+blockquote {
+    margin-top: $grid__gutter/2;
+    @extend .text--light;
+    @extend .center-xs;
+    &:before, &:after {
+        background: var(--color-light);
+        content: '';
+        
+        height: 2px;
+        display: block;
+        width: 150px;
+    }
+    &:before {
+        margin-bottom: 10px;
+    }
+    &:after {
+        margin-top: 10px;
+    }
+    &:before, &:after {
+        @extend .center-block;
+    }
+    > p {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+}

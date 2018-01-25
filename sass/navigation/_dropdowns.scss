@@ -27,13 +27,14 @@
           background-clip: padding-box;
 }
 .dropdown-menu {
-  opacity:0;
+  opacity: 0;
   transform-origin: top;
   animation-fill-mode: forwards; 
   display: block; 
   transition: all 0.2s linear;
+  visibility: hidden;
 }
-.dropdown-menu.pull-right {
+.dropdown-menu.f-right { 
   right: 0;
   left: auto;
 }
@@ -51,17 +52,17 @@
   padding: 12px 20px;
   clear: both;
   font-weight: normal;
-  color: $color__text-main;
+  color: var(--color-text);
   white-space: nowrap;
   @extend .transition-color;
   &:visited {
-    color: $color__text-main;
+    color: var(--color-text);
   }
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: $color__light;
+  color: var(--color-light);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -86,7 +87,8 @@
 
 .open > .dropdown-menu {
   transform: scale(1, 1);  
-  opacity:1;
+  opacity: 1;
+  visibility: visible;
 }
   
 .open > a {
@@ -116,7 +118,7 @@
   top: 0;
   z-index: 990;
 }
-.pull-right > .dropdown-menu {
+.f-right > .dropdown-menu {
   right: 0;
   left: auto;
 }

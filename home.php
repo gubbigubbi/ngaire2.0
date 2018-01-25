@@ -16,6 +16,13 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
+		<?php 
+		$title = get_field( 'header_content', get_option('page_for_posts', true));
+		echo '<header class="entry-header center-xs">';
+			echo $title;
+		echo '</header><!-- .entry-header -->'; 
+		?>
+
 		<?php
 		if ( have_posts() ) :
 

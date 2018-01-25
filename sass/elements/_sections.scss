@@ -11,52 +11,23 @@
         height: 100%;
     }
 }
-.section-row, body:not(.full-width) .content-area .panel-grid > div {
-    padding: $section__row-padding;
-    @include xs {
-        padding: 40px 0 0 0;
-    }
-}
-
-.panel-grid {
-    float:left;
-    width: 100%;
-    &:first-of-type {
-        padding-top: 0;
-    }
-    @include sm {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        .panel-grid-cell {
-            padding-left: 0 !important;
-            padding-right: 0 !important;            
-        }
-    }
-}
-
-// Stretched section
-.siteorigin-panels-stretch {
-    @include sm {
-        .testimonial-block, .widget-title {
-            padding-left: 1em;
-            padding-right: 1em;
-        }
-    }
-}
 
 // Header sections
-.header__text-only {
+.section--header-text-only {
     padding: $footer__widget-area-padding;
     background: $color__background-section-header;
-    color: $color__white;
+    color: $color__header--text-color;
 }
 
 .section__sidebar {
     padding: 40px 0;
 }
 
-.section-header__image {
-    height: 50vh;
+.section-header--image {
+    padding: $section__header-padding;
+    position: relative;
+    background-color: $color__background-section-header--image;
+    background-position: center center;
 }
 
 .section__video {
@@ -69,16 +40,16 @@
     background-size:cover; 
 }
 .video-overlay {
-  background: rgba(0,0,0,0.5);
+  background: $color__background-section-header-overlay;
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  @extend .middle-xs;
 }
 
 // No padding
-.section__no-padding {
+.section_.p0 {
     .panel-grid-cell {
         padding-top: 0 !important;
         padding-bottom: 0 !important;
@@ -92,20 +63,6 @@
 }
 
 // After Section
-.section__after-section {
-    @extend .block__light;
+.section---section {
     .widget-title { @extend .text-center; }
-    .button {
- 
-    }
-    p { @extend big}
-}
-
-// Blocks
-.block__content {
-    padding: 36px 12px;
-}
-
-.block__content-widget {
-    margin-bottom: 48px;
 }

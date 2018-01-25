@@ -1,10 +1,6 @@
-html {
-  font-size: $font__base-size;
-  line-height: 21px;
-}
 body {
-  font-size: 1em;
-  line-height: 1.9em;
+  //font-size: 1em;
+  line-height: $font__line-height-body;
   margin: auto;
 }
 
@@ -50,19 +46,35 @@ mark, ins {
 	text-decoration: none;
 }
 
-big, .big {
-	font-size: 125%;
-}
-
-
 small, .small {
 	font-size: 80%;
 }
-
 med, .med {
-  font-size: 90%;
+	font-size: 90%;
+}  
+big, .big {
+	font-size: 125%;
+}
+.grande {
+	font-size: 300%;
 }
 
+// Font Weights
+.fw-300 {
+	font-weight: 300;
+}
+.fw-500 {
+	font-weight: 600;
+}
+
+.fw-900 {
+	font-weight: 900;
+}
+
+// Font Transforms
+.text--initial {
+	text-transform: initial;
+}
 
 // Fixed Width
 
@@ -73,6 +85,37 @@ med, .med {
 
 // Compressed
 .text-max-width {
-  max-width: 514px;
+  max-width: 640px;
   @extend .center-block;
+}
+
+// Superset
+.superset {
+	position: relative;
+	top: -7px;
+}
+
+// Link solidcolor
+.color-inherit {
+	color: inherit;
+}
+
+.dont-break-out {
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
 }

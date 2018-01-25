@@ -23,8 +23,8 @@ function ngaiire_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	
 	register_sidebar( array(
@@ -33,8 +33,8 @@ function ngaiire_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h4 class="widget-title">',
-		'after_title'   => '</h4>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	
     register_sidebar( array(
@@ -43,8 +43,8 @@ function ngaiire_widgets_init() {
         'description'   => '',
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
-        'before_title'  => '<h4 class="widget-title">',
-        'after_title'   => '</h4>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
     ) );
 	
     register_sidebar( array(
@@ -53,13 +53,21 @@ function ngaiire_widgets_init() {
         'description'   => '',
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
-        'before_title'  => '<h4 class="widget-title">',
-        'after_title'   => '</h4>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
     ) );
 	
 	register_sidebar( array(
 		'name'          => 'After Footer Widget',
 		'id'            => 'after-footer-widget',
+		'description'   => '',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+	) );
+
+	register_sidebar( array(
+		'name'          => 'Pre Footer Widget',
+		'id'            => 'pre-footer-widget',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -99,6 +107,18 @@ function custom_sidebars() {
 		'before_widget' => '<div id="%1$s" class="widget widget_text">',
 		'after_widget'  => '</div>',
 	);
+	register_sidebar( $args );
+
+	$args = array(
+		'id'            => 'after-header',
+		'name'          => __( 'After Header', 'text_domain' ),
+		'description'   => __( 'Widget area shown after the header - used for putting a contact form over the slider', 'text_domain' ),
+		'before_title'  => '<h4 class="h3 widget-title">',
+		'after_title'   => '</h4>',
+		'before_widget' => '<div id="%1$s" class="widget widget_text">',
+		'after_widget'  => '</div>',
+	);
+
 	register_sidebar( $args );
 
 	$args = array(

@@ -1,11 +1,36 @@
+@mixin xl {
+    @media all and (max-width: $grid__breakpoint-xl) {
+        @content;
+    }
+}
+
 @mixin lg {
     @media all and (max-width: $grid__breakpoint-lg) {
         @content;
     }
 }
 
+@mixin lg-up {
+    @media all and (min-width: $grid__breakpoint-lg-up) {
+        @content;
+    }
+}
+
+@mixin md-up {
+    @media all and (min-width: $grid__breakpoint-md-up) {
+        @content;
+    }    
+}
+
+
 @mixin md {
     @media all and (max-width: $grid__breakpoint-md) {
+        @content;
+    }    
+}
+
+@mixin sm-up {
+    @media all and (min-width: $grid__breakpoint-sm-up) {
         @content;
     }    
 }
@@ -22,7 +47,7 @@
     }    
 }
 /* Uncomment and set these variables to customize the grid. */
-
+.fl-lft { float: left; }
 .flex {
   display: -ms-flexbox;
   display: -webkit-box;
@@ -69,26 +94,36 @@
 .hidden-lg, .hidden-md, .hidden-sm, .hidden-xs {
   display: none;
 }
-.text-center-xs, .text-center-sm, .text-center-md {
-  text-align: center !important;
+
+.offset-top-xs, .offset-top-sm, .offset-top-md, .offset-top-lg {
+  margin-top: $grid--gutter/2;
 }
-.text-left-sm, .text-left-md {
-    text-align: left !important;
+.offset-right-xs, .offset-right-sm, .offset-right-md, .offset-right-lg {
+  margin-right: $grid--gutter/2;
 }
-.offset-top-xs, .offset-top-sm, .offset-top-md {
-  margin-top: 1em;
+.offset-left-xs, .offset-left-sm, .offset-left-md, .offset-left-lg {
+  margin-left: $grid--gutter/2;
 }
 .offset-bottom {
-    margin-bottom: 1em;
+    margin-bottom: $grid--gutter/2;
 }
 .row.no-gutters, .row.internal {
   margin-right: 0;
   margin-left: 0;
 }
+.row.sm-gutters {
+    margin-left: -$grid--gutter/3;
+    margin-right: -$grid--gutter/3;
+}
+.row.sm-gutters > [class^="col-"],
+.row.sm-gutters > [class*=" col-"] {
+  padding-right: $grid--gutter/3;
+  padding-left: $grid--gutter/3;
+}
 .row.no-gutters > [class^="col-"],
 .row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
+  @extend .pr0;
+  @extend .pl0;
 }
 
 .row.col-collapsed > [class^="col-"],
@@ -521,15 +556,16 @@ margin-bottom: 0;
     -webkit-box-ordinal-group: 2;
     order: 1;
   }
-  .text-center-xs {
-    text-align: inherit;
-  }
-  .hidden-xs {
-    display: inherit;
-  }
   .offset-top-xs {
     margin-top: inherit;
   }
+    .offset-right-xs {
+        margin-right: inherit;
+    }
+    .offset-left-xs {
+        margin-left: inherit;
+    }
+
 }
 
 @media only screen and (min-width: $grid__breakpoint-sm) {
@@ -746,16 +782,18 @@ margin-bottom: 0;
     order: 1;
   }
   
-  .text-left-sm {
-    text-align: inherit;
-  }
-  
   .hidden-sm {
     display: inherit;
   }
   .offset-top-sm {
     margin-top: inherit;
   }
+    .offset-right-sm {
+        margin-right: inherit;
+    }
+    .offset-left-sm {
+        margin-left: inherit;
+    }
 }
 
 @media only screen and (min-width: $grid__breakpoint-md) {
@@ -975,16 +1013,19 @@ margin-bottom: 0;
   .hidden-md {
     display: inherit;
   }
-  .text-center-md, .text-left-md {
-    text-align: inherit;
-  }
   .offset-top-md {
     margin-top: inherit;
   }
-  .no-padding-right-md {
+    .offset-right-md {
+        margin-right: inherit;
+    }
+    .offset-left-md {
+        margin-left: inherit;
+    }
+  .p0-right-md {
     padding-right: 0;
   }
-  .no-padding-left-md {
+  .pl0-md {
     padding-left: 0;
   }
     .xtra-padding-right-md {
@@ -998,6 +1039,10 @@ margin-bottom: 0;
 @media only screen and (min-width: $grid__breakpoint-lg) {
   .container {
     width: map-get($grid__container-max-width,xl);
+  }
+  
+  .container-bd {
+    width: map-get($grid__container-max-width,xl-bd);
   }
 
   .col-xl,

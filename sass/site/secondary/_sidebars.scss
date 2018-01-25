@@ -1,0 +1,9 @@
+.sidebar-inline aside {
+    @extend .f-left;
+}
+.sidebar-inline ul {
+    @extend .list-inline;
+    > li {
+        @extend .nav-item;
+    }
+}

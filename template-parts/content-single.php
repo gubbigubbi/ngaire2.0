@@ -12,14 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
         <header class="entry-header">
-
-			<?php if(get_post_type() == 'team') {
-				the_post_thumbnail('potrait-thumb');
-			} else {
-				the_post_thumbnail('post-thumb');
-			}
-			?>
-            
+			<?php the_title('<h1 class="h2 mb1-2">','</h1>'); ?>
             <?php if ( 'post' === get_post_type() ) : ?>
                 <?php get_template_part('template-parts/post-meta'); ?>
             <?php

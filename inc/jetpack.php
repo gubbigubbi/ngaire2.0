@@ -16,9 +16,9 @@
 function nagaire_2_0_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
-		'container' => 'main',
+		'container' => 'primary',
 		'render'    => 'nagaire_2_0_infinite_scroll_render',
-		'footer'    => 'page',
+
 	) );
 
 	// Add theme support for Responsive Videos.

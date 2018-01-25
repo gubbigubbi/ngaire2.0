@@ -2,16 +2,19 @@ body,
 button,
 input,
 select,
-textarea {
-	color: $color__text-main;
-	font-family: $font__main;
-	@include font-size(1);
+textarea, .p {
+	color: var(--color-text);
+	font-family: var(--font-main);
 	line-height: $font__line-height-body;
+	font-size: var(--font-size-base);
+	line-height: 21px;
+
 }
 
 @import "headings";
 
 @import "copy";
 @import "icons";
+@import "blockquote";
 
 .text-uppercase { text-transform: uppercase; }

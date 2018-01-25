@@ -1,8 +1,10 @@
-// Not using woo in this theme atm
+// wOO
 @import "woocommerce";
 @import "woocommerce-layout";
 @import "woocommerce-smallscreen";
+@import "woocommerce-custom"; 
 
 @import "slick";
-
 @import "colorbox";
+
+//@import "latest-tweets";

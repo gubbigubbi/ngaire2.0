@@ -4,10 +4,10 @@
     
     <section class="section-row">
         <div class="row middle-md">
-            <div class="col-md-4">
+            <div class="col-md-4 center-xs">
                 <?php get_template_part('template-parts/header/logo'); ?>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 coming-soon-description">
                 <h1 class="h4">Website Coming Soon</h1>
                 <p>We are working hard to get our website underway, in the meantime you can contact us using the details below:</p>
                 <p><a href="mailto:<?php echo $contact_email; ?>"><?php echo $contact_email; ?></a></p>

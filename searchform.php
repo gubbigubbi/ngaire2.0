@@ -2,7 +2,7 @@
 	<div class="input-group">
 		<input type="text" class="form-control" placeholder="Search" name="s">
 		<div class="input-group-btn">
-			<button class="button button__primary" type="submit"><i class="ion-android-search"></i></button>
+			<button class="button button--primary" type="submit"><i class="icon-search_teal-circle"></i></button>
 		</div>
 	</div>
 </form>

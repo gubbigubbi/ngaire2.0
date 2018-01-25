@@ -25,7 +25,7 @@ $myAppLogo = new appLogo($logo, $logo_mobile);
 		
 		<?php $description = get_bloginfo( 'description', 'display' );
 		if ( $description || is_customize_preview() ) : ?>
-			<p class="site-description no-margin-top no-margin-bottom"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+			<p class="site-description mt0 mb0"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 		<?php
 		endif; ?>
     <?php } ?>

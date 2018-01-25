@@ -1,13 +1,10 @@
-<nav class="navbar navbar-preheader hidden-xs">
+<nav class="navbar navbar-preheader">
     <div class="navbar-inner">
         <div class="row middle-xs">
 			
 			<?php if ( is_active_sidebar( 'pre-header' ) ) : ?>
-				<div class="col-md-8 col-xs hidden-sm">
+				<div class="col-md-12 col-xs f-right">
 					<?php dynamic_sidebar( 'pre-header' ); ?>
-				</div>
-				<div class="col-md-4 col-xs end-xs">
-					<?php echo do_shortcode('[socials alignment="right"]'); ?> 	
 				</div>
 			<?php else: ?>			
 				<div class="col-md col-xs end-xs">
@@ -25,8 +22,7 @@
 						);
 					endif;
 					?>
-					
-					<?php echo do_shortcode('[socials alignment="right"]'); ?>  
+					 
 				</div>
 			<?php endif; ?>
         </div>

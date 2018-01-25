@@ -1,0 +1,50 @@
+.navbar-inner {
+    @extend .container;
+    @extend .container-bd;
+}
+.site-branding {
+    @extend .col-xs-12;
+}
+
+body.logo-inline {
+    .site-branding {
+        @extend .col-xs-6;
+        @extend .col-sm-4;
+        @extend .col-md-4;
+        @extend .col-lg-3;
+        //@extend .center-xs;
+    }
+}
+
+.site-menu-container {
+    @extend .start-xs;
+    @extend .col-xs;
+}
+
+.navbar-split {
+    .site-menu-container { 
+        @extend .col-sm-4;
+        @extend .col-lg-3; 
+        @extend .col-md-4; 
+    }
+}
+
+body.navbar-left, body.navbar-right {
+    .site-menu-container {
+        @extend .pl0;
+    }
+}
+
+@include xs {
+    .navbar-inner {
+        padding-left: $grid__gutter/2;
+        padding-right: $grid__gutter/2;
+    }
+}
+
+.center-xs > .navbar__toggle {
+    float: none;
+    > button {
+        @extend .center-block;
+    }
+}

@@ -23,6 +23,7 @@ $class-slug: stagger !default
 
 .icon-bounce {
   animation: bounce 2s infinite;
+	animation-delay: 2s;
 }
 
 @-webkit-keyframes fa-spin {
@@ -68,3 +69,7 @@ $class-slug: stagger !default
  40% {transform: translateY(-30px);}
  60% {transform: translateY(-15px);}
 }
+
+.wow {
+   visibility: hidden;
+ }

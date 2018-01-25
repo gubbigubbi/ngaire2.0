@@ -1,6 +1,6 @@
 .post-thumb {
     overflow: hidden;
-    background-color: $color__post-thumb;
+    //background-color: $color__post-thumb;
 }
 .post-thumb-wrapper { 
     position: relative;
@@ -19,7 +19,11 @@
             width: 100%;
             position: absolute;
             left: 0;
-            padding: 0 40px;
+            padding: 0 20px;
+            &.btm-l {
+                text-align: left;
+                top: 80%;
+            }
         }
     }
 }
@@ -29,21 +33,20 @@
 }
 
 .post-thumb-wrapper-overlay > span, .post-thumb-wrapper-overlay > span a {
-    @extend .text__white;
+    @extend .text--white;
 }
 
 // Show span on hover
 
-.post-thumb-wrapper.show-on-hover {
+.post-thumb-wrapper.slide-up-on-hover {
     .post-thumb-wrapper-overlay {
-        span {
-            top: 70%;
+            top: 50%;
             @extend .transition-top;
-        }
-        &:hover {
-            span {
-                top: 50%;
-            }
+            @extend .overlay__shaded;
+    }
+    &:hover {
+        .post-thumb-wrapper-overlay {
+            top: 0;
         }
     }
 }
@@ -65,23 +68,16 @@
 // Go to black on hover
 
 .post-thumb-wrapper.hide-img-on-hover {
-    img {
-        @extend .transition-opacity;
-        opacity: 1;
-        -webkit-backface-visibility: hidden;
-    }
-    span {
+    .post-thumb-wrapper-overlay {
         opacity: 0;
         @extend .transition-opacity;
         transition-delay: 0.1s;
         -webkit-backface-visibility: hidden;
-
+        background-color: $thumbnail__span-bg;
+        
     }
     &:hover {
-        img {
-            opacity: 0;
-        }
-        span {
+        .post-thumb-wrapper-overlay {
             opacity: 1;
         }
     }

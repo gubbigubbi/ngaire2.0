@@ -2,7 +2,7 @@
 $contact_email = get_field('contact_email_address','options');
 ?>
 
-<ul class="nav navbar-nav navbar-nav__left navbar-contact navbar-first no-margin-left">
+<ul class="nav navbar-nav navbar-nav__left navbar-contact navbar-first ml0">
 						
     <?php if(get_field('office_address_short','options')): ?>
     <li class="nav-item">

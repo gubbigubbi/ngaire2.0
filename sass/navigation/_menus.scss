@@ -3,6 +3,9 @@
 	@extend .list-unstyled;
 }
 
+.site-header {
+	background-color: $color_background-navbar;
+}
 // Wrapper and base class
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
@@ -14,18 +17,15 @@
 	border-bottom: 0px solid $color__border-nav;
 	background-color: $color_background-navbar;
 	padding: $navbar-padding-vertical $navbar-padding-horizontal;
-	transition: all 0.7s ease;
-	transition-property: opacity, padding, background-color, color;
+	transition: padding 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+
 }
 
-.navbar-nav {
-  .nav-item {
+.nav-item {
 	float: left;
-	padding-left: 0.8rem;
-	padding-right: 0.8rem;
-	letter-spacing: $font__navbar-spacing;
-  }
-
+	padding-left: $navbar-link-padding-horizontal;
+	padding-right: $navbar-link-padding-horizontal;
+	letter-spacing: $font__letter-spacing-menus;
 }
 
 .comment-navigation,
@@ -51,35 +51,45 @@
 
 // Primary Nav Specific
 .navbar-primary {
-	font-size: $font__navbar-size;
+	font-family: var(--font-headings);	
+	font-size: var(--font-size-navbar);
 	font-weight: $font__weight-menus;
-	letter-spacing: $font__letter-spacing-menus
+	letter-spacing: $font__letter-spacing-menus;
+	border-bottom: $navbar-border-bottom;
+	text-transform: $font--menus-case;
+
+	.navbar__collapse > li.nav-item {
+		&.active > a { 
+			border-bottom: 2px solid var(--color-light); 
+		}
+		> a {
+			padding-top: $navbar-primary-link-padding;
+			padding-bottom: $navbar-primary-link-padding
+		}
+	}
 }
 
 .navbar-preheader {
-	font-size: $font__preheader-size;
+	font-family: var(--font-preheader);
+	font-size: var(--font-size-preheader);
 	padding: $navbar-preheader__padding-vertical 0;
 	background-color: $color__background-preheader;
 	color: $color__text-preheader;
 	.nav-item {
 		padding: $navbar-preheader__nav-item-padding-vertical 12px;
-		> a {
-			padding: 0;
-			color: $color__text-preheader;
-			&:hover {
-				color: $color__anchor-hover;
-			}
+	}
+	
+	li	> a {
+		@extend .p0;
+		color: $color__preheader-nav-link;
+		&:visited {
+			color: $color__preheader-nav-link;
+		}
+		&:hover {
+			color: $color__preheader-nav-link__hover;
 		}
 	}
-	.navbar-nav__socials {
-		
-	}
 }
-
-.navbar-preheader, .navbar-primary {
-	font-family: $font__menus;	
-}
-
 // Fix the top/bottom navbars when screen real estate supports it
 .navbar-fixed-top,
 .navbar-fixed-bottom {
@@ -90,7 +100,8 @@
 }
 .navbar-fixed-top {
   top: 0;
-  border-width: 0 0 0px;
+  //border-width: 0 0 2px;
+  //transform: scaleY(0.6);
   padding: $navbar-padding-vertical__scroll $navbar-padding-horizontal;
 }
 .navbar-fixed-bottom {
@@ -100,6 +111,11 @@
 }
 
 // Alignment
+.navbar-center .navbar-primary .navbar-nav.navbar__collapse {
+	@extend .navbar-nav__center;
+	@extend .ml0;
+}
+
 .navbar-nav__left {
 	float: left;
 	> li {
@@ -110,7 +126,7 @@
 }
 
 .navbar-nav__right {
-	@extend .pull-right;
+	@extend .f-right;
 	> li {
 		&:last-child {
 			padding-right: 0;
@@ -119,32 +135,33 @@
 }
 
 .navbar-nav__center {
-	text-align: center;
-	width: 100%;
-	float: left;
-	.nav-item {
-		display: inline-block;
-		float:none;
+	@include md-up {
+		display: flex;
 	}
+	justify-content: center;
 }
 
 .navbar-fixed-top.navbar-is-at-top {
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.8);
     transition: background-color 1s ease, color 1s ease;
     .logo a { transition: color 0.5s ease; color: $color__white; }
-    .navbar-nav > .nav-item > a {
-        color: rgba(255, 255, 255, 0.8);
-
-		&:hover, &:focus,
-		&:active {
-			color: $color__white;
-		}
-    }
-	.nav-link, .nav-item.current-menu-item > a {
-		color: $color__white;
-	}
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+// Split nav
+.navbar-split {
+	.site-menu-container, .site-branding {
+		@extend .col-md-4;
+	}
+	
+}
 
+// Aligment
+.navbar-left .navbar-aligner {
+	@extend .start-xs;
+}
+
+// Sticky
+.navbar-sticky {
+	@extend .p--sticky;
+	top: 0;
+	z-index: 99;
+}

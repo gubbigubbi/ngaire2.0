@@ -13,45 +13,213 @@
     text-align: center;
 }
 
-.pull-right {
-	float: right;
+.m0 {
+	margin: 0;
 }
 
-.no-margin-left {
+.ml0 {
 	margin-left: 0 !important;
 }
 
-.no-margin-bottom {
+.ml1-2 {
+	margin-left: $grid--gutter / 4 !important;
+}
+.mr1-2 {
+	margin-right: $grid--gutter / 4 !important;
+}
+.mb0 {
 	margin-bottom: 0 !important;
 }
-
-.no-margin-top {
+.mb1-2 {
+	margin-bottom: $grid--gutter / 4 !important;
+}
+.mb1 {
+	margin-bottom: $grid--gutter / 2;
+}
+.mb2 {
+	margin-bottom: $grid--gutter;
+}
+.mb3 {
+	margin-bottom: $grid--gutter * 1.5;
+}
+.mt0 {
 	margin-top: 0 !important;
 }
+.mt1-2 {
+	margin-top: $grid--gutter / 4;
+}
+.mt1 {
+	margin-top: $grid--gutter / 2;
+}
+.mt2 {
+	margin-top: $grid--gutter;
+}
+.mt3 {
+	margin-top: $grid--gutter * 1.5;
+}
 
-.no-padding-left {
+.my0 {
+	@extend .mb0;
+	@extend .mt0;
+}
+.my1 {
+	@extend .my1;
+	@extend .my2;
+}
+.my2 {
+	@extend .mb2;
+	@extend .mt2;
+}
+// :left
+.ml1 {
+	margin-left: $grid__gutter / 2;
+}
+.ml2 {
+	margin-left: $grid__gutter;
+}
+
+// margin :right
+.mr0 {
+	margin-right: 0;
+}
+.mr1-4 {
+	margin-right: $grid__gutter / 8 ;
+}
+.mr2 {
+	margin-right: $grid__gutter;
+}
+// padding
+.p1 {
+	padding: $grid__gutter / 2;
+}
+.p2 {
+	padding: $grid__gutter;
+}
+.px0 {
+	padding-left: 0;
+	padding-right: 0;
+}
+.p1-2 {
+	padding: $grid__gutter / 4;
+}
+.px1-2 {
+	padding-left: $grid__gutter / 4;
+	padding-right: $grid__gutter / 4;
+}
+.py1-2 {
+	padding-top: $grid__gutter / 4;
+	padding-bottom: $grid__gutter / 4;
+}
+.px1 {
+	padding-left: $grid__gutter / 2;
+	padding-right: $grid__gutter / 2;
+}
+
+.px2 {
+	padding-left: $grid__gutter;
+	padding-right: $grid__gutter;
+}
+
+// padding left :right
+.pl2 {
+	padding-left:$grid__gutter
+}
+
+.pr2 {
+	padding-right: $grid__gutter
+}
+
+.w100 {
+	width: 100%;
+}
+
+.pl0 {
 	padding-left: 0 !important;
 }
 
-.no-padding-right {
+.pr0 {
 	padding-right: 0 !important;
 }
 
-.no-padding-bottom {
+.pb0 {
 	padding-bottom: 0 !important;
 }
-
-.no-padding-top {
+.pb2 {
+	padding-bottom: $grid__gutter;
+}
+.pt0 {
 	padding-top: 0 !important;
 }
+.pt2 {
+	padding-top: $grid__gutter;
+}
 
-.no-padding {
+.p0 {
 	padding: 0;
 }
 
+// py
+.py0 {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.py1 {
+	padding-top: $grid__gutter / 2;
+	padding-bottom: $grid__gutter / 2;
+}
+.py2 {
+	@extend .pt2;
+	padding-bottom: $grid__gutter;
+}
+// MD Classes
+@include md {
+	.mb1-2-md {
+		margin-bottom: $grid__gutter/4;
+	}
+}
+
+// XS Classes
+@include xs {
+	.mt1-2-xs {
+		margin-top: $grid__gutter/4;
+	}
+	.mt1-xs {
+		margin-top: $grid__gutter/2;
+	}
+	.mb1-2-xs {
+		margin-bottom: $grid__gutter/4;
+	}
+  .ml0-xs {
+    margin-left: 0;
+  }
+}
+
+// Displays
+.d-block {
+	display: block;
+}
+.f-left {
+	float: left;
+}
+
+.f-right {
+	float: right;
+}
+
+// positions
+.p--rel {
+	position: relative;
+}
+.p--abs {
+	position: absolute;
+}
+.p--sticky {
+	position: sticky;
+}
 
 // Module text margins fix
-.last-of-type-no-margin-bottom {
+.last-of-type-mb0 {
 	* {
 		&:last-of-type {
 			margin-bottom: 0;
@@ -59,16 +227,25 @@
 	}
 }
 //Wordpress admin bar fix
-.admin-bar .admin-bar__fix {
+.admin-bar .admin-bar__fix, .admin-bar .navbar-sticky {
 	top: 32px;
 }
 
 @media screen and (max-width: 782px) {
-  .admin-bar .admin-bar__fix {
+  .admin-bar .admin-bar__fix, .admin-bar .navbar-sticky {
     top: 46px;
   }
 }
 
 .navbar-fixed-top {
 	@extend .admin-bar__fix;
+}
+
+// Vertically align horizontal navbars
+.d-inline-block {
+	display: inline-block;
+}
+
+.v-align-middle {
+	vertical-align: middle;
 }

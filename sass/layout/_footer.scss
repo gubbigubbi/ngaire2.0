@@ -2,22 +2,22 @@
     background-color: $color__background-footer-widget-area;
     color: $color__text-footer-widget-area;
     padding: $footer__widget-area-padding;
-    .widget-title { color: $color__text-headings-footer-widget-area; text-transform: uppercase; }
+    .widget-title { color: $color__text-headings-footer-widget-area; text-transform: $font--headings-footer-widget; }
 }
 
 .site-info {
     background-color: $color__background-site-info;
     color: $color__text-site-info;
     padding: $footer__copyright-padding;
-    @extend .text-center;
 }
 
 .footer-widget-area, .site-info {
+    font-size: var(--font-size-footer);
     a {
         color: inherit;
         @extend .transition-color;
         &:hover {
-            color: $color__light;
+            color: var(--color-light);
         }
     }
 }

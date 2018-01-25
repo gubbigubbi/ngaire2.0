@@ -1,10 +1,14 @@
 // Containers
-body:not(.full-width) .site-content, .navbar-inner, body.full-width .panel-grid-cell {
+body:not(.full-width) .site-content, .body.full-width .panel-grid-cell {
     @extend .container;
 }
 
+body:not(.full-width) .site-content {
+	@extend .container-bd;	
+}
+
 // Match up with existing gutters
-body.full-width .panel-grid div:not(.section__no-padding) .panel-grid-cell {
+body.full-width .panel-grid div:not(.section_.p0) .panel-grid-cell {
     padding-left: $grid__gutter !important;
     padding-right: $grid__gutter !important;
 }
@@ -18,7 +22,7 @@ body.full-width .panel-grid div:not(.section__no-padding) .panel-grid-cell {
 .content-only .site-content {
     padding: $section__content-only-padding;
     @include md {
-        padding: 40px 0;
+        padding: $grid--gutter/2 0;
     }
 }
 
@@ -27,7 +31,24 @@ body.full-width .panel-grid div:not(.section__no-padding) .panel-grid-cell {
     padding-bottom: 0;
 }
 
+
+// Content area on mobile
+.inner-content {
+    @include xs {
+        //padding-left: 5px;
+        //padding-right: 5px;
+    }
+}
+
+// Padding for content and sidebar
+
+.content-area, .sidebar {
+    //@extend .my2;
+}
+
+
 @import "preview";
+@import "header";
 @import "content-sidebar";
 @import "no-sidebar";
 @import "footer";

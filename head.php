@@ -7,6 +7,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
+<?php echo get_field('custom_scripts','options', false); ?>
 </head>
 
 <body <?php body_class(); ?>>

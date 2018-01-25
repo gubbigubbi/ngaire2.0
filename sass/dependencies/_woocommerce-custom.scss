@@ -1,0 +1,65 @@
+.woocommerce-loop-product__title {
+    @extend .mt1;
+    @extend .p;
+    font-family: var(--font-main);
+    text-transform: initial;
+}
+.single-product.single .content-area .summary.entry-summary {
+    @extend .mt0;
+}
+h1.product_title {
+    @extend .h3;
+}
+
+.woocommerce ul.products li.product {
+    a img {
+        @extend .mb0;
+    }
+    .button {
+        @extend .mt0;
+        @extend .button--small
+    }
+    .post-thumb-wrapper > p {
+        display: none;
+    }
+}
+
+.woocommerce-page table.cart td.actions .input-text#coupon_code {
+    width: 120px;
+    height: 49px;
+}
+
+.woocommerce .quantity .qty {
+    height: 49px;
+}
+
+// bokings
+.single {
+    .wc-bookings-booking-form .wc-bookings-booking-cost {
+        margin: 0;
+    }
+    .wc-bookings-booking-form {
+    border-width: 0px;
+    padding: 0;
+    margin: 0 0 1em;
+        fieldset.wc_bookings_field_start_date {
+            font-weight: bold;
+        }
+    }
+    .wc-bookings-date-picker .ui-datepicker td{
+        &.ui-datepicker-current-day a, &.bookable-range .ui-state-default {
+            background-color: var(--color-dark) !important;
+        }
+        &.bookable a {
+            background-color: var(--color-light) !important;
+        }
+    }
+}
+
+.variation-BookingDate, .variation-Duration, .variation-Check-in, .variation-Check-out {
+    @extend .mt0;
+    
+    p {
+        @extend .mt0;
+    }
+} 

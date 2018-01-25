@@ -3,7 +3,7 @@ $header_poster = get_field('header_image');
 $header_video_mp4 = get_field('header_video_mp4');
 $header_video_mov = get_field('header_video_mov');
 ?>
-<section class="section__video section-header no-padding-top no-padding-bottom">
+<section class="section__video section-header.p0-top.p0-bottom">
     <video class="b-lazy" muted autoplay poster="<?php echo $header_poster; ?>" class="fullscreen-bg__video">
         <source data-src="<?php echo $header_video_mov; ?>" type="video/webm">
         <source dara-src="<?php echo $header_video_mp4; ?>" type="video/mp4">
@@ -11,7 +11,7 @@ $header_video_mov = get_field('header_video_mov');
     </video>
     
     <div class="video-overlay">
-        <div class="container text__white">
+        <div class="container text--white">
             <div class="animated fadeInUp stagger-2">
                 <?php do_action('header_content'); ?>
             </div>

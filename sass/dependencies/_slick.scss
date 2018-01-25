@@ -5,15 +5,12 @@
     display: block;
     box-sizing: border-box;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
 }
+
 .slick-list {
     position: relative;
     overflow: hidden;
@@ -32,10 +29,6 @@
 }
 .slick-slider .slick-track,
 .slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
@@ -67,7 +60,7 @@
         float: right;
     }
     img {
-        display: block;
+        display: inline;
     }
     &.slick-loading img {
         display: none;
@@ -101,6 +94,7 @@
 .slick-dots {
     @extend .list-unstyled;
     @extend .list-inline;
+    @extend .ml0;
 }
 .slick-dots li {
     width: 12px;
@@ -112,7 +106,8 @@
     background: none;
     cursor: pointer;
     &.slick-active {
-        background: #ccc;
+        background: var(--color-light);
+        border-color: var(--color-light)
     }
     button { display: none; }
 }
@@ -120,26 +115,42 @@
 // Slick Arrows
 .slick-arrow {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 50%;
+
     font-size: 0;
     line-height: 0;
+    z-index: 999;
     @extend .icon;
     &.slick-prev, &.slick-next {
-        @extend .button__primary;
+        //padding: 6px;
+        //width: 26px;
+        //border-width: 1px;
+        //@extend .button--border;
+        background-color: transparent;
+        padding: 0;
         &:before {
-            font-size: 12px;
+            font-size: 24px;
             line-height: 1;
+            color: var(--color-light);
+            @extend .transition-color;
+        }
+        &:hover { 
+            &:before { color: lighten($color--light, 10%) }
         }
     }
     &.slick-prev {
-        right: 54px;
+        left: 0px;
         &:before {
-            content: '\f2ca';
+            content: '\f107';
         }
     }
-    &.slick-next:before {
-        content: '\f30f';
+    &.slick-next {
+        right: 0px;
+
+        &:before {
+            content: '\f10a';
+            @extend .f-right;
+        }
     }    
 }
 

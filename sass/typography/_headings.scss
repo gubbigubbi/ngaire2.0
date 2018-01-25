@@ -1,45 +1,48 @@
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: $font__headings;
+	font-family: var(--font-headings);
 	font-weight: $font__weight-headings;
 	margin: 0 0 $font__margin-bottom 0;
 	clear: both;
 	letter-spacing: $font__letter-spacing-headings;
-	text-transform: $font__headings-case;
+	text-transform: $font--headings-case;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: $color--text-headings;
+}
 h1, .h1 {
-  font-size: 5.625em;
-  line-height: 1.16666667em;
-  margin-top: 0.23333333em;
-  margin-bottom: 0.46666666em;
+  font-size: 4.25em;
+  line-height: 1.11764706em;
+  margin-top: 0.27941176em;
+  margin-bottom: 0.55882352em;
 }
 h2, .h2 {
-  font-size: 3.1875em;
-  line-height: 1.23529412em;
-  margin-top: 0.41176471em;
-  margin-bottom: 0.41176471em;
+  font-size: 2.625em;
+  line-height: 1.35714286em;
+  margin-top: 0.45238095em;
+  margin-bottom: 0.45238095em;
 }
 h3, .h3 {
-  font-size: 1.75em;
-  line-height: 1.5em;
-  margin-top: 0.75em;
-  margin-bottom: 0.75em;
+  font-size: 1.625em;
+  line-height: 1.46153846em;
+  margin-top: 0.73076923em;
+  margin-bottom: 0.73076923em;
 }
 h4, .h4 {
-  font-size: 1.2em;
-  line-height: 1.3125em;
-  margin-top: 1.3125em;
+  font-size: 1.1875em;
+  line-height: 1.1875em;
+  margin-top: 1.1875em;
   margin-bottom: 0em;
 }
 h5, .h5 {
   font-size: 1em;
-  line-height: 1.3125em;
-  margin-top: 1.3125em;
+  line-height: 1.1875em;
+  margin-top: 1.1875em;
   margin-bottom: 0em;
 }
 
 .entry-title {
-	@extend .no-margin-top;
+	@extend .mt0;
 	@extend .h3;
 }
 
@@ -48,7 +51,7 @@ h5, .h5 {
 }
 
 .widget-title {
-	text-transform: $font__headings-widget;
+	text-transform: $font--headings-widget;
 }
 
 .comments-title {

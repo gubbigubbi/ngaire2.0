@@ -24,6 +24,10 @@ function nagaire_2_0_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+	if ( get_field('page_background_image') || is_home() ) {
+		$classes[] = 'bg-image';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'nagaire_2_0_body_classes' );
@@ -40,22 +44,7 @@ if( function_exists('acf_add_options_page') ) {
 		'redirect'		=> false
 	));
 	
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Header Settings Settings',
-		'menu_title'	=> 'Header Settings',
-		'parent_slug'	=> 'theme-general-settings',
-	));
-	
 }
-
-/**
- * Allow SVG's
- */
-function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
 
 // Wordpress Emoticons
 if(!get_field('enable_emoticons','options')) {
@@ -101,11 +90,9 @@ function halfhalf_body_class( $classes ) {
 	$show_sidebar = get_post_meta( $post->ID, 'page_options_show_sidebar', true );
 
  
-    if ( $show_sidebar || is_singular('post') || is_singular('trainer') || is_singular('class') || is_singular('team') || is_singular('portfolio') || is_singular('service') || is_search() || is_archive() && !is_post_type_archive() ) {
+    if ( $show_sidebar ) {
         $classes[] = 'layout-content-sidebar';
-    }
-	
-	if ( !$show_sidebar || is_404() || is_search() || is_archive() && !is_post_type_archive() ) {
+    } else {
 		$classes[] = 'content-only';
 	}
 	
@@ -113,6 +100,10 @@ function halfhalf_body_class( $classes ) {
 		//$classes[] = 'layout-full-width';
 	//}
 	
+	$classes[] = 'header-'.get_field('header_type');
+	$classes[] = 'navbar-'.get_theme_mod('navbar_menu_alignment');
+	$classes[] = 'logo-'.get_theme_mod('logo_position');
+	$classes[] = get_theme_mod('social_in_navbar') ? 'show-socials-navbar' : '';
     return $classes;
      
 }
@@ -120,7 +111,7 @@ function halfhalf_body_class( $classes ) {
 // Header Router
 function header_router($header_type) {
 
-	if($header_type == 'none') {
+	if($header_type == 'none' || is_product() || is_product_category() || is_shop() || is_singular('post')) {
 		return; // I'm out bitches
 	}
 	
@@ -133,32 +124,115 @@ function header_router($header_type) {
 
 // Navbar Router
 function navbar_router($navbar_type) {
-	if ($navbar_type == 'navbar-center') {
-		get_template_part('template-parts/navbar/navbar-center');
+
+	// Use the navbar left template if the alignment is right, css will style
+	if($navbar_type == 'right') {
+		$navbar_type = 'left';
+	} 
+
+	if($navbar_type) {
+		get_template_part('template-parts/navbar/navbar',$navbar_type);	
 	} else {
 		get_template_part('template-parts/navbar/navbar-left');
 	}
 }
 
 function page_title() {
+
 	$content = get_field('header_content');
+	
 	global $post;
 	if($content) {
 		echo '<span class="section-header__title">'.$content.'</span>';
 	} else {
-		$title = !is_home() ? get_the_title( $post->ID ) : get_the_title( get_option('page_for_posts', true));
+		if(is_shop()) {
+			$title = 'Shop';
+		} else if(!is_home()) {
+			$title = get_the_title( $post->ID );
+		} else {
+			$title = get_field( 'header_content', get_option('page_for_posts', true));
+		}
 		echo '<header class="entry-header">';
-			echo '<h1 class="h2 entry-title">'.$title.'</h1>';
+			echo '<h1 class="mt0 h2">'.$title.'</h1>';
 		echo '</header><!-- .entry-header -->';
 	}
 }
 
 add_action('header_content','page_title');
 
+// Remove tax label before title
+
+function my_theme_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+    return $title;
+}
+ 
+add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
+
 /* Add a link  to the end of our excerpt contained in a div for styling purposes and to break to a new line on the page.*/
  
 function et_excerpt_more($more) {
     global $post;
-    return '<div><a class="small" href="'. get_permalink($post->ID) . '">View Full Post &rarr;</a></div>';
+	if ('foo' == get_post_type()):
+    	return '<div><a class="small" href="'. get_permalink($post->ID) . '">View Full Post &rarr;</a></div>';
+	endif;
 }
 add_filter('excerpt_more', 'et_excerpt_more');
+
+// Post thumbnails for single
+
+function show_single_thumbnail() {
+	
+	$post_type = get_post_type();
+
+	if($post_type == 'team') {
+		return the_post_thumbnail('square-thumb', ['class' => 'image--circle']);
+	} else {
+		return the_post_thumbnail('post-thumb');
+	}
+}
+
+/*
+ * Prepend Facebook, Twitter and Google+ social share buttons to the post's content
+ *
+ */
+function add_share_buttons_before_content() {
+
+    global $post;
+
+    // Get the post's URL that will be shared
+    $post_url   = urlencode( esc_url( get_permalink($post->ID) ) );
+    
+    // Get the post's title
+    $post_title = urlencode( $post->post_title );
+	$post_content = urlencode ( get_the_excerpt( $post->ID ) );
+	$image_url = urlencode( get_the_post_thumbnail_url($post->ID) );
+
+    // Compose the share links for Facebook, Twitter and Google+
+    $facebook_link    = sprintf( 'https://www.facebook.com/sharer/sharer.php?u=%1$s', $post_url );
+    $twitter_link     = sprintf( 'https://twitter.com/intent/tweet?text=%2$s&url=%1$s', $post_url, $post_title );
+    $google_plus_link = sprintf( 'https://plus.google.com/share?url=%1$s', $post_url );
+	$pinterest_link   = 'http://pinterest.com/pin/create/button/?url=' . $post_url . '&media=' . $image_url . '&description=' . $post_content . '';
+
+    // Wrap the buttons
+    $output = '<ul class="list-unstyled ml0 mb0 list-inline" id="share-buttons">';
+        // Add the links inside the wrapper
+        $output .= '<li class="d-inline-block"><a class="h6" target="_blank" href="' . $facebook_link . '"><span class=" d-inline-block v-align-middle text--dark big icon ion-social-facebook"></span> Share</a></li>';
+        $output .= '<li class="d-inline-block"><a class="h6" target="_blank" href="' . $twitter_link . '"><span class=" d-inline-block v-align-middle text--dark big icon ion-social-twitter"></span> Tweet</a></li>';
+		$output .= '<li class="d-inline-block"><a class="h6" target="_blank" href="' . $pinterest_link . '"><span class=" d-inline-block v-align-middle text--dark big icon ion-social-pinterest"></span> Pin</a></li>';
+	$output .= '</ul>';
+
+    // Return the buttons and the original content
+    return $output;
+
+}

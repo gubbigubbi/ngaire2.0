@@ -14,8 +14,15 @@ get_header(); ?>
 
 			<?php
 			while ( have_posts() ) : the_post();
-	
-				get_template_part( 'template-parts/content', 'single' );
+				$type = get_post_type();
+
+				switch ($type) {
+					case 'post':
+						$type = 'single';
+						break;
+				}
+
+				get_template_part( 'template-parts/content', $type );
 				
 				the_post_navigation( array(
 					'prev_text'                  => __( '<i class="icon ion-arrow-left-c"></i> Go back to: %title' ),
@@ -35,5 +42,9 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+
+if(is_singular('foo')) {
+	get_sidebar();
+}
+
 get_footer();

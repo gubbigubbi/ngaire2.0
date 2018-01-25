@@ -2,12 +2,14 @@
 	display: block;
 }
 
-body:not(.full-width) .hentry {
-	margin: 0 0 2em;
+.hentry {
+	margin: 0 0 $block--margin-bottom;
+	@extend .w100;
+	@extend .f-left;
 }
 
 .hentry-offset {
-	margin-bottom: -2em;
+	margin-bottom: -$block--margin-bottom;
 }
 
 .page.siteorigin-panels article.hentry {
@@ -33,4 +35,8 @@ body:not(.full-width):not(.siteorigin-panels).page .entry-content,
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+.site-main {
+	@extend .f-left;
+	@extend .w100;
 }

@@ -5,13 +5,13 @@
 	}
 	
 	ul {
-		@extend .no-padding-left;
+		@extend .pl0;
 	}
 }
 
 .sidebar .widget {
 	background-color: $color__background-widget;
-	@extend .block__content-widget;
+	@extend .p1;
 	border: 1px solid darken($color__background-widget, 10%);
 	margin: 0 0 1.5em;
 }

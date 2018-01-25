@@ -44,23 +44,23 @@ if ( ! function_exists( 'nagaire_2_0_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function nagaire_2_0_entry_footer() {
-	echo '<ul class="list-unstyled list-inline no-margin-left no-margin-bottom">';
+	echo '<ul class="list-unstyled ml0 mb0 list-inline">';
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		
-        echo '<li><i class="icon ion-calendar"></i> '.get_the_date().'</li>';
-        echo '<li><a href="'.get_the_author_url.'"><i class="icon ion-person"></i> '.get_the_author().'</a></li>';
-		
+        echo '<li><a href="'.get_the_author_url.'"><i class="icon icon-r-symbol_map"></i> By '.get_the_author().'</a></li>';
+		echo '<li><i class="icon ion-calendar"></i> '.get_the_date().'</li>';
+        
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'ngaire-2-0' ) );
 		if ( $categories_list && nagaire_2_0_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'ngaire-2-0' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<li><span class="cat-links"><i class="icon ion-ios-browsers-outline"></i> ' . esc_html__( 'Posted in %1$s', 'ngaire-2-0' ) . '</span></li>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'ngaire-2-0' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'ngaire-2-0' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<li><span class="tags-links"><i class="icon ion-ios-pricetag-outline"></i> ' . esc_html__( 'Tagged %1$s', 'ngaire-2-0' ) . '</span><li>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 

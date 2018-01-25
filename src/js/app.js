@@ -10,6 +10,7 @@ jQuery(function($) {
               // Do your business here
           }
         , error: function(ele, msg){
+          console.log(msg);
               if(msg === 'missing'){
                   // Data-src is missing
               }
@@ -23,23 +24,28 @@ jQuery(function($) {
 /*--------------------------------------------------------------
 2.0 WOW.js
 --------------------------------------------------------------*/
-   (function(){
-      
-      var wow = new WOW(
-        {
-          boxClass:     'wow',      // animated element css class (default is wow)
-          animateClass: 'animated', // animation css class (default is animated)
-          offset:       0,          // distance to the element when triggering the animation (default is 0)
-          mobile:       false,       // trigger animations on mobile devices (default is true)
-        }
-      );
-      wow.init();
-   })();
+
+// no longer included by default
 
 /*--------------------------------------------------------------
 3.0 Nav on scroll
 --------------------------------------------------------------*/   
-   
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
+    
    // Constructor
    function HeaderScroll(target, targetOffset, toggleAddClass, toggleRemoveClass) { // scroll object
       this.target = $(target);
@@ -48,8 +54,7 @@ jQuery(function($) {
       this.toggleRemoveClass = toggleRemoveClass;
    }
    
-   var HeaderScrollPrimarySticky = new HeaderScroll('.navbar-primary.navbar-sticky', $(".site-header").offset().top + 1, 'navbar-fixed-top', 'navbar-is-at-top'); // new instance
-   var HeaderScrollPrimaryFixed = new HeaderScroll('.navbar-primary.navbar-fixed-top', $(".site-header").offset().top + 1, 'navbar-scrolled', 'navbar-is-at-top'); // new instance
+   var HeaderScrollPrimaryFixed = new HeaderScroll('.navbar-primary', $("#content").offset().top, 'navbar-scrolled', 'navbar-is-at-top'); // new instance
    
    // Prototype
    HeaderScroll.prototype.scroll = function() { // our method
@@ -64,18 +69,14 @@ jQuery(function($) {
          target.addClass(this.toggleRemoveClass);   
      }   
    }
+
+  var debouncedFn = debounce(function() {
+    console.log('scrolled');
+    HeaderScrollPrimaryFixed.scroll();
+  }, 250);
+
+  window.addEventListener('scroll', debouncedFn);
    
-   var screenWidth = $(window).width();
-    
-   $(window).scroll(function() { // call the method when scrolling
-      if (screenWidth > 767) {
-        HeaderScrollPrimarySticky.scroll();
-      }
-   });
-   
-   $(window).scroll(function() {
-      HeaderScrollPrimaryFixed.scroll();
-   });
    
 	/*--------------------------------------------------------------
 	4.0 Slick
@@ -88,9 +89,19 @@ jQuery(function($) {
 			infinite: true,
 			autoplay: true,
 			dots: true,
-			arrows: true,
-			autoplaySpeed: 6000,
+			arrows: false,
+			autoplaySpeed: 10000,
 			slidesToShow: 1,
+			slidesToScroll: 1
+		});
+
+		$('.slick-multiple').slick({
+			infinite: true,
+			autoplay: true,
+			dots: true,
+			arrows: false,
+			autoplaySpeed: 10000,
+			slidesToShow: 2,
 			slidesToScroll: 1
 		});
 	})();
@@ -109,14 +120,11 @@ jQuery(function($) {
 	});
 
 	var slideLeftBtn = document.querySelector('#c-button--toggle');
-
+  
 	slideLeftBtn.addEventListener('click', function(e) {
 		e.preventDefault;
 		$('.c-button').toggleClass('is-active');
-
 		 slideLeft.open();
-
-
 	});
 
 	$('.c-menu__close').click(function() {
@@ -158,7 +166,7 @@ jQuery(function($) {
    
    // Hide new spinner on result
    $(document).on('wpcf7:invalid wpcf7:spam wpcf7:mailsent wpcf7:mailfailed', function () {
-       $('.wpcf7-submit').val('Submit Again');
+      $('.wpcf7-submit').removeAttr('disabled', 'disabled').val('Submitted');
    });
 
    /*--------------------------------------------------------------
@@ -177,14 +185,14 @@ jQuery(function($) {
    })();
    
    /*--------------------------------------------------------------
-   8.0 Smooth Scroll and Director js
+   8.0 Smooth Scroll
    --------------------------------------------------------------*/   
    
    (function(){
-      $('a[href*="#"]:not([href="#"])').click(function() {
+      $('.local-link').click(function() {
          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
          var target = $(this.hash);
-         var header = $('.navbar-fixed-top').height();
+         var header = $('.navbar-sticky').height();
          console.log(header);
          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
          if (target.length) {
@@ -195,20 +203,7 @@ jQuery(function($) {
             }
          }
       });
-   })();
-   
-   (function(){
-
-      var page = function () {console.log("page"); };
-      
-      var routes = {
-        '/':  page,
-      };
-      
-      var router = Router(routes);
-      router.init(['/']);
-   
-   });
+   })();   
 
    /*--------------------------------------------------------------
    9.0 Isotope js
@@ -235,7 +230,14 @@ jQuery(function($) {
          });
          return false;
    });
-        
-    
+   
+   /*--------------------------------------------------------------
+   10.0 Images loaded
+   --------------------------------------------------------------*/
+   
+   $('#content').imagesLoaded( function() {
+      // images have loaded
+      $('body').addClass('loaded');
+   });
 
 });

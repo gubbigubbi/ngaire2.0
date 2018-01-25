@@ -1,17 +1,15 @@
-<?php
-$navbar_alignment = get_field('navbar_menu_alignment','options') ? get_field('navbar_menu_alignment','options') : 'left';
-if ($navbar_alignment == 'left') {
-    $class = 'start-xs';
-} else {
-    $class = 'end-xs';
-}
-?>
-<div class="row middle-xs start-xs">
-    <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4 col-xl-3 site-branding">
+<div class="row middle-xs navbar-aligner">
+    <div class="site-branding">
         <?php get_template_part('template-parts/header/logo'); ?>
     </div><!-- .site-branding -->
 
-    <div class="col-xs-4 col-sm-4 col-md-6 col-lg-8 col-xl-9">
+    <div class="site-menu-container">
+        <?php 
+        if(get_theme_mod('social_in_navbar')):
+            echo do_shortcode('[socials alignment="right mb0 hidden-md"]'); 
+        endif;
+        ?> 
         <?php get_template_part('template-parts/header/navigation'); ?>
+
     </div>
 </div>

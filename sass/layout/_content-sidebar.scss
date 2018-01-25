@@ -3,18 +3,19 @@
 	.content-area {
 		@extend .col-lg-8;
 		@extend .col-md-12;
-		@extend .no-padding-left-md;
+		@extend .pl0-md;
 		@extend .xtra-padding-right-md;
 	}
 	
 	aside.widget-area {
 		float: left;
-		@extend .no-padding-right-md;
-		@extend .block__border-left;
+		@extend .p0-right-md;
+		@extend .block--border-left;
 		@extend .col-lg-4;
 		@extend .xtra-padding-left-md;
 		@include sm {
 			width: 100%;
+			border-left-width: 0px;
 		}	
 	}
 	

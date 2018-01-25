@@ -1,8 +1,8 @@
 /*!
 Theme Name: ngaire2.0
 Theme URI: http://underscores.me/
-Author: Rhys Clay
-Author URI: http://breezydesigns.com.au
+Author: The IT Team
+Author URI: http://theitteam.com.au
 Description: Description
 Version: 1.0.0
 License: GNU General Public License v2 or later
@@ -42,6 +42,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+@import "../NODE_MODULES/css-vars/css-vars";
+$css-vars-use-native: true;
 @import "variables-site/variables-site";
 @import "mixins/mixins-master";
 

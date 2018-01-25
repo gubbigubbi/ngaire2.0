@@ -32,7 +32,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$logo = get_theme_mod( 'site_logo' );
-		$navbar_type = get_field('navbar_alignment','options');
+		$navbar_type = get_field('navbar_menu_alignment','options');
 
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 		/**
@@ -44,10 +44,6 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 		 * a 0 if the strings are equal.
 		 */
 		
-		// Custom css classes if required
-		if(get_field('menu_dropdown_hover','options')) {
-			$li_classes = 'dropdown-on-hover';
-		}
 
 	
 		if ( strcasecmp( $item->attr_title, 'divider' ) == 0 && $depth === 1 ) {
